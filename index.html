@@ -1,392 +1,82 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SUNDARBAN TRAVEL | Discover the Wild</title>
-<meta name="description" content="Explore Jharkhali and the Sundarbans with boat experiences, stays and thoughtfully planned journeys. Send a booking enquiry to Sundarban Travel.">
-<meta name="theme-color" content="#071b18">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102b20">
+<title>Sundarban Travel | Explore Jharkhali & the Sundarbans</title>
 <style>
-:root{--bg:#071b18;--panel:#102923;--panel2:#15372d;--gold:#d9b477;--cream:#f4eee2;--muted:#b9c9c0;--line:#ffffff20}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--cream);font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-button,input,select,textarea{font:inherit}
-img{max-width:100%;display:block}
-.wrap{width:min(1160px,88%);margin:auto}
-.topbar{height:82px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;gap:25px;background:#071b18ee;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50;backdrop-filter:blur(14px)}
-.brand{font-size:18px;font-weight:800;letter-spacing:2.4px;color:var(--gold);white-space:nowrap}
-.nav{display:flex;align-items:center;gap:27px;font-size:11px;letter-spacing:1.4px;font-weight:700}
-.nav a:hover,.nav a.active{color:var(--gold)}
-.nav .nav-book,.btn{background:var(--gold);color:#10221b;padding:14px 20px;font-weight:800;letter-spacing:1px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--gold);transition:.25s}
-.menu-toggle{display:none;background:none;color:var(--cream);border:1px solid var(--line);padding:9px 12px}
-.hero{min-height:690px;position:relative;display:flex;align-items:center;background:linear-gradient(90deg,rgba(3,19,16,.94),rgba(3,19,16,.62) 52%,rgba(3,19,16,.12)),url('/Sundarbans%20Sunset%20Riverescape.png') center/cover no-repeat}
-.hero:after{content:"";position:absolute;inset:auto 0 0;height:150px;background:linear-gradient(transparent,var(--bg));pointer-events:none}
-.hero-inner{position:relative;z-index:2;width:min(1160px,88%);margin:auto;padding:90px 0}
-.eyebrow,.section-tag{color:var(--gold);font-size:11px;letter-spacing:3.5px;font-weight:700}
-.hero h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(54px,8vw,100px);line-height:.98;max-width:780px;margin:25px 0}
-.hero h1 em{color:var(--gold);font-style:normal}
-.hero p{max-width:570px;color:#e0e8e2;font-size:16px;line-height:1.9}
-.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
-.btn-outline{padding:14px 20px;border:1px solid var(--gold);color:var(--cream);display:inline-flex;align-items:center;justify-content:center;font-weight:700;letter-spacing:1px;transition:.25s}
-
-.scroll-note{position:absolute;right:6%;bottom:80px;z-index:3;color:#e7d6b8;font-size:10px;letter-spacing:3px;writing-mode:vertical-rl}
-section{padding:100px 0}
-.section-head{max-width:700px;margin-bottom:42px}
-h2{font-family:Georgia,serif;font-weight:400;font-size:clamp(36px,5vw,58px);line-height:1.08;margin:15px 0 18px}
-.intro{color:var(--muted);line-height:1.9;max-width:670px;font-size:15px}
-.experience-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.experience-card{position:relative;min-height:350px;overflow:hidden;background:var(--panel);border:1px solid var(--line)}
-.experience-card:after{content:"";position:absolute;inset:20% 0 0;background:linear-gradient(transparent,rgba(3,18,15,.94))}
-.experience-copy{position:absolute;z-index:2;left:22px;right:22px;bottom:23px}
-.experience-copy h3{font:26px Georgia,serif;margin-bottom:8px}
-.experience-copy p{font-size:13px;line-height:1.7;color:#d2ddd5}
-.experience-copy a{display:inline-block;margin-top:13px;color:var(--gold);font-size:10px;letter-spacing:1.5px;font-weight:bold}
-.about{background:#0c2922}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:65px;align-items:center}
-.about-image{position:relative}
-.about-image img{width:100%;height:500px;object-fit:cover}
-.about-image:before{content:"";position:absolute;inset:16px -16px -16px 16px;border:1px solid #d9b47788;z-index:0}
-.about-image img{position:relative;z-index:1}
-.about-copy p{color:var(--muted);line-height:1.95;margin-bottom:18px}
-.wildlife{position:relative;overflow:hidden}
-.wildlife-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:55px;align-items:center}
-.wildlife-visual{height:390px;position:relative;overflow:hidden;background:linear-gradient(135deg,#173c30,#071b18);border:1px solid var(--line)}
-.wildlife-visual img{width:100%;height:100%;object-fit:cover;opacity:.78}
-.package-section{background:#0b241e}
-.route-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.route-card{background:linear-gradient(145deg,#15372d,#0d241e);border:1px solid #d9b47755;padding:34px;position:relative;overflow:hidden}
-.route-card:after{content:"";position:absolute;width:180px;height:180px;border:1px solid #d9b47735;border-radius:50%;right:-65px;top:-70px}
-.route-kicker{color:var(--gold);font-size:11px;letter-spacing:2px;font-weight:bold}
-.route-card h3{font:32px Georgia,serif;margin:12px 0 5px}
-.route-short{font-size:12px;color:var(--gold);letter-spacing:2px;margin-bottom:16px}
-.route-card p{color:var(--muted);line-height:1.8;font-size:14px;max-width:470px}
-.route-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
-.route-actions a{font-size:11px;letter-spacing:1px;color:var(--gold);border-bottom:1px solid #d9b47788;padding-bottom:5px}
-.photo-box{margin-top:25px;padding:30px;background:#102923;border:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:25px;align-items:center}
-.photo-box h3{font:28px Georgia,serif;margin:8px 0}
-.photo-box p{color:var(--muted);line-height:1.8;font-size:14px;max-width:720px}
-.photo-label{color:var(--gold);font-size:10px;letter-spacing:2px;font-weight:bold}
-.booking{background:linear-gradient(135deg,#102b24,#071b18)}
-.booking-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:55px;align-items:start}
-.booking-info p{color:var(--muted);line-height:1.9;margin:16px 0}
-.owner{margin-top:28px;padding:22px;background:#ffffff0a;border:1px solid var(--line);line-height:2}
-.owner strong{color:var(--gold);letter-spacing:1px}
-form{background:#f3eee4;color:#17251f;padding:32px}
-form h3{font:30px Georgia,serif;margin-bottom:22px}
-.field{margin-bottom:16px}
-label{display:block;font-size:12px;font-weight:bold;margin-bottom:7px}
-input,select,textarea{width:100%;padding:13px;border:1px solid #c9c8bd;background:#fff;color:#18251f;border-radius:0}
-textarea{min-height:95px;resize:vertical}
-form button{width:100%;padding:16px;background:#c59b5e;color:#10221b;border:0;font-weight:bold;font-size:12px;letter-spacing:1px;cursor:pointer}
-.note{font-size:11px;color:#58665e;margin-top:12px;line-height:1.6}
-.contact{text-align:center;background:#102923}
-.contact .intro{margin:0 auto}
-.contact-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:28px}
-footer{padding:35px 6%;text-align:center;color:#a9b8af;font-size:12px;line-height:2;border-top:1px solid var(--line)}
-footer strong{color:var(--gold);letter-spacing:2px}
-@media(max-width:900px){.experience-grid{grid-template-columns:repeat(2,1fr)}.nav{gap:15px}.about-grid,.wildlife-grid{gap:35px}}
-@media(max-width:700px){
- .topbar{height:auto;min-height:70px;padding:14px 6%;flex-wrap:wrap}
- .brand{font-size:15px}.menu-toggle{display:block}
- .nav{display:none;width:100%;flex-direction:column;align-items:stretch;gap:0;padding:8px 0 4px}
- .nav.open{display:flex}.nav a{padding:13px 4px;border-top:1px solid var(--line)}
- .nav .nav-book{margin-top:8px;text-align:center}
- .hero{min-height:620px;background-position:58% center}
- .hero-inner{padding:75px 0}.hero h1{font-size:clamp(50px,14vw,76px)}
- .hero p{font-size:14px}.scroll-note{display:none}
- section{padding:72px 0}.wrap{width:88%}
- .experience-grid{grid-template-columns:1fr 1fr;gap:12px}
- .experience-card,.experience-card img{min-height:270px;height:270px}
- .experience-copy{left:14px;right:14px;bottom:15px}
- .experience-copy h3{font-size:21px}.experience-copy p{font-size:11px}
- .about-grid,.wildlife-grid,.booking-grid,.route-grid{grid-template-columns:1fr}
- .about-image img{height:320px}.about-image:before{inset:10px -10px -10px 10px}
- .wildlife-visual{height:300px}
- .photo-box{grid-template-columns:1fr;padding:23px}
- form{padding:23px}
-}
-@media(max-width:390px){.experience-grid{grid-template-columns:1fr}.experience-card,.experience-card img{height:300px;min-height:300px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+:root{--forest:#102b20;--forest2:#183b2c;--gold:#d9b66b;--cream:#f5f1e7;--ink:#17251d}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--ink)}
+a{color:inherit;text-decoration:none}.topbar{position:absolute;z-index:5;top:0;left:0;width:100%;display:flex;align-items:center;justify-content:space-between;padding:22px 5.5%;color:#fff;background:linear-gradient(180deg,rgba(5,22,15,.8),transparent)}
+.brand{display:flex;align-items:center;gap:12px;font-family:Georgia,serif;font-size:23px;letter-spacing:2px;font-weight:bold}.brand-mark{width:42px;height:42px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold);font-size:21px}
+nav{display:flex;gap:30px;align-items:center;font-size:12px;letter-spacing:1.5px;text-transform:uppercase}nav a{opacity:.92}nav a:hover{color:var(--gold)}.book{background:var(--gold);color:#17251d;padding:14px 20px;border-radius:3px;font-weight:bold}
+.hero{min-height:760px;height:100vh;max-height:940px;position:relative;display:flex;align-items:center;overflow:hidden;color:white;background:#193b2b}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,24,16,.78) 0%,rgba(5,24,16,.48) 47%,rgba(5,24,16,.16) 100%),url('https://commons.wikimedia.org/wiki/Special:FilePath/Mangrove%20and%20river%20in%20Sundarbans.JPG') center/cover no-repeat;transform:scale(1.015)}
+.hero:after{content:"";position:absolute;inset:auto 0 0;height:180px;background:linear-gradient(transparent,rgba(5,20,14,.55))}
+.hero-content{position:relative;z-index:2;width:min(760px,90%);margin:100px 0 40px 9%}
+.eyebrow{color:var(--gold);letter-spacing:4px;text-transform:uppercase;font-size:12px;font-weight:bold}.hero h1{font:clamp(54px,8vw,104px)/.98 Georgia,serif;margin:24px 0 22px;max-width:760px;letter-spacing:-2px}.hero h1 em{color:var(--gold);font-weight:normal}.hero p{font:20px/1.7 Georgia,serif;max-width:570px;color:#f3f0e8}
+.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}.btn{display:inline-block;padding:16px 23px;border:1px solid var(--gold);letter-spacing:1px;text-transform:uppercase;font-size:11px;font-weight:bold}.btn.primary{background:var(--gold);color:#17251d}.btn.secondary{color:white;background:rgba(9,30,20,.22)}
+.hero-tiger{position:absolute;z-index:2;right:7%;bottom:12%;width:min(24vw,300px);aspect-ratio:1.22;object-fit:cover;object-position:center;border:5px solid rgba(245,241,231,.8);box-shadow:0 18px 60px #0008}.hero-boat{position:absolute;z-index:2;left:7%;bottom:10%;width:min(24vw,300px);height:150px;object-fit:cover;border:4px solid rgba(245,241,231,.8);box-shadow:0 18px 60px #0008}
+.hero-note{position:absolute;z-index:3;right:7%;bottom:7%;font-size:10px;letter-spacing:1px;color:#fff;background:#102b20cc;padding:9px 12px}
+.scroll{position:absolute;z-index:3;bottom:26px;left:9%;font-size:10px;letter-spacing:3px;color:#eee}
+.section{padding:100px 7%;}.section-head{text-align:center;max-width:720px;margin:0 auto 48px}.section-head .eyebrow{color:#8c7138}.section h2{font:clamp(36px,5vw,56px)/1.08 Georgia,serif;color:var(--forest);margin:15px 0}.section-head p{line-height:1.8;color:#647168}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{min-height:330px;position:relative;overflow:hidden;background:#244632;color:white}.card img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;transition:transform .5s}.card:hover img{transform:scale(1.06)}.card:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent,rgba(4,22,14,.86))}.card h3{position:absolute;z-index:1;bottom:25px;left:22px;font:27px Georgia,serif;margin:0}.card span{display:block;font:10px Arial;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:9px}
+.custom{background:var(--forest);color:#fff;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}.custom h2{color:#fff}.custom p{line-height:1.8;color:#d2dbd3}.custom .btn{margin-top:15px}
+footer{background:#091c14;color:#d9dfd8;padding:36px 7%;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12px}
+@media(max-width:900px){nav{gap:14px}.cards{grid-template-columns:repeat(2,1fr)}.hero-tiger{right:5%;width:27vw}.hero-content{margin-left:7%}}
+@media(max-width:640px){.topbar{padding:16px 5%;align-items:flex-start}.brand{font-size:17px}.brand-mark{width:34px;height:34px}nav{display:none}.hero{min-height:720px;height:92vh}.hero-content{margin:130px 6% 100px}.hero h1{font-size:58px}.hero p{font-size:17px;max-width:95%}.hero-tiger{width:125px;right:6%;bottom:8%;border-width:3px}.hero-boat{width:125px;height:78px;left:6%;bottom:8%;border-width:3px}.hero-note{right:6%;bottom:4%;font-size:8px}.scroll{left:6%;bottom:22px;font-size:8px}.cards{grid-template-columns:1fr}.card{min-height:280px}.section{padding:70px 6%}.custom{grid-template-columns:1fr;gap:15px}}
 </style>
-
-<style>
-/* Modern static redesign layer */
-:root{--bg:#071d19;--panel:#102c25;--panel2:#173b30;--gold:#e0b86f;--cream:#fff8ed;--muted:#c4d1c8;--line:#ffffff20;--sand:#f4efe5}
-html{scroll-behavior:auto}
-body{font-family:Inter,Arial,Helvetica,sans-serif;background:#071d19;color:var(--cream)}
-.topbar{height:76px;padding:0 max(5.5%,calc((100% - 1240px)/2));background:#061a16;backdrop-filter:none;border-bottom:1px solid #ffffff18}
-.brand{font-size:16px;letter-spacing:2px}
-.nav{gap:30px;font-size:11px}
-.nav a{transition:none}
-.nav .nav-book,.btn{border-radius:3px;padding:15px 23px;box-shadow:0 8px 22px #0002}
-.nav .nav-book:hover,.btn:hover,.btn-outline:hover{transform:none}
-.hero{min-height:650px;background-image:linear-gradient(90deg,rgba(3,20,16,.91) 0%,rgba(3,20,16,.62) 48%,rgba(3,20,16,.08) 100%),url('/Sundarbans%20Sunset%20Riverescape.png');background-position:center;background-size:cover}
-.hero-inner{width:min(1180px,89%);padding:100px 0}
-.eyebrow,.section-tag{font-size:10px;letter-spacing:3px}
-.hero h1{font-size:clamp(58px,7.4vw,96px);line-height:.99;letter-spacing:-2px;margin:22px 0}
-.hero p{max-width:540px;font-size:16px;line-height:1.85}
-.actions{gap:12px;margin-top:30px}
-.btn,.btn-outline{min-height:48px;font-size:11px;letter-spacing:1.2px;border-radius:3px}
-.btn-outline{padding:14px 21px}
-.scroll-note{display:none}
-section{padding:88px 0}
-.section-head{max-width:760px;margin-bottom:36px}
-h2{font-size:clamp(36px,4.5vw,56px);letter-spacing:-.8px}
-.intro{font-size:15px;line-height:1.85}
-#experience{background:#f5f1e8;color:#18352b}
-#experience .section-tag{color:#9a7137}
-#experience .intro{color:#607168}
-.experience-grid{gap:18px}
-.experience-card{min-height:330px;height:330px;border:0;border-radius:5px;box-shadow:0 12px 28px #17352a18}
-.experience-card img{min-height:330px;filter:saturate(.9)}
-.experience-card:after{inset:15% 0 0;background:linear-gradient(180deg,transparent 5%,rgba(3,20,16,.88) 100%)}
-.experience-copy{left:22px;right:20px;bottom:22px}
-.experience-copy h3{font-size:25px}
-.experience-copy p{font-size:13px;line-height:1.65}
-.experience-copy a{font-size:10px}
-.about{background:#0c2a23}
-.about-grid{gap:70px}
-.about-image img{height:440px;border-radius:5px;object-fit:cover}
-.about-image:before{display:none}
-.about-copy p{font-size:15px;line-height:1.9}
-.wildlife{background:#f5f1e8;color:#17352b}
-.wildlife .section-tag{color:#9a7137}
-.wildlife .intro{color:#607168}
-.wildlife-grid{gap:65px}
-.wildlife-visual{height:390px;border:0;border-radius:5px;box-shadow:0 14px 34px #17352a20}
-.wildlife-visual img{opacity:1}
-.package-section{background:#0b241e}
-.route-grid{gap:18px}
-.route-card{border:1px solid #d9b47755;border-radius:5px;padding:32px;background:linear-gradient(145deg,#173b30,#102a23)}
-.route-card h3{font-size:30px;line-height:1.25}
-.route-card p{font-size:14px}
-.route-card:after{display:none}
-.photo-box{border:1px solid #d9b47766;border-radius:5px;background:#17372d;padding:30px 32px}
-.photo-box h3{font-size:29px}
-.booking{background:#f5f1e8;color:#17352b}
-.booking .section-tag{color:#9a7137}
-.booking-info p{color:#607168;font-size:15px;line-height:1.9}
-.owner{background:#e9e3d7;border:1px solid #d9d1c3;border-radius:4px;color:#263d33}
-.owner strong{color:#8c652e}
-form{border-radius:5px;padding:34px;box-shadow:0 16px 40px #17352a18;background:#fffdfa}
-form h3{font-size:30px}
-input,select,textarea{border-radius:3px;padding:14px;border-color:#d7d4ca}
-input:focus,select:focus,textarea:focus{outline:2px solid #d9b477;outline-offset:1px}
-form button{border-radius:3px;min-height:49px}
-.contact{background:#102c25}
-footer{background:#061a16;padding:42px 6%;}
-/* No decorative motion: all content remains visible and still. */
-.reveal{opacity:1!important;transform:none!important;transition:none!important}
-.monkey-track,.animal{display:none!important}
-*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-@media(max-width:900px){.hero{min-height:600px}.about-grid,.wildlife-grid{gap:38px}}
-@media(max-width:700px){
- .topbar{padding:14px 6%;}
- .nav{gap:0}
- .hero{min-height:590px;background-position:61% center}
- .hero-inner{padding:72px 0}
- .hero h1{font-size:clamp(52px,13vw,76px);letter-spacing:-1px}
- section{padding:68px 0}
- .experience-grid{grid-template-columns:1fr 1fr;gap:12px}
- .experience-card,.experience-card img{height:260px;min-height:260px}
- .experience-copy h3{font-size:19px}
- .experience-copy p{font-size:11px}
- .about-image img{height:310px}
- .wildlife-visual{height:290px}
- .route-card{padding:25px}
- .photo-box{padding:24px}
- form{padding:24px}
-}
-@media(max-width:390px){.experience-grid{grid-template-columns:1fr}.experience-card,.experience-card img{height:290px;min-height:290px}}
-</style>
-
 </head>
 <body>
-<nav class="topbar">
-  <a class="brand" href="#">SUNDARBAN TRAVEL</a>
-  <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">MENU ☰</button>
-  <div class="nav" id="navLinks">
-    <a href="#experience">EXPERIENCE</a>
-    <a href="#packages">PACKAGE</a>
-    <a href="#contact">CONTACT</a>
-    <a class="nav-book" href="#booking">BOOK NOW</a>
-  </div>
-</nav>
-
-<header class="hero">
-  <div class="hero-inner">
-    <div class="eyebrow">JHARKHALI · SUNDARBANS · WEST BENGAL</div>
-    <h1>Discover<br><em>The Wild.</em></h1>
-    <p>Where winding rivers meet the mysterious mangrove forest. Explore unforgettable boat journeys, peaceful stays and the natural beauty of the Sundarbans with a local travel contact in Jharkhali.</p>
-    <div class="actions">
-      <a class="btn" href="#booking">PLAN YOUR JOURNEY ↗</a>
-      <a class="btn-outline" href="#experience">EXPLORE EXPERIENCES</a>
-    </div>
-  </div>
-  <div class="scroll-note">SCROLL TO EXPLORE ↓</div>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brand-mark">✦</span><span>SUNDARBAN<br>TRAVEL</span></a>
+  <nav aria-label="Main navigation">
+    <a href="#experience">Experience</a><a href="#packages">Packages</a><a href="#about">About</a><a href="#contact">Contact</a><a class="book" href="#contact">Book Now</a>
+  </nav>
 </header>
-
-<section id="experience">
- <div class="wrap">
-  <div class="section-head reveal">
-   <div class="section-tag">EXPLORE THE SUNDARBANS</div>
-   <h2>Experiences Worth<br>Remembering.</h2>
-   <p class="intro">Choose how you want to discover the rivers, mangrove forest and unique character of the Sundarbans.</p>
+<main>
+<section class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">Jharkhali · Sundarbans · West Bengal</div>
+    <h1>Discover<br><em>the wild.</em></h1>
+    <p>Explore winding mangrove waterways, peaceful boat journeys and unforgettable moments in the heart of the Sundarbans.</p>
+    <div class="actions"><a class="btn primary" href="#packages">Explore packages&nbsp; →</a><a class="btn secondary" href="#customise">Plan your trip&nbsp; →</a></div>
   </div>
-  <div class="experience-grid">
-   <article class="experience-card reveal">
-    <img src="https://www.holidify.com/images/cmsuploads/compressed/Beauty_of_sundarban_04_20220509173753.jpg" alt="Boat moving through a Sundarbans mangrove creek">
-    <div class="experience-copy"><h3>Boat Trips</h3><p>Short river trips and longer journeys through beautiful waterways.</p><a href="#booking">MAKE AN ENQUIRY ↗</a></div>
-   </article>
-   <article class="experience-card reveal">
-    <img src="https://www.sundarbansagarsangam.com/assets/images/destination/jharkhali02.png" alt="Jharkhali river and mangrove landscape">
-    <div class="experience-copy"><h3>Hotels & Resorts</h3><p>Ask about hotels, resorts and homestays for your visit.</p><a href="#booking">MAKE AN ENQUIRY ↗</a></div>
-   </article>
-   <article class="experience-card reveal">
-    <img src="https://www.india-a2z.com/images/xsundarbans1.jpg.pagespeed.ic.t2xd5uLS8X.jpg" alt="Tourists travelling by boat through the Sundarbans">
-    <div class="experience-copy"><h3>Tour Packages</h3><p>Explore route-based and multi-day travel options.</p><a href="#packages">EXPLORE PACKAGES ↗</a></div>
-   </article>
-   <article class="experience-card reveal">
-    <img src="https://www.distinctdestinations.in/DistinctDestinationsBackEndImg/downloads/Sundarban-Mangrove-Safari-3.jpg" alt="Tour boat on a mangrove-lined river in the Sundarbans">
-    <div class="experience-copy"><h3>River Stays</h3><p>Enquire about special overnight experiences on the river.</p><a href="#booking">MAKE AN ENQUIRY ↗</a></div>
-   </article>
-  </div>
- </div>
+  <img class="hero-boat" src="https://commons.wikimedia.org/wiki/Special:FilePath/Boats%20in%20Sundarban%20%28West%20Bengal%29%2001.jpg" alt="Tour boat in the Sundarbans of West Bengal">
+  <img class="hero-tiger" src="https://commons.wikimedia.org/wiki/Special:FilePath/Bengal%20Tigress%20in%20Sundarban.jpg" alt="Bengal tigress photographed in Sundarban Tiger Reserve">
+  <div class="hero-note">Wildlife sightings are not guaranteed.</div>
+  <div class="scroll">SCROLL TO EXPLORE ↓</div>
 </section>
-
-<section class="about">
- <div class="wrap about-grid">
-  <div class="about-copy reveal">
-   <div class="section-tag">WELCOME TO JHARKHALI</div>
-   <h2>Your Sundarbans<br>Story Starts Here.</h2>
-   <p>Discover the remarkable mangrove landscape, winding rivers and local experiences of the Sundarbans. Begin your journey from Jharkhali and contact us to discuss a trip that suits your plans.</p>
-   <p>Every enquiry is personally reviewed. We will contact you to discuss the itinerary, availability and final price before any booking is confirmed.</p>
-   <a class="btn" href="#booking">PLAN YOUR TRIP ↗</a>
+<section class="section" id="experience">
+  <div class="section-head"><div class="eyebrow">Explore the Sundarbans</div><h2>Experiences Worth Remembering.</h2><p>Choose the kind of Sundarban experience you want to discover. Each service will have its own details and enquiry page.</p></div>
+  <div class="cards">
+    <a class="card" href="#contact"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Boats%20in%20Sundarban%20%28West%20Bengal%29%2001.jpg" alt="Boat among Sundarbans trees"><h3><span>On the water</span>Boat Trips</h3></a>
+    <a class="card" href="#contact"><img src="https://images.unsplash.com/photo-1449158743715-0a90dc6d2d3d?auto=format&fit=crop&w=900&q=80" alt="Eco lodge in green surroundings"><h3><span>Stay close to nature</span>Hotels & Resorts</h3></a>
+    <a class="card" href="#packages"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sundarban%20from%20a%20boat.JPG" alt="Sundarbans seen from a boat"><h3><span>Explore more</span>Tour Packages</h3></a>
+    <a class="card" href="#contact"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="Quiet nature stay beside a river"><h3><span>Stay by the river</span>River Stays</h3></a>
   </div>
-  <div class="about-image reveal">
-   <img src="https://sundarbanecotrip.com/storage/2025/11/Gemini_Generated_Image_pqflvppqflvppqfl.png" alt="Tour boat travelling through Sundarbans mangroves">
-  </div>
- </div>
 </section>
-
-<section class="wildlife">
- <div class="wrap wildlife-grid">
-  <div class="wildlife-visual reveal" id="wildlifeVisual">
-   <img src="https://www.myindianproducts.com/images/travel/places/sundarbans-national-park-south-24-parganas-west-bengal-india.webp" alt="A boat travelling along a green mangrove creek">
+<section class="section" id="packages">
+  <div class="section-head"><div class="eyebrow">Choose your journey</div><h2>Sundarban Tour Packages</h2><p>Discover the two route experiences. Open a package to view its details before sending a booking enquiry.</p></div>
+  <div class="cards">
+    <a class="card" href="#contact"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Mangrove%20and%20river%20in%20Sundarbans.JPG" alt="Mangrove river"><h3><span>Explore the forest</span>Sundarban Tiger Reserve</h3></a>
+    <a class="card" href="#contact"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sundarban%20river.jpg" alt="Sundarban river"><h3><span>Discover another route</span>Sundarban Bengal Reserve</h3></a>
+    <a class="card" href="#contact"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sundarban%20mangrove%20forest%20flora%20fauna2.jpg" alt="Sundarbans mangrove habitat"><h3><span>For nature lovers</span>Photography Special</h3></a>
+    <a class="card" href="#customise"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sundarban%20Riverside.jpg" alt="Sundarban riverside"><h3><span>Your own itinerary</span>Customise Your Trip</h3></a>
   </div>
-  <div class="reveal">
-   <div class="section-tag">A WORLD OF WILD BEAUTY</div>
-   <h2>Into the Mangrove World.</h2>
-   <p class="intro">The Sundarbans is a remarkable landscape of tidal rivers, creeks and mangrove forests. Wildlife sightings are never guaranteed, but the journey itself offers beautiful scenery and a special connection with nature.</p>
-   <div class="actions"><a class="btn-outline" href="#packages">DISCOVER ROUTES ↗</a></div>
-  </div>
- </div>
 </section>
-
-<section class="package-section" id="packages">
- <div class="wrap">
-  <div class="section-head reveal">
-   <div class="section-tag">TRAVEL YOUR WAY</div>
-   <h2>Choose Your Route.</h2>
-   <p class="intro">Explore the two route collections below. Contact us for confirmed itineraries, availability and pricing.</p>
-  </div>
-  <div class="route-grid">
-   <article class="route-card reveal">
-    <div class="route-kicker">ROUTE COLLECTION · STR</div>
-    <h3>সুন্দরবন টাইগার রিজার্ভ</h3>
-    <div class="route-short">SUNDARBAN TIGER RESERVE</div>
-    <p>Explore the Sundarban Tiger Reserve route. Ask us for the detailed itinerary and available trip durations.</p>
-    <div class="route-actions"><a href="#booking">ENQUIRE ABOUT STR ↗</a></div>
-   </article>
-   <article class="route-card reveal">
-    <div class="route-kicker">ROUTE COLLECTION · SBR</div>
-    <h3>সুন্দরবন বেঙ্গল রিজার্ভ</h3>
-    <div class="route-short">SUNDARBAN BENGAL RESERVE</div>
-    <p>Explore the Sundarban Bengal Reserve route. Ask us for the detailed itinerary and available trip durations.</p>
-    <div class="route-actions"><a href="#booking">ENQUIRE ABOUT SBR ↗</a></div>
-   </article>
-  </div>
-  <div class="photo-box reveal">
-   <div>
-    <div class="photo-label">SPECIAL EXPERIENCE · AVAILABLE ON BOTH ROUTES</div>
-    <h3>Photography Special Package</h3>
-    <p>A slower-paced boat journey focused on scenic locations, beautiful forest views and photography opportunities. Available under both Sundarban Tiger Reserve (STR) and Sundarban Bengal Reserve (SBR). Wildlife sightings cannot be guaranteed.</p>
-   </div>
-   <a class="btn" href="#booking">ENQUIRE NOW ↗</a>
-  </div>
- </div>
+<section class="section custom" id="customise">
+  <div><div class="eyebrow">Your journey, your way</div><h2>Customise Your Sundarban Trip</h2><p>Select one or more experiences and tell us your preferred date, group size and pickup point. Our team will contact you to discuss availability and confirm the details.</p><a class="btn primary" href="#contact">Plan your trip →</a></div>
+  <div><h2 style="font-size:34px">A little closer to the wild.</h2><p>Pickup points: Jharkhali Tiger Rescue Center or Jharkhali Bazar. All enquiries are reviewed by our team; submitting a request does not automatically confirm a booking.</p></div>
 </section>
-
-<section class="booking" id="booking">
- <div class="wrap booking-grid">
-  <div class="booking-info reveal">
-   <div class="section-tag">LET'S PLAN YOUR JOURNEY</div>
-   <h2>Make Your Enquiry.</h2>
-   <p>Send your travel details through the form. We will contact you to discuss the route, itinerary, availability and final price. Your booking is confirmed only after direct discussion.</p>
-   <div class="owner"><strong>YOUR LOCAL CONTACT</strong><br>Kalyan Majhi<br>Phone: <a href="tel:+919123025329">+91 91230 25329</a><br>WhatsApp: +91 91230 25329</div>
-  </div>
-  <form id="bookingForm" class="reveal">
-   <h3>Booking Enquiry</h3>
-   <div class="field"><label for="name">Your Name *</label><input id="name" name="name" required placeholder="Enter your full name"></div>
-   <div class="field"><label for="phone">Your Phone Number *</label><input id="phone" name="phone" type="tel" required placeholder="Enter your mobile number"></div>
-   <div class="field"><label for="date">Preferred Travel Date *</label><input id="date" name="date" type="date" required></div>
-   <div class="field"><label for="service">Choose Your Experience *</label>
-    <select id="service" name="service" required>
-     <option value="">Select an option</option>
-     <option>Boat Trip</option><option>River Stay</option><option>Hotel / Resort / Homestay</option>
-     <option>Sundarban Tiger Reserve (STR)</option><option>Sundarban Bengal Reserve (SBR)</option>
-     <option>STR Photography Special Package</option><option>SBR Photography Special Package</option>
-     <option>Custom Tour Package</option>
-    </select>
-   </div>
-   <div class="field"><label for="guests">Number of Guests *</label><input id="guests" name="guests" type="number" min="1" max="100" required placeholder="How many people?"></div>
-   <div class="field"><label for="message">Additional Details</label><textarea id="message" name="message" placeholder="Tell us your requirements (optional)"></textarea></div>
-   <button type="submit">SEND ENQUIRY ON WHATSAPP ↗</button>
-   <p class="note">WhatsApp will open with your enquiry details ready. Please press Send to submit your enquiry. This form does not automatically confirm a booking.</p>
-  </form>
- </div>
-</section>
-
-<section class="contact" id="contact">
- <div class="wrap reveal">
-  <div class="section-tag">WE ARE HERE TO HELP</div>
-  <h2>Let's Talk About Your Trip.</h2>
-  <p class="intro">For travel enquiries and information, contact your local point of contact in Jharkhali.</p>
-  <div class="contact-actions">
-   <a class="btn" href="tel:+919123025329">CALL NOW</a>
-   <a class="btn-outline" href="https://wa.me/919123025329" target="_blank" rel="noopener">CHAT ON WHATSAPP ↗</a>
-   <a class="btn-outline" href="#booking">MAKE AN ENQUIRY</a>
-  </div>
- </div>
-</section>
-
-<footer><strong>SUNDARBAN TRAVEL</strong><br>Explore the wild beauty of the Sundarbans · Jharkhali, West Bengal<br>Local contact: Kalyan Majhi · <a href="tel:+919123025329">+91 91230 25329</a><br>© 2026 SUNDARBAN TRAVEL. All rights reserved.</footer>
-
-<script>
-const menuToggle=document.getElementById('menuToggle');
-const navLinks=document.getElementById('navLinks');
-menuToggle.addEventListener('click',()=>{
- const open=navLinks.classList.toggle('open');
- menuToggle.setAttribute('aria-expanded',String(open));
-});
-navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
- navLinks.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');
-}));
-document.getElementById('bookingForm').addEventListener('submit',function(event){
- event.preventDefault();
- const name=document.getElementById('name').value.trim();
- const phone=document.getElementById('phone').value.trim();
- const date=document.getElementById('date').value;
- const service=document.getElementById('service').value;
- const guests=document.getElementById('guests').value;
- const message=document.getElementById('message').value.trim();
- const enquiry="NEW BOOKING ENQUIRY - SUNDARBAN TRAVEL\n\n"+
- "Customer Name: "+name+"\nCustomer Phone: "+phone+"\nTravel Date: "+date+
- "\nExperience: "+service+"\nNumber of Guests: "+guests+
- "\nAdditional Details: "+(message||"Not provided")+"\n\nWebsite: SUNDARBAN TRAVEL";
- window.open("https://wa.me/919123025329?text="+encodeURIComponent(enquiry),"_blank","noopener");
-});
-</script>
+</main>
+<footer id="contact"><div><strong>SUNDARBAN TRAVEL</strong><br>Jharkhali, Sundarbans, West Bengal</div><div>For bookings and enquiries<br>WhatsApp: +91 91230 25329</div><div>© Sundarban Travel</div></footer>
+<!-- Photo credits and license references:
+Mangrove and river: Amartyabag, Wikimedia Commons, CC BY-SA (see file page).
+Tour boat in Sundarban (West Bengal): Wikimedia Commons (see file page for author and license).
+Bengal Tigress: Soumyajit Nandy, Wikimedia Commons, CC BY-SA 4.0.
+Other illustrative stock images are from Unsplash; check current Unsplash license before production use.
+-->
 </body>
 </html>
