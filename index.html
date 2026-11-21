@@ -9,7 +9,6 @@
 <style>
 :root{--bg:#071b18;--panel:#102923;--panel2:#15372d;--gold:#d9b477;--cream:#f4eee2;--muted:#b9c9c0;--line:#ffffff20}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
 body{background:var(--bg);color:var(--cream);font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 button,input,select,textarea{font:inherit}
@@ -18,14 +17,9 @@ img{max-width:100%;display:block}
 .topbar{height:82px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;gap:25px;background:#071b18ee;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50;backdrop-filter:blur(14px)}
 .brand{font-size:18px;font-weight:800;letter-spacing:2.4px;color:var(--gold);white-space:nowrap}
 .nav{display:flex;align-items:center;gap:27px;font-size:11px;letter-spacing:1.4px;font-weight:700}
-.nav a{transition:color .25s}
 .nav a:hover,.nav a.active{color:var(--gold)}
 .nav .nav-book,.btn{background:var(--gold);color:#10221b;padding:14px 20px;font-weight:800;letter-spacing:1px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--gold);transition:.25s}
-.nav .nav-book:hover,.btn:hover{background:#f0d4a4;transform:translateY(-2px);color:#10221b}
 .menu-toggle{display:none;background:none;color:var(--cream);border:1px solid var(--line);padding:9px 12px}
-.monkey-track{position:absolute;left:0;right:0;bottom:-20px;height:23px;pointer-events:none;overflow:hidden}
-.monkey{position:absolute;left:3%;font-size:21px;animation:monkeyHop 12s ease-in-out infinite}
-@keyframes monkeyHop{0%,8%{left:3%;transform:translateY(0)}12%{transform:translateY(-13px)}18%{left:34%;transform:translateY(0)}22%{transform:translateY(-13px)}30%{left:61%;transform:translateY(0)}34%{transform:translateY(-13px)}42%,100%{left:91%;transform:translateY(0)}}
 .hero{min-height:690px;position:relative;display:flex;align-items:center;background:linear-gradient(90deg,rgba(3,19,16,.94),rgba(3,19,16,.62) 52%,rgba(3,19,16,.12)),url('/Sundarbans%20Sunset%20Riverescape.png') center/cover no-repeat}
 .hero:after{content:"";position:absolute;inset:auto 0 0;height:150px;background:linear-gradient(transparent,var(--bg));pointer-events:none}
 .hero-inner{position:relative;z-index:2;width:min(1160px,88%);margin:auto;padding:90px 0}
@@ -35,7 +29,7 @@ img{max-width:100%;display:block}
 .hero p{max-width:570px;color:#e0e8e2;font-size:16px;line-height:1.9}
 .actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
 .btn-outline{padding:14px 20px;border:1px solid var(--gold);color:var(--cream);display:inline-flex;align-items:center;justify-content:center;font-weight:700;letter-spacing:1px;transition:.25s}
-.btn-outline:hover{background:#d9b47718;transform:translateY(-2px)}
+
 .scroll-note{position:absolute;right:6%;bottom:80px;z-index:3;color:#e7d6b8;font-size:10px;letter-spacing:3px;writing-mode:vertical-rl}
 section{padding:100px 0}
 .section-head{max-width:700px;margin-bottom:42px}
@@ -43,8 +37,6 @@ h2{font-family:Georgia,serif;font-weight:400;font-size:clamp(36px,5vw,58px);line
 .intro{color:var(--muted);line-height:1.9;max-width:670px;font-size:15px}
 .experience-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .experience-card{position:relative;min-height:350px;overflow:hidden;background:var(--panel);border:1px solid var(--line)}
-.experience-card img{width:100%;height:100%;min-height:350px;object-fit:cover;transition:transform .7s}
-.experience-card:hover img{transform:scale(1.07)}
 .experience-card:after{content:"";position:absolute;inset:20% 0 0;background:linear-gradient(transparent,rgba(3,18,15,.94))}
 .experience-copy{position:absolute;z-index:2;left:22px;right:22px;bottom:23px}
 .experience-copy h3{font:26px Georgia,serif;margin-bottom:8px}
@@ -61,8 +53,6 @@ h2{font-family:Georgia,serif;font-weight:400;font-size:clamp(36px,5vw,58px);line
 .wildlife-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:55px;align-items:center}
 .wildlife-visual{height:390px;position:relative;overflow:hidden;background:linear-gradient(135deg,#173c30,#071b18);border:1px solid var(--line)}
 .wildlife-visual img{width:100%;height:100%;object-fit:cover;opacity:.78}
-.animal{position:absolute;font-size:48px;filter:drop-shadow(0 5px 8px #0008);transition:transform .25s ease-out}
-.tiger{left:10%;bottom:20px}.deer{right:12%;bottom:24px}
 .package-section{background:#0b241e}
 .route-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
 .route-card{background:linear-gradient(145deg,#15372d,#0d241e);border:1px solid #d9b47755;padding:34px;position:relative;overflow:hidden}
@@ -95,8 +85,6 @@ form button{width:100%;padding:16px;background:#c59b5e;color:#10221b;border:0;fo
 .contact-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:28px}
 footer{padding:35px 6%;text-align:center;color:#a9b8af;font-size:12px;line-height:2;border-top:1px solid var(--line)}
 footer strong{color:var(--gold);letter-spacing:2px}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
-.reveal.visible{opacity:1;transform:translateY(0)}
 @media(max-width:900px){.experience-grid{grid-template-columns:repeat(2,1fr)}.nav{gap:15px}.about-grid,.wildlife-grid{gap:35px}}
 @media(max-width:700px){
  .topbar{height:auto;min-height:70px;padding:14px 6%;flex-wrap:wrap}
@@ -104,7 +92,6 @@ footer strong{color:var(--gold);letter-spacing:2px}
  .nav{display:none;width:100%;flex-direction:column;align-items:stretch;gap:0;padding:8px 0 4px}
  .nav.open{display:flex}.nav a{padding:13px 4px;border-top:1px solid var(--line)}
  .nav .nav-book{margin-top:8px;text-align:center}
- .monkey-track{display:none}
  .hero{min-height:620px;background-position:58% center}
  .hero-inner{padding:75px 0}.hero h1{font-size:clamp(50px,14vw,76px)}
  .hero p{font-size:14px}.scroll-note{display:none}
@@ -122,6 +109,98 @@ footer strong{color:var(--gold);letter-spacing:2px}
 @media(max-width:390px){.experience-grid{grid-template-columns:1fr}.experience-card,.experience-card img{height:300px;min-height:300px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
+
+<style>
+/* Modern static redesign layer */
+:root{--bg:#071d19;--panel:#102c25;--panel2:#173b30;--gold:#e0b86f;--cream:#fff8ed;--muted:#c4d1c8;--line:#ffffff20;--sand:#f4efe5}
+html{scroll-behavior:auto}
+body{font-family:Inter,Arial,Helvetica,sans-serif;background:#071d19;color:var(--cream)}
+.topbar{height:76px;padding:0 max(5.5%,calc((100% - 1240px)/2));background:#061a16;backdrop-filter:none;border-bottom:1px solid #ffffff18}
+.brand{font-size:16px;letter-spacing:2px}
+.nav{gap:30px;font-size:11px}
+.nav a{transition:none}
+.nav .nav-book,.btn{border-radius:3px;padding:15px 23px;box-shadow:0 8px 22px #0002}
+.nav .nav-book:hover,.btn:hover,.btn-outline:hover{transform:none}
+.hero{min-height:650px;background-image:linear-gradient(90deg,rgba(3,20,16,.91) 0%,rgba(3,20,16,.62) 48%,rgba(3,20,16,.08) 100%),url('/Sundarbans%20Sunset%20Riverescape.png');background-position:center;background-size:cover}
+.hero-inner{width:min(1180px,89%);padding:100px 0}
+.eyebrow,.section-tag{font-size:10px;letter-spacing:3px}
+.hero h1{font-size:clamp(58px,7.4vw,96px);line-height:.99;letter-spacing:-2px;margin:22px 0}
+.hero p{max-width:540px;font-size:16px;line-height:1.85}
+.actions{gap:12px;margin-top:30px}
+.btn,.btn-outline{min-height:48px;font-size:11px;letter-spacing:1.2px;border-radius:3px}
+.btn-outline{padding:14px 21px}
+.scroll-note{display:none}
+section{padding:88px 0}
+.section-head{max-width:760px;margin-bottom:36px}
+h2{font-size:clamp(36px,4.5vw,56px);letter-spacing:-.8px}
+.intro{font-size:15px;line-height:1.85}
+#experience{background:#f5f1e8;color:#18352b}
+#experience .section-tag{color:#9a7137}
+#experience .intro{color:#607168}
+.experience-grid{gap:18px}
+.experience-card{min-height:330px;height:330px;border:0;border-radius:5px;box-shadow:0 12px 28px #17352a18}
+.experience-card img{min-height:330px;filter:saturate(.9)}
+.experience-card:after{inset:15% 0 0;background:linear-gradient(180deg,transparent 5%,rgba(3,20,16,.88) 100%)}
+.experience-copy{left:22px;right:20px;bottom:22px}
+.experience-copy h3{font-size:25px}
+.experience-copy p{font-size:13px;line-height:1.65}
+.experience-copy a{font-size:10px}
+.about{background:#0c2a23}
+.about-grid{gap:70px}
+.about-image img{height:440px;border-radius:5px;object-fit:cover}
+.about-image:before{display:none}
+.about-copy p{font-size:15px;line-height:1.9}
+.wildlife{background:#f5f1e8;color:#17352b}
+.wildlife .section-tag{color:#9a7137}
+.wildlife .intro{color:#607168}
+.wildlife-grid{gap:65px}
+.wildlife-visual{height:390px;border:0;border-radius:5px;box-shadow:0 14px 34px #17352a20}
+.wildlife-visual img{opacity:1}
+.package-section{background:#0b241e}
+.route-grid{gap:18px}
+.route-card{border:1px solid #d9b47755;border-radius:5px;padding:32px;background:linear-gradient(145deg,#173b30,#102a23)}
+.route-card h3{font-size:30px;line-height:1.25}
+.route-card p{font-size:14px}
+.route-card:after{display:none}
+.photo-box{border:1px solid #d9b47766;border-radius:5px;background:#17372d;padding:30px 32px}
+.photo-box h3{font-size:29px}
+.booking{background:#f5f1e8;color:#17352b}
+.booking .section-tag{color:#9a7137}
+.booking-info p{color:#607168;font-size:15px;line-height:1.9}
+.owner{background:#e9e3d7;border:1px solid #d9d1c3;border-radius:4px;color:#263d33}
+.owner strong{color:#8c652e}
+form{border-radius:5px;padding:34px;box-shadow:0 16px 40px #17352a18;background:#fffdfa}
+form h3{font-size:30px}
+input,select,textarea{border-radius:3px;padding:14px;border-color:#d7d4ca}
+input:focus,select:focus,textarea:focus{outline:2px solid #d9b477;outline-offset:1px}
+form button{border-radius:3px;min-height:49px}
+.contact{background:#102c25}
+footer{background:#061a16;padding:42px 6%;}
+/* No decorative motion: all content remains visible and still. */
+.reveal{opacity:1!important;transform:none!important;transition:none!important}
+.monkey-track,.animal{display:none!important}
+*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+@media(max-width:900px){.hero{min-height:600px}.about-grid,.wildlife-grid{gap:38px}}
+@media(max-width:700px){
+ .topbar{padding:14px 6%;}
+ .nav{gap:0}
+ .hero{min-height:590px;background-position:61% center}
+ .hero-inner{padding:72px 0}
+ .hero h1{font-size:clamp(52px,13vw,76px);letter-spacing:-1px}
+ section{padding:68px 0}
+ .experience-grid{grid-template-columns:1fr 1fr;gap:12px}
+ .experience-card,.experience-card img{height:260px;min-height:260px}
+ .experience-copy h3{font-size:19px}
+ .experience-copy p{font-size:11px}
+ .about-image img{height:310px}
+ .wildlife-visual{height:290px}
+ .route-card{padding:25px}
+ .photo-box{padding:24px}
+ form{padding:24px}
+}
+@media(max-width:390px){.experience-grid{grid-template-columns:1fr}.experience-card,.experience-card img{height:290px;min-height:290px}}
+</style>
+
 </head>
 <body>
 <nav class="topbar">
@@ -133,7 +212,6 @@ footer strong{color:var(--gold);letter-spacing:2px}
     <a href="#contact">CONTACT</a>
     <a class="nav-book" href="#booking">BOOK NOW</a>
   </div>
-  <div class="monkey-track"><span class="monkey" aria-hidden="true">🐒</span></div>
 </nav>
 
 <header class="hero">
@@ -158,19 +236,19 @@ footer strong{color:var(--gold);letter-spacing:2px}
   </div>
   <div class="experience-grid">
    <article class="experience-card reveal">
-    <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=85" alt="River and water landscape">
+    <img src="https://www.holidify.com/images/cmsuploads/compressed/Beauty_of_sundarban_04_20220509173753.jpg" alt="Boat moving through a Sundarbans mangrove creek">
     <div class="experience-copy"><h3>Boat Trips</h3><p>Short river trips and longer journeys through beautiful waterways.</p><a href="#booking">MAKE AN ENQUIRY ↗</a></div>
    </article>
    <article class="experience-card reveal">
-    <img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=900&q=85" alt="Resort accommodation">
+    <img src="https://www.sundarbansagarsangam.com/assets/images/destination/jharkhali02.png" alt="Jharkhali river and mangrove landscape">
     <div class="experience-copy"><h3>Hotels & Resorts</h3><p>Ask about hotels, resorts and homestays for your visit.</p><a href="#booking">MAKE AN ENQUIRY ↗</a></div>
    </article>
    <article class="experience-card reveal">
-    <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=85" alt="Nature holiday landscape">
+    <img src="https://www.india-a2z.com/images/xsundarbans1.jpg.pagespeed.ic.t2xd5uLS8X.jpg" alt="Tourists travelling by boat through the Sundarbans">
     <div class="experience-copy"><h3>Tour Packages</h3><p>Explore route-based and multi-day travel options.</p><a href="#packages">EXPLORE PACKAGES ↗</a></div>
    </article>
    <article class="experience-card reveal">
-    <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=900&q=85" alt="Mangrove forest">
+    <img src="https://www.distinctdestinations.in/DistinctDestinationsBackEndImg/downloads/Sundarban-Mangrove-Safari-3.jpg" alt="Tour boat on a mangrove-lined river in the Sundarbans">
     <div class="experience-copy"><h3>River Stays</h3><p>Enquire about special overnight experiences on the river.</p><a href="#booking">MAKE AN ENQUIRY ↗</a></div>
    </article>
   </div>
@@ -187,7 +265,7 @@ footer strong{color:var(--gold);letter-spacing:2px}
    <a class="btn" href="#booking">PLAN YOUR TRIP ↗</a>
   </div>
   <div class="about-image reveal">
-   <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1100&q=85" alt="Wildlife in a green natural landscape">
+   <img src="https://sundarbanecotrip.com/storage/2025/11/Gemini_Generated_Image_pqflvppqflvppqfl.png" alt="Tour boat travelling through Sundarbans mangroves">
   </div>
  </div>
 </section>
@@ -195,9 +273,7 @@ footer strong{color:var(--gold);letter-spacing:2px}
 <section class="wildlife">
  <div class="wrap wildlife-grid">
   <div class="wildlife-visual reveal" id="wildlifeVisual">
-   <img src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1100&q=85" alt="Dense green forest">
-   <span class="animal tiger" id="tiger" aria-hidden="true">🐅</span>
-   <span class="animal deer" id="deer" aria-hidden="true">🦌</span>
+   <img src="https://www.myindianproducts.com/images/travel/places/sundarbans-national-park-south-24-parganas-west-bengal-india.webp" alt="A boat travelling along a green mangrove creek">
   </div>
   <div class="reveal">
    <div class="section-tag">A WORLD OF WILD BEAUTY</div>
@@ -297,24 +373,6 @@ menuToggle.addEventListener('click',()=>{
 navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
  navLinks.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');
 }));
-const revealObserver=new IntersectionObserver(entries=>{
- entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target);}});
-},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
-const wildlife=document.getElementById('wildlifeVisual');
-const tiger=document.getElementById('tiger');
-const deer=document.getElementById('deer');
-let ticking=false;
-window.addEventListener('scroll',()=>{
- if(ticking)return;ticking=true;
- requestAnimationFrame(()=>{
-  const rect=wildlife.getBoundingClientRect();
-  const progress=Math.max(-1,Math.min(1,(window.innerHeight/2-rect.top)/Math.max(rect.height,1)));
-  tiger.style.transform=`translateX(${progress*24}px) translateY(${Math.abs(progress)*-8}px)`;
-  deer.style.transform=`translateX(${progress*-18}px) translateY(${Math.abs(progress)*-5}px)`;
-  ticking=false;
- });
-},{passive:true});
 document.getElementById('bookingForm').addEventListener('submit',function(event){
  event.preventDefault();
  const name=document.getElementById('name').value.trim();
