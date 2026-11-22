@@ -76,6 +76,55 @@ footer{background:#091c14;color:#d9dfd8;padding:36px 7%;display:flex;justify-con
  .scroll{left:6%;bottom:22px;font-size:8px}.cards{grid-template-columns:1fr}.card{min-height:280px}
  .section{padding:70px 6%}.custom{grid-template-columns:1fr;gap:15px}.detail-grid{grid-template-columns:1fr}
 }
+
+/* ===== SUNDARBAN SCROLL ANIMATION LAYER ===== */
+.hero{isolation:isolate}
+.hero:before{transform:scale(1.015);animation:mangroveDrift 18s ease-in-out infinite alternate}
+.hero:after{pointer-events:none}
+@keyframes mangroveDrift{from{background-position:50% 50%}to{background-position:52% 50%}}
+.hero-water{position:absolute;z-index:1;left:0;right:0;bottom:0;height:25%;pointer-events:none;opacity:.32;
+ background:repeating-radial-gradient(ellipse at 50% 100%,transparent 0 25px,rgba(220,235,218,.35) 26px 28px,transparent 29px 54px);
+ animation:waterRipple 9s linear infinite}
+@keyframes waterRipple{from{background-position:0 0}to{background-position:110px 0}}
+/* Fixed animation stage: all moving sprites are driven by the same scroll progress. */
+#scroll-world{position:fixed;inset:0;z-index:25;pointer-events:none;overflow:hidden;contain:layout style}
+#branch-art{position:absolute;top:82px;right:2%;width:min(76vw,900px);height:110px;opacity:0;transform:translate3d(18%, -30px,0) scale(.18);transform-origin:85% 50%;filter:blur(5px);will-change:transform,opacity}
+#branch-art:before{content:"";position:absolute;left:0;right:0;top:54px;height:9px;border-radius:100%;background:linear-gradient(90deg,#4c653c,#9aa36a 48%,#465d35);box-shadow:0 4px 10px #071b1860;transform:rotate(-2deg)}
+#branch-art:after{content:"";position:absolute;right:8%;top:8px;width:38%;height:58px;border-top:7px solid #637b49;border-radius:50%;transform:rotate(-18deg)}
+.branch-leaf{position:absolute;width:36px;height:17px;border-radius:100% 0 100% 0;background:#6c8951;box-shadow:inset 2px 2px 4px #c0c88b70}
+.branch-leaf.l1{left:18%;top:28px;transform:rotate(20deg)}.branch-leaf.l2{left:42%;top:18px;transform:rotate(-25deg)}
+.branch-leaf.l3{left:67%;top:35px;transform:rotate(28deg)}.branch-leaf.l4{right:8%;top:20px;transform:rotate(-18deg)}
+.monkey{position:absolute;left:0;top:0;font-size:clamp(23px,3vw,34px);line-height:1;opacity:0;transform:translate3d(-50%,-30px,0);filter:drop-shadow(0 3px 3px #071b1870);will-change:transform,opacity}
+#hero-tiger,#hero-bus,#hero-boat,#mid-deer,#mid-croc,#booking-tiger,#booking-glow{
+ position:absolute;will-change:transform,opacity;opacity:0;filter:drop-shadow(0 5px 5px #06180f70)}
+#hero-tiger{font-size:clamp(42px,6vw,76px);left:4%;top:30%}
+#hero-bus{font-size:clamp(24px,3vw,38px);left:3%;top:52%}
+#hero-boat{font-size:clamp(24px,3vw,40px);right:8%;top:14%}
+#mid-deer{font-size:clamp(35px,5vw,60px);left:68%;top:36%}
+#mid-croc{font-size:clamp(34px,5vw,58px);right:2%;bottom:8%}
+#booking-tiger{font-size:clamp(45px,6vw,78px);left:12%;bottom:9%}
+#booking-glow{right:8%;bottom:8%;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,#f5d98c70 0, #e9c66b22 42%,transparent 72%);filter:none}
+#booking-glow:after{content:"";position:absolute;inset:20px;border:1px solid #f3d98c80;border-radius:50%;animation:bookingPulse 4s ease-in-out infinite}
+@keyframes bookingPulse{0%,100%{transform:scale(.8);opacity:.25}50%{transform:scale(1.18);opacity:.9}}
+#booking{position:relative;overflow:hidden}
+#booking:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.16;background:repeating-radial-gradient(ellipse at 80% 100%,transparent 0 24px,#d9b66b 25px 26px,transparent 27px 50px);animation:bookingWater 12s linear infinite}
+@keyframes bookingWater{to{background-position:0 -120px}}
+#booking>*{position:relative;z-index:1}
+@media(max-width:640px){
+ .topbar{flex-wrap:wrap}
+ .menu-toggle{display:none}
+ nav{display:flex;position:relative;top:auto;left:auto;right:auto;width:100%;padding:8px 0 0;background:transparent;flex-direction:row;align-items:center;justify-content:space-between;gap:5px;overflow:visible;font-size:9px;letter-spacing:.3px}
+ nav a{padding:8px 2px;border:0;white-space:nowrap}
+ nav .book{margin:0;padding:9px 8px}
+ #branch-art{top:93px;width:94vw;right:3%;height:75px}
+ .monkey{font-size:22px}
+ #hero-tiger{top:40%}
+ #hero-bus{top:61%}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero:before,.hero-water,#booking:before,#booking-glow:after{animation:none!important}
+}
+
 </style>
 </head>
 <body>
@@ -83,15 +132,38 @@ footer{background:#091c14;color:#d9dfd8;padding:36px 7%;display:flex;justify-con
   <a class="brand" href="#home" aria-label="Sundarban Travel home"><span class="brand-mark">✦</span><span>SUNDARBAN<br>TRAVEL</span></a>
   <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">MENU ☰</button>
   <nav id="main-nav" aria-label="Main navigation">
-    <a href="#experience">Experience</a>
+    <a href="#experience">Explore</a>
     <a href="#packages">Package</a>
+    <a href="#customise">Customise</a>
     <a href="#contact">Contact</a>
     <a class="book" href="#contact">Book Now</a>
   </nav>
 </header>
 
+
+<!-- Scroll-linked wildlife and branch animation. Decorative layer; does not block links. -->
+<div id="scroll-world" aria-hidden="true">
+  <div id="branch-art">
+    <i class="branch-leaf l1"></i><i class="branch-leaf l2"></i>
+    <i class="branch-leaf l3"></i><i class="branch-leaf l4"></i>
+  </div>
+  <span class="monkey" data-monkey="0">🐒</span>
+  <span class="monkey" data-monkey="1">🐒</span>
+  <span class="monkey" data-monkey="2">🐒</span>
+  <span class="monkey" data-monkey="3">🐒</span>
+  <span class="monkey" data-monkey="4">🐒</span>
+  <span id="hero-tiger">🐅</span>
+  <span id="hero-bus">🚌</span>
+  <span id="hero-boat">🛶</span>
+  <span id="mid-deer">🦌</span>
+  <span id="mid-croc">🐊</span>
+  <span id="booking-tiger">🐅</span>
+  <span id="booking-glow"></span>
+</div>
+
 <main id="home">
 <section class="hero">
+  <div class="hero-water" aria-hidden="true"></div>
   <div class="hero-content">
     <div class="eyebrow">Jharkhali · Sundarbans · West Bengal</div>
     <h1>Discover<br><em>The SUNDARBAN.</em></h1>
@@ -233,14 +305,105 @@ footer{background:#091c14;color:#d9dfd8;padding:36px 7%;display:flex;justify-con
 <script>
 const menuButton=document.querySelector('.menu-toggle');
 const nav=document.querySelector('#main-nav');
-menuButton.addEventListener('click',()=>{
-  const isOpen=nav.classList.toggle('open');
-  menuButton.setAttribute('aria-expanded',String(isOpen));
-});
-nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
-  nav.classList.remove('open');
-  menuButton.setAttribute('aria-expanded','false');
-}));
+if(menuButton){
+  menuButton.addEventListener('click',()=>{
+    const isOpen=nav.classList.toggle('open');
+    menuButton.setAttribute('aria-expanded',String(isOpen));
+  });
+  nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
+    nav.classList.remove('open');
+    menuButton.setAttribute('aria-expanded','false');
+  }));
+}
+
+/* One shared scroll timeline. Movement uses transform + opacity for smoother rendering. */
+(()=>{
+  const world=document.getElementById('scroll-world');
+  if(!world) return;
+  const branch=document.getElementById('branch-art');
+  const monkeys=[...document.querySelectorAll('.monkey')];
+  const tiger=document.getElementById('hero-tiger');
+  const bus=document.getElementById('hero-bus');
+  const boat=document.getElementById('hero-boat');
+  const deer=document.getElementById('mid-deer');
+  const croc=document.getElementById('mid-croc');
+  const bookingTiger=document.getElementById('booking-tiger');
+  const glow=document.getElementById('booking-glow');
+  const navLinks=[...document.querySelectorAll('#main-nav a')];
+  let ticking=false;
+
+  const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+  const mix=(a,b,t)=>a+(b-a)*t;
+  const smooth=t=>{t=clamp(t);return t*t*(3-2*t)};
+  const range=(p,a,b)=>smooth((p-a)/(b-a));
+  const set=(el,x,y,scale,opacity,rotate=0)=>{
+    el.style.transform=`translate3d(${x}px,${y}px,0) scale(${scale}) rotate(${rotate}deg)`;
+    el.style.opacity=clamp(opacity).toFixed(3);
+  };
+  function update(){
+    ticking=false;
+    const maxScroll=Math.max(1,document.documentElement.scrollHeight-innerHeight);
+    const p=clamp(scrollY/maxScroll);
+    const w=innerWidth,h=innerHeight;
+
+    // Branch approaches the viewer during 0–20%, then retreats during 60–70%.
+    const approach=range(p,0,.20), retreat=range(p,.60,.70);
+    const branchScale=mix(.18,1.0,approach)*(1-retreat*.72);
+    const branchX=mix(w*.18,0,approach)+retreat*w*.12;
+    const branchY=mix(-34,0,approach)-retreat*48;
+    const branchOpacity=clamp(approach*1.7)*(1-retreat);
+    branch.style.transform=`translate3d(${branchX}px,${branchY}px,0) scale(${branchScale})`;
+    branch.style.opacity=branchOpacity.toFixed(3);
+    branch.style.filter=`blur(${mix(5,0,approach)}px)`;
+
+    // Read actual responsive tab centers so monkeys stay aligned on desktop and mobile.
+    const centers=navLinks.map(a=>{
+      const r=a.getBoundingClientRect();
+      return {x:r.left+r.width/2,y:r.top-17};
+    });
+    const sit=range(p,.20,.35), play=range(p,.35,.60), leave=range(p,.60,.70);
+    monkeys.forEach((m,i)=>{
+      if(!centers[i]) return;
+      const start=centers[i];
+      const next=centers[Math.min(i+1,centers.length-1)];
+      const stagger=clamp((play-i*.12)/.38);
+      const jump=smooth(stagger);
+      const x=mix(start.x,next.x,jump);
+      const arc=Math.sin(stagger*Math.PI)*22;
+      const y=mix(start.y+18,start.y,sit)*(1-leave)+mix(start.y,next.y,jump)*leave-arc*(play>0&&play<1?1:0)-leave*55;
+      const visible=sit*(1-leave);
+      const bob=Math.sin((p*18)+i)*2;
+      set(m,x,y+bob, mix(.65,1,sit)*(1-leave*.45),visible, (play>0&&play<1)?Math.sin(stagger*Math.PI)*-12:0);
+    });
+
+    // Hero tiger follows a curved river-like route; bus travels beside it.
+    const heroMotion=range(p,0,.20);
+    set(tiger, w*(.02+heroMotion*.52), h*(.20+Math.sin(heroMotion*Math.PI)*.12), mix(.65,1.0,heroMotion), (1-range(p,.17,.23))*.95, heroMotion*18);
+    set(bus, w*(.02+heroMotion*.42), h*(.36+Math.sin(heroMotion*Math.PI)*.08), .72, (1-range(p,.15,.21))*.85, heroMotion*8);
+
+    // Boat starts tiny above, grows and bends toward the lower river.
+    const boatMove=range(p,.68,.98);
+    set(boat, w*(.72-boatMove*.36), h*(-.08+boatMove*.88), mix(.35,1.18,boatMove), range(p,.66,.72)*(1-range(p,.96,1.02)), Math.sin(boatMove*Math.PI*1.3)*13);
+
+    // Deer descends then exits; crocodile rises from the lower-right edge.
+    const deerIn=range(p,.70,.79), deerOut=range(p,.86,.94);
+    set(deer,w*.02,h*(-.24+deerIn*.58+deerOut*.75),.9,(deerIn*(1-deerOut))*.9,-5);
+    const crocIn=range(p,.74,.96);
+    set(croc,w*.02,h*(.45-crocIn*.52),.95,crocIn*.9,-8);
+
+    // Tiger settles beside the booking area; a subtle glow marks the section.
+    const arrive=range(p,.82,.98);
+    set(bookingTiger,w*(.02+arrive*.04),h*(.15-arrive*.08),mix(.7,1,arrive),arrive*.95,Math.sin(p*14)*2);
+    set(glow,0,0, mix(.5,1,arrive),arrive*.8,0);
+  }
+  function onScroll(){
+    if(!ticking){ticking=true;requestAnimationFrame(update);}
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll);
+  window.addEventListener('load',onScroll);
+  update();
+})();
 </script>
 </body>
 </html>
