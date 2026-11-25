@@ -1,12 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#102b20">
-<meta name="description" content="Discover Sundarban boat trips, stays and tour packages from Jharkhali, West Bengal.">
-<title>SUNDARBAN TRAVEL | Discover The Sundarban</title>
-<style>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#102b20"><meta name="description" content="Sundarban Travel — boat trips, STR and SBR tour packages, river stays, hotels and Sundarban shop from Jharkhali."><title>SUNDARBAN TRAVEL | Explore the Sundarbans</title><style>
 :root{--forest:#102b20;--forest2:#183b2c;--gold:#d9b66b;--cream:#f5f1e7;--ink:#17251d;--muted:#65736a}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:85px}
@@ -83,6 +75,12 @@ body{background:#102b20}
 #river-journey{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#102b20;isolation:isolate}
 .river-scene{position:absolute;inset:-3%;opacity:0;transform:scale(1.08);transition:opacity 1.25s ease,transform 7s ease;background-position:center;background-size:cover;background-repeat:no-repeat;filter:saturate(.88) contrast(1.04)}
 .river-scene.is-active{opacity:1;transform:scale(1.015)}
+/* Real wildlife footage: full-scene video layers scrub directly with page scroll. */
+.animal-footage{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;pointer-events:none;filter:brightness(.76) saturate(.92);transition:opacity .45s ease;z-index:1}
+.animal-footage.is-active{opacity:.92}
+#river-journey .river-vignette{z-index:2}
+#river-journey .river-mist,#river-journey .river-water,#river-journey .river-boat,#river-journey .journey-progress,#river-journey .journey-caption{z-index:3}
+@media(max-width:640px){.animal-footage{object-position:center center}}
 .scene-river{background-image:linear-gradient(90deg,rgba(4,22,15,.48),rgba(4,22,15,.1)),url('https://commons.wikimedia.org/wiki/Special:FilePath/Mangrove%20and%20river%20in%20Sundarbans.JPG')}
 .scene-tiger{background-image:linear-gradient(90deg,rgba(4,22,15,.56),rgba(4,22,15,.2)),url('https://commons.wikimedia.org/wiki/Special:FilePath/Sundarban%20mangrove%20forest%20flora%20fauna2.jpg')}
 .scene-boat{background-image:linear-gradient(90deg,rgba(4,22,15,.5),rgba(4,22,15,.15)),url('https://commons.wikimedia.org/wiki/Special:FilePath/Boats%20in%20Sundarban%20%28West%20Bengal%29%2001.jpg')}
@@ -122,28 +120,259 @@ footer{background:rgba(5,22,15,.96)}
 @media(max-width:640px){.journey-caption{right:5%;bottom:14px}.journey-progress{right:9px;height:90px}.river-water{height:34%;bottom:-1%}.river-boat{width:150px;bottom:8%;left:55%}.section-head{padding:18px 16px}.detail-card{padding:22px}}
 @media(prefers-reduced-motion:reduce){.river-scene,.river-boat,.river-current,.river-mist{transition:none!important;animation:none!important}}
 
+
+/* ===== GLASS RIVER JOURNEY DESIGN ===== */
+#river-journey{background:#102b20}
+#river3d{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
+#river-journey .river-scene{z-index:1;opacity:.13!important;mix-blend-mode:screen}
+#river-journey .river-scene.is-active{opacity:.2!important}
+#river-journey .animal-footage{z-index:2;opacity:0;filter:brightness(.76) saturate(.92);object-position:center}
+#river-journey .animal-footage.is-active{opacity:.88}
+#river-journey .river-vignette{z-index:3;background:linear-gradient(180deg,rgba(3,17,12,.46),transparent 28%,rgba(3,17,12,.24) 62%,rgba(3,17,12,.66)),linear-gradient(90deg,rgba(3,17,12,.34),transparent 75%)}
+#river-journey .river-mist{z-index:4}
+#river-journey .river-water,#river-journey .river-boat{display:none!important}
+#river-journey .journey-progress,#river-journey .journey-caption{z-index:5}
+body{background:#081b16;color:#f5f4ed}
+main,footer{position:relative;z-index:2}
+.topbar{position:fixed;background:linear-gradient(180deg,rgba(4,18,13,.86),rgba(4,18,13,.12));backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
+.brand{color:#fff}
+nav a{color:#f5f4ed}
+nav .book{border-radius:999px;box-shadow:0 8px 25px rgba(217,182,107,.22)}
+.hero{min-height:760px;background:transparent!important}
+.hero:before{background:linear-gradient(90deg,rgba(4,20,14,.66),rgba(4,20,14,.08))!important}
+.hero:after{background:linear-gradient(transparent,rgba(4,18,13,.25))!important}
+.hero h1 em{color:#e5c47b}
+.section{background:transparent!important}
+.section-head{
+  color:#fff!important;text-align:left;max-width:900px;margin:0 auto 42px;
+  padding:clamp(22px,3.2vw,38px);
+  background:linear-gradient(135deg,rgba(12,43,33,.72),rgba(13,37,31,.48));
+  border:1px solid rgba(235,221,184,.28);border-radius:22px;
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  box-shadow:0 24px 70px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.12)
+}
+.section-head .eyebrow,.eyebrow{color:#e5c47b}
+.section h2,.section-head h2{color:#fff}
+.section-head p{color:#e0e8df}
+.cards{gap:22px}
+.card{
+  min-height:340px;border-radius:20px;border:1px solid rgba(245,232,198,.28);
+  box-shadow:0 24px 60px rgba(0,0,0,.32);isolation:isolate;
+  transition:transform .65s cubic-bezier(.2,.7,.2,1),border-color .4s,box-shadow .4s
+}
+.card:hover{transform:translateY(-9px) scale(1.012);border-color:rgba(229,196,123,.75);box-shadow:0 30px 70px rgba(0,0,0,.42)}
+.card img{transition:transform 1.2s cubic-bezier(.2,.7,.2,1);filter:saturate(.86)}
+.card:hover img{transform:scale(1.07)}
+.card:after{background:linear-gradient(180deg,rgba(4,20,14,.04) 5%,rgba(4,20,14,.3) 42%,rgba(4,20,14,.9) 100%)}
+.card-copy{left:18px;right:18px;bottom:18px;padding:18px 18px 16px;border:1px solid rgba(255,255,255,.2);border-radius:15px;background:rgba(9,32,25,.56);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px)}
+.card h3{color:#fff}
+.card .open-detail{color:#f0d18a;border-bottom-color:#d9b66b}
+.detail-section{background:transparent!important}
+.detail-grid{gap:22px}
+.detail-card{
+  color:#fff;background:linear-gradient(145deg,rgba(15,53,41,.76),rgba(9,31,26,.62));
+  border:1px solid rgba(235,221,184,.25);border-radius:20px;padding:30px;
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  box-shadow:0 22px 58px rgba(0,0,0,.26),inset 0 1px 0 rgba(255,255,255,.1)
+}
+.detail-card h3{color:#f4e5bd}
+.detail-card p,.detail-card li{color:#e0e8df}
+.detail-card .notice{color:#f0e1bd!important;background:rgba(217,182,107,.12);border-left:3px solid #d9b66b;border-radius:4px}
+.price-table td{color:#f4f1e7;border-bottom-color:rgba(255,255,255,.15)}
+.price-table td:last-child{color:#f0d18a}
+.btn{border-radius:999px;transition:transform .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(217,182,107,.22)}
+.custom{background:linear-gradient(135deg,rgba(12,43,33,.78),rgba(7,27,22,.74))!important;border:1px solid rgba(235,221,184,.22);border-radius:24px;margin:36px 5%;padding:clamp(30px,5vw,70px);backdrop-filter:blur(18px);box-shadow:0 24px 70px rgba(0,0,0,.25)}
+.custom h2{color:#fff}
+.custom p{color:#e0e8df}
+.contact{background:transparent!important}
+.contact-panel{background:linear-gradient(135deg,rgba(12,43,33,.82),rgba(7,27,22,.78));border:1px solid rgba(229,196,123,.42);border-radius:24px;backdrop-filter:blur(20px);box-shadow:0 28px 80px rgba(0,0,0,.35)}
+footer{background:rgba(4,17,13,.94);border-top:1px solid rgba(255,255,255,.12)}
+/* Scroll reveal: cards and option panels enter and leave in both directions. */
+body.has-reveal .section-head,body.has-reveal .card,body.has-reveal .detail-card,body.has-reveal .contact-panel{
+  opacity:0;transform:translateY(42px) scale(.985);
+  transition:opacity .85s ease,transform .95s cubic-bezier(.2,.7,.2,1)
+}
+body.has-reveal .is-revealed{opacity:1;transform:translateY(0) scale(1)}
+body.has-reveal .cards .card:nth-child(2),body.has-reveal .detail-grid .detail-card:nth-child(2){transition-delay:.08s}
+body.has-reveal .cards .card:nth-child(3),body.has-reveal .detail-grid .detail-card:nth-child(3){transition-delay:.16s}
+body.has-reveal .cards .card:nth-child(4),body.has-reveal .detail-grid .detail-card:nth-child(4){transition-delay:.24s}
+@media(max-width:640px){
+ .topbar{position:absolute}
+ .section-head{text-align:left;border-radius:18px}
+ .card{min-height:300px}
+ .custom{margin:20px 4%;padding:28px 22px;border-radius:20px}
+ .detail-card{padding:23px}
+}
+@media(prefers-reduced-motion:reduce){
+ body.has-reveal .section-head,body.has-reveal .card,body.has-reveal .detail-card,body.has-reveal .contact-panel{opacity:1;transform:none;transition:none}
+}
+
+
+/* ===== VISIBILITY FIX: smaller cards + clearer river/wildlife layers ===== */
+.section{padding:clamp(54px,6vw,76px) 6%}
+.section-head{max-width:760px;margin-bottom:28px;padding:20px 26px;background:linear-gradient(135deg,rgba(12,43,33,.48),rgba(13,37,31,.28));backdrop-filter:blur(11px);-webkit-backdrop-filter:blur(11px)}
+.cards{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.card{min-height:245px;height:clamp(210px,23vw,270px);border-radius:17px;background:rgba(10,37,28,.28);box-shadow:0 14px 34px rgba(0,0,0,.2)}
+.card img{opacity:.38;filter:saturate(.78) brightness(.82);transition:opacity .5s,transform 1s}
+.card:hover img{opacity:.52}
+.card:after{background:linear-gradient(180deg,rgba(4,20,14,.02) 0%,rgba(4,20,14,.14) 38%,rgba(4,20,14,.62) 100%)}
+.card-copy{background:rgba(7,29,23,.38);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:13px 14px;border-color:rgba(255,255,255,.16)}
+.card h3{font-size:clamp(19px,2vw,24px)}
+.detail-grid{gap:16px}
+.detail-card{padding:23px;background:linear-gradient(145deg,rgba(15,53,41,.53),rgba(9,31,26,.38));backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.custom{margin:22px 4%;padding:clamp(26px,4vw,52px);background:linear-gradient(135deg,rgba(12,43,33,.58),rgba(7,27,22,.5))!important}
+.contact-panel{background:linear-gradient(135deg,rgba(12,43,33,.62),rgba(7,27,22,.56))}
+/* Keep the journey canvas and animal footage visible through the lighter glass surfaces. */
+#river-journey .animal-footage{opacity:0;filter:brightness(.88) saturate(.9)}
+#river-journey .animal-footage.is-active{opacity:.78}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.card{height:250px;min-height:220px}}
+@media(max-width:640px){
+ .section{padding:54px 5%}
+ .section-head{padding:17px 18px;margin-bottom:20px}
+ .cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+ .card{height:205px;min-height:190px;border-radius:14px}
+ .card-copy{left:9px;right:9px;bottom:9px;padding:10px;border-radius:11px}
+ .card h3{font-size:17px}
+ .card-copy span{font-size:8px;letter-spacing:1px}
+ .detail-card{padding:19px}
+}
+
+
+/* Detail sub-tabs and complete information panels */
+.detail-tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:24px auto 4px;max-width:1100px}
+.detail-tabs a{display:inline-flex;align-items:center;justify-content:center;padding:11px 17px;border:1px solid rgba(229,196,123,.48);border-radius:999px;background:rgba(8,34,26,.48);color:#f4e8c9;font-size:11px;letter-spacing:.7px;text-transform:uppercase;backdrop-filter:blur(12px);transition:background .25s,border-color .25s,transform .25s}
+.detail-tabs a:hover{background:rgba(217,182,107,.2);border-color:#e5c47b;transform:translateY(-2px)}
+.detail-card ul{margin:14px 0 18px;padding-left:20px}
+.detail-card li{margin:7px 0}
+.detail-card .btn{margin-top:14px}
+.detail-card{scroll-margin-top:100px}
+section[id]{scroll-margin-top:90px}
+@media(max-width:640px){.detail-tabs{justify-content:flex-start;gap:7px}.detail-tabs a{font-size:9px;padding:9px 11px}.detail-card{scroll-margin-top:78px}}
+
+
+/* V4 structure: compact glass cards, clear layered scenery, responsive detail panels */
+:root{--gold:#e4c47b}
+main{z-index:3!important}
+#river-journey{z-index:0!important}
+.topbar{z-index:30!important;position:fixed!important}
+.section{padding:clamp(48px,5.5vw,72px) 5.5%!important}
+.section-head{margin-bottom:26px!important;padding:22px 25px!important;background:rgba(8,34,26,.44)!important;border:1px solid rgba(235,221,184,.25)!important}
+.section-head h2{font-size:clamp(30px,4.5vw,48px)!important}
+.cards{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px!important}
+.card{height:clamp(190px,21vw,245px)!important;min-height:190px!important;border-radius:16px!important;border:1px solid rgba(235,221,184,.32)!important}
+.card img{opacity:.58!important;filter:brightness(.88) saturate(.82)!important}
+.card:after{background:linear-gradient(180deg,rgba(4,20,14,.02),rgba(4,20,14,.12) 36%,rgba(4,20,14,.76))!important}
+.card-copy{background:rgba(7,29,23,.42)!important;padding:12px 14px!important;left:12px!important;right:12px!important;bottom:12px!important}
+.card h3{font-size:clamp(18px,1.8vw,23px)!important}
+.detail-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px!important}
+.detail-card{padding:22px!important;background:rgba(7,34,26,.57)!important;border:1px solid rgba(235,221,184,.26)!important;backdrop-filter:blur(13px)!important}
+.detail-card h3{color:#f4e5bd!important;font-size:24px!important}
+.detail-card p,.detail-card li,.detail-card label{color:#e6eee7!important}
+.detail-card ul{padding-left:19px}
+.detail-card .notice{background:rgba(217,182,107,.12)!important;color:#f0e1bd!important}
+.detail-tabs{justify-content:flex-start!important}
+.detail-tabs a{font-size:10px!important}
+.section-head p{color:#e2eae3!important}
+.glass-panel{background:rgba(7,34,26,.48);border:1px solid rgba(235,221,184,.28);border-radius:20px;padding:clamp(20px,3vw,32px);backdrop-filter:blur(14px);box-shadow:0 18px 55px rgba(0,0,0,.2)}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.form-field{display:flex;flex-direction:column;gap:6px;color:#f1e8d2;font-size:12px;letter-spacing:.3px}
+.form-field input,.form-field select,.form-field textarea{width:100%;border:1px solid rgba(229,196,123,.34);border-radius:10px;padding:12px 13px;background:rgba(255,255,255,.94);color:#183328;font:14px Arial;min-height:44px}
+.form-field textarea{min-height:88px;resize:vertical}
+.form-field.full{grid-column:1/-1}
+.form-note{font-size:12px;color:#dce7dd;line-height:1.7}
+.rate-highlight{color:#f2d58f;font-weight:bold}
+.package-duration{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.package-duration span{border:1px solid rgba(229,196,123,.35);border-radius:99px;padding:8px 12px;background:rgba(255,255,255,.07);font-size:11px;color:#f5e9cc}
+.shop-products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.shop-product{border-radius:16px;overflow:hidden;background:rgba(7,34,26,.55);border:1px solid rgba(235,221,184,.25)}
+.shop-product img{width:100%;height:175px;object-fit:cover;display:block}
+.shop-product div{padding:17px}
+.route-placeholder{border:1px dashed rgba(229,196,123,.5);border-radius:12px;padding:16px;color:#f0e5c8;background:rgba(255,255,255,.045);font-size:13px;line-height:1.7}
+.small-muted{font-size:12px;color:#d8e1d8;line-height:1.7}
+.primary-submit{border:0;cursor:pointer;font-family:Arial}
+#booking{scroll-margin-top:95px}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))!important}.detail-grid{grid-template-columns:1fr}}
+@media(max-width:640px){.topbar{padding:12px 4%!important}.brand{font-size:15px!important}.cards{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}.card{height:185px!important;min-height:175px!important}.card-copy{left:8px!important;right:8px!important;bottom:8px!important;padding:9px!important}.card h3{font-size:16px!important}.card-copy span{font-size:8px!important}.form-grid,.shop-products{grid-template-columns:1fr}.section{padding:48px 4.5%!important}.section-head{padding:18px!important}.detail-card{padding:18px!important}.menu-toggle{display:block!important}#main-nav{display:none;position:absolute;top:66px;left:4%;right:4%;padding:12px;background:rgba(5,24,17,.97);border:1px solid rgba(229,196,123,.28);border-radius:14px;flex-direction:column;gap:0}#main-nav.open{display:flex}#main-nav a{padding:13px;border-bottom:1px solid rgba(255,255,255,.1)}#main-nav .book{margin-top:8px;text-align:center}}
 </style>
-</head>
-<body>
-<header class="topbar">
-  <a class="brand" href="#home" aria-label="Sundarban Travel home"><span class="brand-mark">✦</span><span>SUNDARBAN<br>TRAVEL</span></a>
-  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">MENU ☰</button>
-  <nav id="main-nav" aria-label="Main navigation">
-    <a href="#experience">Experience</a>
-    <a href="#packages">Package</a>
-    <a href="#contact">Contact</a>
-    <a class="book" href="#contact">Book Now</a>
-  </nav>
-</header>
+<style id="river-journey-final-overrides">
+#river-journey{z-index:0;pointer-events:none}#river3d{pointer-events:auto}
+main#home{position:relative;z-index:2}.topbar{z-index:20}
+.journey-stops{position:relative;z-index:2}
+.journey-stop{min-height:100vh;display:flex;align-items:flex-end;padding:clamp(24px,6vw,90px);position:relative;scroll-snap-align:start;pointer-events:none}
+.journey-stop:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,20,15,.74),rgba(5,20,15,.18) 70%,transparent);pointer-events:none}
+.stop-copy{position:relative;max-width:560px;color:#fff;background:rgba(8,28,21,.58);border:1px solid rgba(217,182,107,.55);backdrop-filter:blur(8px);padding:clamp(20px,3vw,36px);border-radius:18px;pointer-events:auto}
+.stop-copy>span{font-size:12px;letter-spacing:.2em;color:#e4c47f}.stop-copy h2{font-size:clamp(30px,5vw,58px);line-height:1.02;margin:12px 0;color:#fff}.stop-copy p{color:#eee8d9;line-height:1.65}.stop-board-link{display:inline-flex;margin-top:12px;padding:13px 18px;border:1px solid #d9b66b;border-radius:4px;color:#f7e7c4;text-decoration:none;font-weight:700;letter-spacing:.06em}
+/* Keep the original detailed information and booking forms, but remove the old card-based journey menus. */
+#experience,#packages{display:none!important}.cards,.detail-tabs{display:none!important}
+main#home>section:not(.hero):not(.detail-section):not(.contact):not(#booking):not(#shop):not(#boat-trips):not(#hotel-details){display:none!important}
+main#home>.detail-section,main#home>#boat-trips,main#home>#hotel-details,main#home>#shop,main#home>#contact,main#home>#booking,main#home>#route-directory{display:none}
+body.show-detail main#home>.detail-section,body.show-detail main#home>#boat-trips,body.show-detail main#home>#hotel-details,body.show-detail main#home>#shop,body.show-detail main#home>#contact,body.show-detail main#home>#booking,body.show-detail main#home>#route-directory{display:block}
+body.show-detail .journey-stops,body.show-detail .hero{display:none}
+body.show-detail main#home>section{display:none!important}
+body.show-detail main#home>section.detail-active{display:block!important}
+@media(max-width:700px){.journey-stop{padding:20px 16px 34px;align-items:flex-end}.stop-copy{width:100%}.stop-copy h2{font-size:32px}}
+html{scroll-behavior:smooth;scroll-snap-type:y proximity}
+</style>
 
+<style id="real-eight-ghat-scene">
+#river-journey{z-index:0!important;pointer-events:none;background:#071b1a}
+#river3d{pointer-events:auto!important;touch-action:pan-y;display:block}
+#river-journey .river-scene,#river-journey .river-water,#river-journey .river-boat{display:none!important}
+#river-journey .river-vignette{z-index:2;background:linear-gradient(180deg,rgba(3,17,12,.25),transparent 28%,rgba(3,17,12,.14) 62%,rgba(3,17,12,.48)),linear-gradient(90deg,rgba(3,17,12,.18),transparent 72%)}
+#river-journey .journey-progress,#river-journey .journey-caption{z-index:5}
+#river-journey .journey-caption{left:clamp(18px,4vw,55px);right:auto;bottom:clamp(70px,8vh,100px);max-width:min(540px,70vw);text-shadow:0 2px 18px #000}
+#river-journey .journey-caption strong{font-size:clamp(16px,2vw,25px);letter-spacing:.06em}
+#river-journey .journey-progress{left:clamp(18px,4vw,55px);right:clamp(18px,4vw,55px);bottom:32px}
+main#home{position:relative;z-index:2;pointer-events:none}
+main#home>.hero{pointer-events:auto}
+main#home>.hero{min-height:100vh;height:100vh;max-height:none;background:transparent}
+main#home>.hero:before{background:linear-gradient(90deg,rgba(4,20,15,.68),rgba(4,20,15,.2) 58%,transparent);z-index:0}
+main#home>.hero:after{display:none}
+.journey-stops{position:relative;z-index:2;display:block}
+.journey-stop{height:100vh;min-height:100vh;max-height:none;padding:0;display:block;position:relative;scroll-snap-align:start;scroll-snap-stop:always;pointer-events:none;background:transparent}
+.journey-stop:before{display:none}
+.journey-stop .stop-copy{display:none!important}.journey-stop{pointer-events:none!important}
+html{scroll-behavior:smooth;scroll-snap-type:y mandatory;scroll-padding-top:0}
+body{scrollbar-color:#b99558 #102b20}
+body:not(.show-detail) footer{display:none!important}
+.topbar{z-index:25}
+body.show-detail #river-journey{display:none}
+body.show-detail .journey-stops,body.show-detail .hero{display:none!important}
+body.show-detail main#home>section{display:none!important}
+body.show-detail main#home>section.detail-active{display:block!important}
+body.show-detail main#home>.detail-active{min-height:100vh;pointer-events:auto}
+.journey-back{display:inline-flex;margin:18px 0 26px;padding:12px 17px;border:1px solid #c9a96b;color:#76572b;background:#fffaf0;font-weight:700;letter-spacing:.08em;font-size:11px;text-decoration:none}
+@media(max-width:700px){#river-journey .journey-caption{max-width:88vw;bottom:66px}.journey-stop{height:100svh;min-height:100svh}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
 
-<!-- IMMERSIVE SUNDARBAN RIVER JOURNEY: fixed scenery follows the visitor's scroll -->
+<style>
+/* SUNDARBAN TRAVEL — digital reception */
+.digital-reception{max-width:1100px;margin:0 auto;padding:clamp(24px,4vw,48px);border:1px solid rgba(224,190,119,.35);border-radius:24px;background:linear-gradient(145deg,rgba(9,39,29,.96),rgba(18,57,43,.94));color:#f8f3e7;box-shadow:0 25px 80px #06180f66}
+.digital-reception .eyebrow{color:#e7c77d;letter-spacing:3px}
+.digital-reception h2,.digital-reception h3{color:#fff5df}
+.reception-welcome{display:grid;grid-template-columns:110px 1fr;gap:20px;align-items:center;padding:20px;border:1px solid #d9b66b55;border-radius:18px;background:#ffffff0b;margin:22px 0}
+.reception-avatar{width:92px;height:92px;border-radius:50%;display:grid;place-items:center;font-size:42px;background:radial-gradient(circle at 35% 25%,#f6dfb0,#a66c43 70%);box-shadow:0 8px 25px #0005}
+.reception-welcome p,.digital-reception p{color:#e0e7df;line-height:1.7}
+.reception-chat{display:grid;grid-template-columns:1fr;gap:12px;margin-top:20px}
+.reception-chat label{font-weight:700;color:#f1d99d}
+.reception-chat select,.reception-chat input{width:100%;padding:14px 15px;border-radius:12px;border:1px solid #d9b66b66;background:#f8f5ec;color:#183629;font:inherit}
+.reception-chat button{justify-self:start;border:0;border-radius:999px;padding:13px 22px;background:#d9b66b;color:#173426;font-weight:800;cursor:pointer}
+.reception-answer{min-height:64px;padding:16px;border-radius:14px;background:#f8f5ec;color:#183629;line-height:1.65}
+.reception-faq{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}
+.reception-faq details{border:1px solid #d9b66b55;border-radius:12px;padding:13px 15px;background:#ffffff0a}
+.reception-faq summary{cursor:pointer;color:#f5dda6;font-weight:700}
+.reception-faq p{margin-bottom:0}
+@media(max-width:650px){.reception-welcome{grid-template-columns:1fr;text-align:center}.reception-avatar{margin:auto}.reception-faq{grid-template-columns:1fr}}
+</style></head><body><header class="topbar"><a class="brand" href="#home" aria-label="Sundarban Travel home"><span class="brand-mark">✦</span><span>SUNDARBAN<br>TRAVEL</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">MENU ☰</button><nav id="main-nav" aria-label="Main navigation"><a href="#journey-stops">EXPERIENCE</a><a href="#journey-stops">PACKAGE</a><a href="#contact">CONTACT</a><a href="#shop">SUNDARBAN SHOP</a><a class="book" href="#booking">BOOK NOW</a></nav></header><!-- IMMERSIVE SUNDARBAN RIVER JOURNEY: fixed scenery follows the visitor's scroll -->
 <div id="river-journey" aria-hidden="true">
+  <canvas id="river3d" aria-hidden="true"></canvas>
   <div class="river-scene scene-river is-active"></div>
-  <div class="river-scene scene-tiger"></div>
+  
   <div class="river-scene scene-boat"></div>
-  <div class="river-scene scene-deer"></div>
-  <div class="river-scene scene-croc"></div>
+  
+  
   <div class="river-scene scene-mangrove"></div>
   <div class="river-scene scene-booking"></div>
   <div class="river-vignette"></div>
@@ -156,164 +385,607 @@ footer{background:rgba(5,22,15,.96)}
   <div class="river-boat" aria-hidden="true"><svg viewBox="0 0 280 130"><path d="M20 78 Q140 112 260 78 L235 111 Q140 132 45 111Z" fill="#4a2d19" stroke="#d8b66b" stroke-width="4"/><path d="M83 76 L95 30 L186 30 L205 78Z" fill="#b88a4d" stroke="#3b2819" stroke-width="4"/><path d="M102 34 L102 66 L180 66 L180 34Z" fill="#e8d8b4"/><path d="M140 29 L140 4" stroke="#ead7a7" stroke-width="4"/><path d="M142 7 L185 26 L142 26Z" fill="#d9b66b"/><path d="M24 119 Q70 108 116 119 T208 119 T280 119" fill="none" stroke="#d9e8df" stroke-width="3" opacity=".7"/></svg></div>
   <div class="journey-progress"><span></span></div>
   <div class="journey-caption"><span class="caption-kicker">SUNDARBAN RIVER JOURNEY</span><strong id="journey-scene-name">Into the mangrove river</strong></div>
+</div><main id="home"><section class="hero journey-section" data-scene="river"><div class="hero-content"><div class="eyebrow">Jharkhali · Sundarbans · West Bengal</div><h1>Discover<br><em>The SUNDARBAN.</em></h1><p>Explore winding rivers, mangrove forests, memorable boat journeys and stays around the Sundarbans. Choose an experience, view the details and send your booking enquiry.</p><div class="actions"><a class="btn primary" href="#journey-stops">Explore Experience ↓</a><a class="btn secondary" href="#journey-stops">View Packages ↓</a></div></div><div class="scroll">SCROLL TO EXPLORE THE RIVER ↓</div></section>
+<div class="journey-stops" id="journey-stops">
+ <section class="journey-stop" data-stop="resort" aria-label="Ghat 1: BOOK YOUR RESORT"><div class="stop-copy"><span>01 · GHAT 01</span><h2>BOOK YOUR RESORT</h2><p>Riverside resort, elevated deck and a boat tied beside the ghat.</p><a class="stop-board-link" href="#hotel-details">OPEN DETAILS ↗</a></div></section>
+ <section class="journey-stop" data-stop="boat" aria-label="Ghat 2: BOOK YOUR BOAT TRIP"><div class="stop-copy"><span>02 · GHAT 02</span><h2>BOOK YOUR BOAT TRIP</h2><p>A dedicated jetty with one detailed tourist boat moored beside it.</p><a class="stop-board-link" href="#boat-trips">OPEN DETAILS ↗</a></div></section>
+ <section class="journey-stop" data-stop="package" aria-label="Ghat 3: BOOK YOUR PACKAGE TOUR"><div class="stop-copy"><span>03 · GHAT 03</span><h2>BOOK YOUR PACKAGE TOUR</h2><p>A resort above the ghat with two or three boats at the riverbank.</p><a class="stop-board-link" href="#str-packages">OPEN DETAILS ↗</a></div></section>
+ <section class="journey-stop" data-stop="photography" aria-label="Ghat 4: PHOTOGRAPHY SPECIAL PACKAGE"><div class="stop-copy"><span>04 · GHAT 04</span><h2>PHOTOGRAPHY SPECIAL PACKAGE</h2><p>A photography deck, camera equipment and a special viewing boat.</p><a class="stop-board-link" href="#photography">OPEN DETAILS ↗</a></div></section>
+ <section class="journey-stop" data-stop="night" aria-label="Ghat 5: NIGHT RIVER STAY"><div class="stop-copy"><span>05 · GHAT 05</span><h2>NIGHT RIVER STAY</h2><p>A moonlit ghat, illuminated houseboat and warm riverside lanterns.</p><a class="stop-board-link" href="#river-stays">OPEN DETAILS ↗</a></div></section>
+ <section class="journey-stop" data-stop="shop" aria-label="Ghat 6: SUNDARBAN SHOP"><div class="stop-copy"><span>06 · GHAT 06</span><h2>SUNDARBAN SHOP</h2><p>A riverside local shop with products and souvenirs.</p><a class="stop-board-link" href="#shop">OPEN DETAILS ↗</a></div></section>
+ <section class="journey-stop" data-stop="customise" aria-label="Ghat 7: CUSTOMISE YOUR SUNDARBAN TRIP"><div class="stop-copy"><span>07 · GHAT 07</span><h2>CUSTOMISE YOUR SUNDARBAN TRIP</h2><p>A trip-planning pavilion with boats and a route map.</p><a class="stop-board-link" href="#customise">OPEN DETAILS ↗</a></div></section>
+ <section class="journey-stop" data-stop="contact" aria-label="Ghat 8: CONTACT & BOOKING"><div class="stop-copy"><span>08 · GHAT 08</span><h2>CONTACT & BOOKING</h2><p>A welcoming riverside booking pavilion and reception jetty.</p><a class="stop-board-link" href="#contact">OPEN DETAILS ↗</a></div></section>
 </div>
-
-<main id="home">
-<section class="hero journey-section" data-scene="river">
-  <div class="hero-content">
-    <div class="eyebrow">Jharkhali · Sundarbans · West Bengal</div>
-    <h1>Discover<br><em>The SUNDARBAN.</em></h1>
-    <p>Where winding rivers meet the mysterious mangrove forest. Explore unforgettable boat journeys, peaceful stays and the natural beauty of the Sundarbans with a local travel contact in Jharkhali.</p>
-    <div class="actions">
-      <a class="btn primary" href="#experience">Explore experiences&nbsp; →</a>
-      <a class="btn secondary" href="#customise">Plan your journey&nbsp; →</a>
-    </div>
-  </div>
-  <div class="scroll">SCROLL TO EXPLORE ↓</div>
-</section>
-
-<section class="section journey-section" id="experience" data-scene="tiger">
-  <div class="section-head">
-    <div class="eyebrow">Explore the Sundarbans</div>
-    <h2>Experiences Worth Remembering.</h2>
-    <p>Choose the kind of Sundarban experience you want to discover. Explore the details first, then send us your enquiry.</p>
-  </div>
-  <div class="cards">
-    <a class="card" href="#boat-trips"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Boats%20in%20Sundarban%20%28West%20Bengal%29%2001.jpg" alt="Boats in the Sundarbans"><div class="card-copy"><span>On the water</span><h3>Boat Trips</h3><span class="open-detail">Explore details →</span></div></a>
-    <a class="card" href="#stays"><img src="https://images.unsplash.com/photo-1449158743715-0a90dc6d2d3d?auto=format&fit=crop&w=900&q=80" alt="Nature stay surrounded by greenery"><div class="card-copy"><span>Stay close to nature</span><h3>Hotels & Resorts</h3><span class="open-detail">Explore details →</span></div></a>
-    <a class="card" href="#packages"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sundarban%20from%20a%20boat.JPG" alt="Sundarbans viewed from a boat"><div class="card-copy"><span>Explore more</span><h3>Tour Packages</h3><span class="open-detail">Explore details →</span></div></a>
-    <a class="card" href="#stays"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="Peaceful riverside nature landscape"><div class="card-copy"><span>Stay by the river</span><h3>River Stays</h3><span class="open-detail">Explore details →</span></div></a>
-  </div>
-</section>
-
-<section class="section detail-section journey-section" id="packages" data-scene="boat">
-  <div class="section-head">
-    <div class="eyebrow">Choose your journey</div>
-    <h2>Sundarban Tour Packages</h2>
-    <p>Choose a route or special experience. Each option opens its own details before you make a booking enquiry.</p>
-  </div>
-  <div class="cards">
-    <a class="card" href="#str-details"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Mangrove%20and%20river%20in%20Sundarbans.JPG" alt="Mangrove river in the Sundarbans"><div class="card-copy"><span>Explore the forest</span><h3>Sundarban Tiger Reserve</h3><span class="open-detail">View package →</span></div></a>
-    <a class="card" href="#sbr-details"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sundarban%20river.jpg" alt="River in the Sundarbans"><div class="card-copy"><span>Discover another route</span><h3>Sundarban Bengal Reserve</h3><span class="open-detail">View package →</span></div></a>
-    <a class="card" href="#photo-str"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sundarban%20mangrove%20forest%20flora%20fauna2.jpg" alt="Sundarbans mangrove habitat"><div class="card-copy"><span>For nature lovers</span><h3>Photography Special · STR</h3><span class="open-detail">View package →</span></div></a>
-    <a class="card" href="#photo-sbr"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sundarban%20Riverside.jpg" alt="Sundarbans riverside landscape"><div class="card-copy"><span>For nature lovers</span><h3>Photography Special · SBR</h3><span class="open-detail">View package →</span></div></a>
-  </div>
-</section>
-
-<section class="section detail-section journey-section" id="package-details" data-scene="deer">
-  <div class="section-head">
-    <div class="eyebrow">Package information</div>
-    <h2>Explore Package Details</h2>
-    <p>Read about each experience before sending an enquiry. Final route, availability and itinerary will be discussed with our team.</p>
-  </div>
-  <div class="detail-grid">
-    <article class="detail-card" id="str-details">
-      <h3>সুন্দরবন টাইগার রিজার্ভ (Sundarban Tiger Reserve)</h3>
-      <p>Explore the Sundarban Tiger Reserve route by boat. Your final itinerary and visit plan will be discussed according to the selected date and applicable permissions.</p>
-      <p class="notice">Wildlife sightings are not guaranteed. Entry and route access are subject to applicable forest rules and permissions.</p>
-      <a class="btn primary" href="https://wa.me/919123025329?text=I%20want%20details%20and%20availability%20for%20Sundarban%20Tiger%20Reserve%20package.">Enquire about STR →</a>
-    </article>
-    <article class="detail-card" id="sbr-details">
-      <h3>সুন্দরবন বেঙ্গল রিজার্ভ (Sundarban Bengal Reserve)</h3>
-      <p>Discover the Sundarban Bengal Reserve route. Share your preferred date and group details so the team can discuss a suitable itinerary with you.</p>
-      <p class="notice">Wildlife sightings are not guaranteed. Entry and route access are subject to applicable forest rules and permissions.</p>
-      <a class="btn primary" href="https://wa.me/919123025329?text=I%20want%20details%20and%20availability%20for%20Sundarban%20Bengal%20Reserve%20package.">Enquire about SBR →</a>
-    </article>
-    <article class="detail-card" id="photo-str">
-      <h3>Photography Special · STR</h3>
-      <p>A photography-focused experience on the Sundarban Tiger Reserve route. Tell us what you want to photograph and your preferred travel date.</p>
-      <p class="notice">Wildlife sightings and specific photography opportunities cannot be guaranteed.</p>
-      <a class="btn primary" href="https://wa.me/919123025329?text=I%20want%20to%20enquire%20about%20Photography%20Special%20on%20the%20Sundarban%20Tiger%20Reserve%20route.">Enquire about STR Photography →</a>
-    </article>
-    <article class="detail-card" id="photo-sbr">
-      <h3>Photography Special · SBR</h3>
-      <p>A photography-focused experience on the Sundarban Bengal Reserve route. Share your photography interests and preferred date with us.</p>
-      <p class="notice">Wildlife sightings and specific photography opportunities cannot be guaranteed.</p>
-      <a class="btn primary" href="https://wa.me/919123025329?text=I%20want%20to%20enquire%20about%20Photography%20Special%20on%20the%20Sundarban%20Bengal%20Reserve%20route.">Enquire about SBR Photography →</a>
-    </article>
-  </div>
-</section>
-
-<section class="section detail-section journey-section" id="boat-trips" data-scene="croc">
-  <div class="section-head">
-    <div class="eyebrow">Explore by river</div>
-    <h2>Boat Trips</h2>
-    <p>Choose a short river experience or ask us about a longer journey. Minimum boat ride duration is 2 hours.</p>
-  </div>
-  <div class="detail-grid">
-    <article class="detail-card">
-      <h3>Boat ride options</h3>
-      <ul><li>Hourly boat ride — minimum 2 hours</li><li>Full-day boat ride</li><li>Boat booking for a tour package</li><li>Duration choices: 2, 3, 4 hours or custom hours</li></ul>
-      <p>Pickup points: Jharkhali Tiger Rescue Center or Jharkhali Bazar.</p>
-    </article>
-    <article class="detail-card">
-      <h3>Boat hire rates</h3>
-      <table class="price-table" aria-label="Boat hire rates">
-        <tr><td>6C boat</td><td>₹1,300 / hour</td></tr>
-        <tr><td>4C boat</td><td>₹1,100 / hour</td></tr>
-        <tr><td>2C boat</td><td>₹900 / hour</td></tr>
-      </table>
-      <p class="notice">6C / 4C / 2C are boat types, not passenger-capacity labels. Rates shown are boat hire rates per hour.</p>
-      <a class="btn primary" href="https://wa.me/919123025329?text=I%20want%20to%20enquire%20about%20a%20Sundarban%20boat%20trip.">Enquire about a boat trip →</a>
-    </article>
-    <article class="detail-card">
-      <h3>Permissions & guide</h3>
-      <ul><li>Forest permission: ₹1,000 fixed</li><li>One boat + one government-required guide: ₹1,000 fixed</li></ul>
-      <p class="notice">Permission is fixed at ₹1,000. One boat with one government-required guide is ₹1,000 fixed. Boat hire charges are separate.</p>
-    </article>
-    <article class="detail-card" id="stays">
-      <h3>Hotels, Resorts & River Stays</h3>
-      <p>Ask us about available stays near Jharkhali Tiger Rescue Center or Jharkhali Bazar. Share your dates, number of guests and room requirements.</p>
-      <p class="notice">Stay options and availability will be confirmed personally before any booking is accepted.</p>
-      <a class="btn primary" href="https://wa.me/919123025329?text=I%20want%20to%20enquire%20about%20hotels%20or%20river%20stays%20near%20Jharkhali.">Enquire about stays →</a>
-    </article>
-  </div>
-</section>
-
-<section class="section custom journey-section" id="customise" data-scene="mangrove">
-  <div>
-    <div class="eyebrow">Your journey, your way</div>
-    <h2>CUSTOMISE YOUR SUNDARBAN TRIP</h2>
-    <p>Tell us your preferred date, group size, route and the experiences you want. Our team will contact you to discuss availability and plan the details.</p>
-    <a class="btn primary" href="https://wa.me/919123025329?text=I%20want%20to%20customise%20a%20Sundarban%20trip.">Customise your trip →</a>
-  </div>
-  <div>
-    <h2 style="font-size:34px">A little closer to the wild.</h2>
-    <p>Pickup points: Jharkhali Tiger Rescue Center or Jharkhali Bazar. All enquiries are reviewed by our team. Sending an enquiry does not automatically confirm a booking.</p>
-  </div>
-</section>
-
-<section class="section contact journey-section" id="contact" data-scene="booking"><span id="booking" class="booking-anchor" aria-hidden="true"></span>
-  <div class="contact-panel">
-    <div class="eyebrow">Let's plan your journey</div>
-    <h2>Ready to Explore the SUNDARBAN?</h2>
-    <p>Contact us with your travel date, group size and preferred experience. We will get in touch to discuss the details and availability.</p>
-    <a class="btn primary" href="https://wa.me/919123025329?text=Hello%20Sundarban%20Travel%2C%20I%20would%20like%20to%20plan%20a%20trip.">WhatsApp: +91 91230 25329</a>
-  </div>
-</section>
-</main>
-
-<footer>
-  <div><strong>SUNDARBAN TRAVEL</strong><br>Jharkhali, Sundarbans, West Bengal</div>
-  <div>For bookings and enquiries<br>WhatsApp: +91 91230 25329</div>
-  <div>© Sundarban Travel</div>
-</footer>
-<script>
+<section class="section detail-section journey-section" id="str-packages" data-scene="deer" data-animal="deer"><div class="section-head"><div class="eyebrow">Separate STR itinerary</div><h2>সুন্দরবন টাইগার রিজার্ভ · Sundarban Tiger Reserve</h2><p>Choose the duration. Each duration has its own details and booking form.</p><nav class="detail-tabs"><a href="#str-1-day">1 Day</a><a href="#str-1-day-1-night">1 Day + 1 Night</a><a href="#str-2-day-1-night">2 Days + 1 Night</a><a href="#str-3-day-2-night">3 Days + 2 Nights</a></nav></div><div class="detail-grid"><article class="detail-card" id="str-1-day"><div class="eyebrow">STR · Tour Package</div><h3>সুন্দরবন টাইগার রিজার্ভ · Sundarban Tiger Reserve — 1 Day</h3><div class="package-duration"><span>1 Day</span><span>Boat Journey</span><span>Route-specific itinerary</span></div><p>This package has its own STR route details. The exact spots and Khari included in this duration will be displayed here after the final itinerary is provided.</p><div class="route-placeholder"><strong>SPOTS & KHARI FOR THIS PACKAGE</strong><br>Itinerary will be added after you provide which spots and Khari are covered in this tour.</div><p class="small-muted">Pickup point and final schedule will be confirmed with the customer before booking. Wildlife sightings are not guaranteed; all forest access is subject to applicable rules and permissions.</p><form class="booking-form" data-kind="STR 1 Day Tour"><div class="form-grid"><label class="form-field">Full Name<input name="name" required placeholder="Your name"></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel" placeholder="Mobile number"></label><label class="form-field">Travel Date<input name="date" type="date" required></label><label class="form-field">Number of Guests<input name="guests" type="number" min="1" value="2" required></label><label class="form-field full">Message / Special Request<textarea name="message" placeholder="Any request"></textarea></label></div><p class="form-note">This sends a booking enquiry to our team. Booking is confirmed only after availability and details are checked.</p><button class="btn primary primary-submit" type="submit">BOOK THIS PACKAGE →</button></form></article><article class="detail-card" id="str-1-day-1-night"><div class="eyebrow">STR · Tour Package</div><h3>সুন্দরবন টাইগার রিজার্ভ · Sundarban Tiger Reserve — 1 Day + 1 Night</h3><div class="package-duration"><span>1 Day + 1 Night</span><span>Boat Journey</span><span>Route-specific itinerary</span></div><p>This package has its own STR route details. The exact spots and Khari included in this duration will be displayed here after the final itinerary is provided.</p><div class="route-placeholder"><strong>SPOTS & KHARI FOR THIS PACKAGE</strong><br>Itinerary will be added after you provide which spots and Khari are covered in this tour.</div><p class="small-muted">Pickup point and final schedule will be confirmed with the customer before booking. Wildlife sightings are not guaranteed; all forest access is subject to applicable rules and permissions.</p><form class="booking-form" data-kind="STR 1 Day + 1 Night Tour"><div class="form-grid"><label class="form-field">Full Name<input name="name" required placeholder="Your name"></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel" placeholder="Mobile number"></label><label class="form-field">Travel Date<input name="date" type="date" required></label><label class="form-field">Number of Guests<input name="guests" type="number" min="1" value="2" required></label><label class="form-field full">Message / Special Request<textarea name="message" placeholder="Any request"></textarea></label></div><p class="form-note">This sends a booking enquiry to our team. Booking is confirmed only after availability and details are checked.</p><button class="btn primary primary-submit" type="submit">BOOK THIS PACKAGE →</button></form></article><article class="detail-card" id="str-2-day-1-night"><div class="eyebrow">STR · Tour Package</div><h3>সুন্দরবন টাইগার রিজার্ভ · Sundarban Tiger Reserve — 2 Days + 1 Night</h3><div class="package-duration"><span>2 Days + 1 Night</span><span>Boat Journey</span><span>Route-specific itinerary</span></div><p>This package has its own STR route details. The exact spots and Khari included in this duration will be displayed here after the final itinerary is provided.</p><div class="route-placeholder"><strong>SPOTS & KHARI FOR THIS PACKAGE</strong><br>Itinerary will be added after you provide which spots and Khari are covered in this tour.</div><p class="small-muted">Pickup point and final schedule will be confirmed with the customer before booking. Wildlife sightings are not guaranteed; all forest access is subject to applicable rules and permissions.</p><form class="booking-form" data-kind="STR 2 Days + 1 Night Tour"><div class="form-grid"><label class="form-field">Full Name<input name="name" required placeholder="Your name"></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel" placeholder="Mobile number"></label><label class="form-field">Travel Date<input name="date" type="date" required></label><label class="form-field">Number of Guests<input name="guests" type="number" min="1" value="2" required></label><label class="form-field full">Message / Special Request<textarea name="message" placeholder="Any request"></textarea></label></div><p class="form-note">This sends a booking enquiry to our team. Booking is confirmed only after availability and details are checked.</p><button class="btn primary primary-submit" type="submit">BOOK THIS PACKAGE →</button></form></article><article class="detail-card" id="str-3-day-2-night"><div class="eyebrow">STR · Tour Package</div><h3>সুন্দরবন টাইগার রিজার্ভ · Sundarban Tiger Reserve — 3 Days + 2 Nights</h3><div class="package-duration"><span>3 Days + 2 Nights</span><span>Boat Journey</span><span>Route-specific itinerary</span></div><p>This package has its own STR route details. The exact spots and Khari included in this duration will be displayed here after the final itinerary is provided.</p><div class="route-placeholder"><strong>SPOTS & KHARI FOR THIS PACKAGE</strong><br>Itinerary will be added after you provide which spots and Khari are covered in this tour.</div><p class="small-muted">Pickup point and final schedule will be confirmed with the customer before booking. Wildlife sightings are not guaranteed; all forest access is subject to applicable rules and permissions.</p><form class="booking-form" data-kind="STR 3 Days + 2 Nights Tour"><div class="form-grid"><label class="form-field">Full Name<input name="name" required placeholder="Your name"></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel" placeholder="Mobile number"></label><label class="form-field">Travel Date<input name="date" type="date" required></label><label class="form-field">Number of Guests<input name="guests" type="number" min="1" value="2" required></label><label class="form-field full">Message / Special Request<textarea name="message" placeholder="Any request"></textarea></label></div><p class="form-note">This sends a booking enquiry to our team. Booking is confirmed only after availability and details are checked.</p><button class="btn primary primary-submit" type="submit">BOOK THIS PACKAGE →</button></form></article></div></section><section class="section detail-section journey-section" id="sbr-packages" data-scene="deer" data-animal="deer"><div class="section-head"><div class="eyebrow">Separate SBR itinerary</div><h2>সুন্দরবন বেঙ্গল রিজার্ভ · Sundarban Bengal Reserve</h2><p>Choose the duration. Each duration has its own details and booking form.</p><nav class="detail-tabs"><a href="#sbr-1-day">1 Day</a><a href="#sbr-1-day-1-night">1 Day + 1 Night</a><a href="#sbr-2-day-1-night">2 Days + 1 Night</a><a href="#sbr-3-day-2-night">3 Days + 2 Nights</a></nav></div><div class="detail-grid"><article class="detail-card" id="sbr-1-day"><div class="eyebrow">SBR · Tour Package</div><h3>সুন্দরবন বেঙ্গল রিজার্ভ · Sundarban Bengal Reserve — 1 Day</h3><div class="package-duration"><span>1 Day</span><span>Boat Journey</span><span>Route-specific itinerary</span></div><p>This package has its own SBR route details. The exact spots and Khari included in this duration will be displayed here after the final itinerary is provided.</p><div class="route-placeholder"><strong>SPOTS & KHARI FOR THIS PACKAGE</strong><br>Itinerary will be added after you provide which spots and Khari are covered in this tour.</div><p class="small-muted">Pickup point and final schedule will be confirmed with the customer before booking. Wildlife sightings are not guaranteed; all forest access is subject to applicable rules and permissions.</p><form class="booking-form" data-kind="SBR 1 Day Tour"><div class="form-grid"><label class="form-field">Full Name<input name="name" required placeholder="Your name"></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel" placeholder="Mobile number"></label><label class="form-field">Travel Date<input name="date" type="date" required></label><label class="form-field">Number of Guests<input name="guests" type="number" min="1" value="2" required></label><label class="form-field full">Message / Special Request<textarea name="message" placeholder="Any request"></textarea></label></div><p class="form-note">This sends a booking enquiry to our team. Booking is confirmed only after availability and details are checked.</p><button class="btn primary primary-submit" type="submit">BOOK THIS PACKAGE →</button></form></article><article class="detail-card" id="sbr-1-day-1-night"><div class="eyebrow">SBR · Tour Package</div><h3>সুন্দরবন বেঙ্গল রিজার্ভ · Sundarban Bengal Reserve — 1 Day + 1 Night</h3><div class="package-duration"><span>1 Day + 1 Night</span><span>Boat Journey</span><span>Route-specific itinerary</span></div><p>This package has its own SBR route details. The exact spots and Khari included in this duration will be displayed here after the final itinerary is provided.</p><div class="route-placeholder"><strong>SPOTS & KHARI FOR THIS PACKAGE</strong><br>Itinerary will be added after you provide which spots and Khari are covered in this tour.</div><p class="small-muted">Pickup point and final schedule will be confirmed with the customer before booking. Wildlife sightings are not guaranteed; all forest access is subject to applicable rules and permissions.</p><form class="booking-form" data-kind="SBR 1 Day + 1 Night Tour"><div class="form-grid"><label class="form-field">Full Name<input name="name" required placeholder="Your name"></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel" placeholder="Mobile number"></label><label class="form-field">Travel Date<input name="date" type="date" required></label><label class="form-field">Number of Guests<input name="guests" type="number" min="1" value="2" required></label><label class="form-field full">Message / Special Request<textarea name="message" placeholder="Any request"></textarea></label></div><p class="form-note">This sends a booking enquiry to our team. Booking is confirmed only after availability and details are checked.</p><button class="btn primary primary-submit" type="submit">BOOK THIS PACKAGE →</button></form></article><article class="detail-card" id="sbr-2-day-1-night"><div class="eyebrow">SBR · Tour Package</div><h3>সুন্দরবন বেঙ্গল রিজার্ভ · Sundarban Bengal Reserve — 2 Days + 1 Night</h3><div class="package-duration"><span>2 Days + 1 Night</span><span>Boat Journey</span><span>Route-specific itinerary</span></div><p>This package has its own SBR route details. The exact spots and Khari included in this duration will be displayed here after the final itinerary is provided.</p><div class="route-placeholder"><strong>SPOTS & KHARI FOR THIS PACKAGE</strong><br>Itinerary will be added after you provide which spots and Khari are covered in this tour.</div><p class="small-muted">Pickup point and final schedule will be confirmed with the customer before booking. Wildlife sightings are not guaranteed; all forest access is subject to applicable rules and permissions.</p><form class="booking-form" data-kind="SBR 2 Days + 1 Night Tour"><div class="form-grid"><label class="form-field">Full Name<input name="name" required placeholder="Your name"></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel" placeholder="Mobile number"></label><label class="form-field">Travel Date<input name="date" type="date" required></label><label class="form-field">Number of Guests<input name="guests" type="number" min="1" value="2" required></label><label class="form-field full">Message / Special Request<textarea name="message" placeholder="Any request"></textarea></label></div><p class="form-note">This sends a booking enquiry to our team. Booking is confirmed only after availability and details are checked.</p><button class="btn primary primary-submit" type="submit">BOOK THIS PACKAGE →</button></form></article><article class="detail-card" id="sbr-3-day-2-night"><div class="eyebrow">SBR · Tour Package</div><h3>সুন্দরবন বেঙ্গল রিজার্ভ · Sundarban Bengal Reserve — 3 Days + 2 Nights</h3><div class="package-duration"><span>3 Days + 2 Nights</span><span>Boat Journey</span><span>Route-specific itinerary</span></div><p>This package has its own SBR route details. The exact spots and Khari included in this duration will be displayed here after the final itinerary is provided.</p><div class="route-placeholder"><strong>SPOTS & KHARI FOR THIS PACKAGE</strong><br>Itinerary will be added after you provide which spots and Khari are covered in this tour.</div><p class="small-muted">Pickup point and final schedule will be confirmed with the customer before booking. Wildlife sightings are not guaranteed; all forest access is subject to applicable rules and permissions.</p><form class="booking-form" data-kind="SBR 3 Days + 2 Nights Tour"><div class="form-grid"><label class="form-field">Full Name<input name="name" required placeholder="Your name"></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel" placeholder="Mobile number"></label><label class="form-field">Travel Date<input name="date" type="date" required></label><label class="form-field">Number of Guests<input name="guests" type="number" min="1" value="2" required></label><label class="form-field full">Message / Special Request<textarea name="message" placeholder="Any request"></textarea></label></div><p class="form-note">This sends a booking enquiry to our team. Booking is confirmed only after availability and details are checked.</p><button class="btn primary primary-submit" type="submit">BOOK THIS PACKAGE →</button></form></article></div></section><section class="section detail-section journey-section" id="photography" data-scene="mangrove"><div class="section-head"><div class="eyebrow">Special experience</div><h2>PHOTOGRAPHY SPECIAL</h2><p>Choose STR or SBR, then select your preferred boat arrangement. Route spots and Khari will appear after the final route list is provided.</p></div><div class="detail-grid"><article class="detail-card"><h3>Photography Special · STR</h3><p>Nature, landscape and wildlife photography focused boat experience on the Sundarban Tiger Reserve route.</p><div class="route-placeholder">STR spots and Khari: final list will be added after your confirmation.</div><form class="booking-form" data-kind="Photography Special STR"><div class="form-grid"><label class="form-field">Name<input name="name" required></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel"></label><label class="form-field">Route<select name="route"><option>STR</option></select></label><label class="form-field">Boat Ride Type<select name="boat"><option>Hourly</option><option>Package</option></select></label><label class="form-field">Package Duration<select name="duration"><option>Not applicable / Hourly</option><option>1 Day</option><option>1 Day + 1 Night</option><option>2 Days + 1 Night</option><option>3 Days + 2 Nights</option></select></label><label class="form-field">Travel Date<input name="date" type="date"></label></div><button class="btn primary primary-submit" type="submit">BOOK PHOTOGRAPHY TOUR →</button></form></article><article class="detail-card"><h3>Photography Special · SBR</h3><p>Nature, landscape and wildlife photography focused boat experience on the Sundarban Bengal Reserve route.</p><div class="route-placeholder">SBR spots and Khari: final list will be added after your confirmation.</div><form class="booking-form" data-kind="Photography Special SBR"><div class="form-grid"><label class="form-field">Name<input name="name" required></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel"></label><label class="form-field">Route<select name="route"><option>SBR</option></select></label><label class="form-field">Boat Ride Type<select name="boat"><option>Hourly</option><option>Package</option></select></label><label class="form-field">Package Duration<select name="duration"><option>Not applicable / Hourly</option><option>1 Day</option><option>1 Day + 1 Night</option><option>2 Days + 1 Night</option><option>3 Days + 2 Nights</option></select></label><label class="form-field">Travel Date<input name="date" type="date"></label></div><button class="btn primary primary-submit" type="submit">BOOK PHOTOGRAPHY TOUR →</button></form></article></div></section><section class="section detail-section journey-section" id="river-stays" data-scene="boat"><div class="section-head"><div class="eyebrow">One exclusive river stay tour</div><h2>BURIRDABRI — 3 DAYS / 2 NIGHTS</h2><p>River Stays has one tour only: Burirdabri, near the Bangladesh border. The exact stay arrangement, inclusions and rate will be confirmed before booking.</p></div><div class="detail-grid"><article class="detail-card"><img style="width:100%;height:210px;object-fit:cover;border-radius:13px;margin-bottom:16px" src="https://commons.wikimedia.org/wiki/Special:FilePath/Sundarban%20Riverside.jpg" alt="Sundarban river stay landscape"><h3>Burirdabri River Stay</h3><div class="package-duration"><span>3 Days</span><span>2 Nights</span><span>Burirdabri</span></div><ul><li>Destination: Burirdabri, near Bangladesh border</li><li>Tour duration: 3 Days / 2 Nights</li><li>Stay, meals, boat and exact itinerary: details to be confirmed</li></ul><p class="notice">Only one River Stay tour is listed. Do not treat the Custom Tour form options as separate River Stay tours.</p><form class="booking-form" data-kind="Burirdabri River Stay 3 Days 2 Nights"><div class="form-grid"><label class="form-field">Full Name<input name="name" required></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel"></label><label class="form-field">Arrival Date<input name="arrival" type="date" required></label><label class="form-field">Number of Guests<input name="guests" type="number" min="1" value="2" required></label><label class="form-field">Number of Rooms<input name="rooms" type="number" min="1" value="1"></label><label class="form-field">Special Request<textarea name="message"></textarea></label></div><button class="btn primary primary-submit" type="submit">BOOK BURIRDABRI TOUR →</button></form></article></div></section><section class="section detail-section journey-section" id="customise" data-scene="mangrove" data-animal="wild-boar"><div class="section-head"><div class="eyebrow">Build your own itinerary</div><h2>CUSTOMISE YOUR SUNDARBAN TRIP</h2><p>These 13 options belong to the Custom Tour booking form. They are not 13 separate tours or River Stay tabs.</p></div><article class="detail-card"><form class="booking-form" data-kind="Custom Sundarban Tour"><div class="form-grid"><label class="form-field">1. Riverside / River Stay<select name="riverstay"><option>Interested</option><option>Not required</option></select></label><label class="form-field">2. Exact Property Location<input name="property" placeholder="Preferred location"></label><label class="form-field">3. Room / Accommodation Type<input name="roomtype" placeholder="Room / accommodation preference"></label><label class="form-field">4. Meals & Facilities<input name="meals" placeholder="Meal and facility requirements"></label><label class="form-field">5. River Stay Rate<input name="rate" placeholder="Ask for current rate / budget"></label><label class="form-field">6. Arrival Date<input name="arrival" type="date"></label><label class="form-field">Departure Date<input name="departure" type="date"></label><label class="form-field">7. Number of Guests<input name="guests" type="number" min="1" value="2"></label><label class="form-field">8. Number of Rooms<input name="rooms" type="number" min="0" value="0"></label><label class="form-field">9. Preferred Riverside Location<input name="riverside" placeholder="Preferred river-side area"></label><label class="form-field">10. Stay Style<select name="staystyle"><option>Any suitable option</option><option>River Stay</option><option>Hotel / Resort</option><option>Homestay</option><option>Boat Stay (if available)</option></select></label><label class="form-field">11. Budget Range<input name="budget" placeholder="Your approximate budget"></label><label class="form-field">Preferred Route<select name="route"><option>STR</option><option>SBR</option><option>Both / Need advice</option></select></label><label class="form-field">Travel Date<input name="date" type="date"></label><label class="form-field full">Spot / Khari preferences<textarea name="spots" placeholder="You can share preferred spots. Confirmed spot list will be shown here later."></textarea></label><label class="form-field full">Special Request<textarea name="message"></textarea></label></div><p class="form-note">12. CHECK AVAILABILITY — our team will check dates and options after receiving your enquiry. 13. ENQUIRE & BOOK — submit this form to send your custom-tour request.</p><button class="btn primary primary-submit" type="submit">CHECK AVAILABILITY & ENQUIRE →</button></form></article></section><section class="section detail-section journey-section" id="route-directory" data-scene="deer"><div class="section-head"><div class="eyebrow">Route reference</div><h2>STR + SBR ROUTE & SPOT DIRECTORY</h2><p>One directory for both reserve routes. The confirmed Spot and Khari names will also be used in relevant package and photography booking forms.</p></div><div class="detail-grid"><article class="detail-card"><h3>STR — Sundarban Tiger Reserve</h3><div class="route-placeholder">STR Route Spots & Khari names will be inserted here after you provide the confirmed list.</div></article><article class="detail-card"><h3>SBR — Sundarban Bengal Reserve</h3><div class="route-placeholder">SBR Route Spots & Khari names will be inserted here after you provide the confirmed list.</div></article></div></section><section class="section detail-section journey-section" id="boat-trips" data-scene="croc" data-animal="crocodile"><div class="section-head"><div class="eyebrow">Explore by river</div><h2>BOAT TRIPS</h2><p>Hourly boat ride, full-day boat hire and package boat arrangements. Customer may choose any boat size, subject to availability.</p></div><div class="detail-grid"><article class="detail-card"><h3>Hourly Boat Hire</h3><table class="price-table"><tr><td>SMALL · 2 Cylinder · 10 passengers</td><td>₹900 / hour</td></tr><tr><td>MEDIUM · 4 Cylinder · 20 passengers</td><td>₹1,100 / hour</td></tr><tr><td>BIG · 6 Cylinder · 40 passengers</td><td>₹1,300 / hour</td></tr></table><p>Minimum 2 hours. Duration choices: 2, 3, 4 or custom hours. A group of 10 may still choose Medium or Big boat.</p></article><article class="detail-card"><h3>Full-day Boat Hire</h3><p class="rate-highlight">Full-day timing: 8:00 AM – 4:00 PM</p><table class="price-table"><tr><td>SMALL · 2 Cylinder · 10 passengers</td><td>₹4,500 / day</td></tr><tr><td>MEDIUM · 4 Cylinder · 20 passengers</td><td>₹7,000 / day</td></tr><tr><td>BIG · 6 Cylinder · 40 passengers</td><td>₹12,000 / day</td></tr></table></article><article class="detail-card"><h3>Permission & Guide Charges</h3><table class="price-table"><tr><td>One Boat Forest Permission</td><td>₹1,000</td></tr><tr><td>Per Passenger Forest Permission</td><td>₹200 / person</td></tr><tr><td>One Government-required Guide</td><td>₹1,000</td></tr></table><p class="notice">Boat hire is separate. For package tours, if boat hire is already included in the package, it will not be charged a second time.</p></article><article class="detail-card"><h3>Boat Booking Enquiry</h3><form class="booking-form" data-kind="Boat Trip"><div class="form-grid"><label class="form-field">Name<input name="name" required></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel"></label><label class="form-field">Number of Passengers<input name="guests" type="number" min="1" value="10" required></label><label class="form-field">Boat Type<select name="boat"><option>SMALL · 2 Cylinder · 10 capacity</option><option>MEDIUM · 4 Cylinder · 20 capacity</option><option>BIG · 6 Cylinder · 40 capacity</option></select></label><label class="form-field">Booking Type<select name="bookingtype"><option>Hourly</option><option>Full-day · 8 AM–4 PM</option><option>Tour Package</option></select></label><label class="form-field">Duration / Hours<input name="duration" placeholder="e.g. 2 hours / full day"></label><label class="form-field">Pickup Point<select name="pickup"><option>Jharkhali Tiger Rescue Center</option><option>Jharkhali Bazar</option><option>Discuss with team</option></select></label><label class="form-field">Travel Date<input name="date" type="date"></label></div><button class="btn primary primary-submit" type="submit">SEND BOAT BOOKING ENQUIRY →</button></form></article></div></section><section class="section detail-section journey-section" id="hotel-details" data-scene="mangrove"><div class="section-head"><div class="eyebrow">Stay near the forest</div><h2>HOTELS & RESORTS</h2><p>Property names, room categories, facilities and current rates will be added after the actual options are confirmed.</p></div><div class="detail-grid"><article class="detail-card"><h3>Stay Details</h3><ul><li>Property Name & Location</li><li>Room Category & Occupancy</li><li>Meals & Facilities</li><li>Check-in / Check-out</li><li>Room Rate</li></ul><p class="notice">No property, price or facility is invented. The selected property's actual information will be shown once supplied.</p></article><article class="detail-card"><h3>Hotel Booking Form</h3><form class="booking-form" data-kind="Hotel / Resort Stay"><div class="form-grid"><label class="form-field">Name<input name="name" required></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel"></label><label class="form-field">Check-in<input name="checkin" type="date"></label><label class="form-field">Check-out<input name="checkout" type="date"></label><label class="form-field">Adults<input name="adults" type="number" min="1" value="2"></label><label class="form-field">Children<input name="children" type="number" min="0" value="0"></label><label class="form-field">Number of Rooms<input name="rooms" type="number" min="1" value="1"></label><label class="form-field">Preferred Room Type<input name="roomtype"></label><label class="form-field full">Meal Requirement / Special Request<textarea name="message"></textarea></label></div><button class="btn primary primary-submit" type="submit">CHECK HOTEL AVAILABILITY →</button></form></article></div></section><section class="section detail-section journey-section" id="shop" data-scene="booking"><div class="section-head"><div class="eyebrow">Take a piece of the Sundarbans home</div><h2>SUNDARBAN SHOP</h2><p>Explore Sundarban honey and handmade products. Customers can order online without visiting, or enquire about buying while visiting Sundarbans.</p></div><div class="shop-products"><article class="shop-product"><img src="https://images.unsplash.com/photo-1587049352851-8d4e89133924?auto=format&fit=crop&w=900&q=80" alt="Honey jar"><div><h3>Sundarban Honey</h3><p class="small-muted">Product size, price, availability and delivery details will be added after you provide them.</p></div></article><article class="shop-product"><img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?auto=format&fit=crop&w=900&q=80" alt="Handmade craft"><div><h3>Handmade Products</h3><p class="small-muted">Local handmade items. Product photos, names and prices will be added later.</p></div></article></div><article class="detail-card" style="margin-top:18px"><h3>Shop Order / Enquiry</h3><form class="booking-form" data-kind="Sundarban Shop Order"><div class="form-grid"><label class="form-field">Name<input name="name" required></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel"></label><label class="form-field">Product<select name="product"><option>Sundarban Honey</option><option>Handmade Product</option><option>Both / Need details</option></select></label><label class="form-field">Quantity<input name="quantity" placeholder="Quantity / pack size"></label><label class="form-field">Order Method<select name="method"><option>Online order — I will not visit</option><option>Buy while visiting Sundarbans</option></select></label><label class="form-field">Delivery Location<input name="location" placeholder="Required for online order"></label></div><button class="btn primary primary-submit" type="submit">SEND SHOP ENQUIRY →</button></form></article></section><section class="section contact journey-section" id="contact" data-scene="booking"><div class="digital-reception">
+<div class="eyebrow">WELCOME TO SUNDARBAN TRAVEL</div><h2>DIGITAL RECEPTION &amp; HELP DESK</h2>
+<p>Ask our receptionist about the website, resorts, boats, tour packages, permissions, photography trips or booking process.</p>
+<div class="reception-welcome"><div class="reception-avatar" aria-hidden="true">🙏</div><div><h3>Namaskar! Welcome.</h3><p id="receptionGreeting">How can I help you today?</p></div></div>
+<div class="reception-chat"><label for="receptionQuestion">Choose a question</label>
+<select id="receptionQuestion"><option value="">Select a frequently asked question…</option>
+<option value="resort">How can I book a resort?</option><option value="boat">How can I book a boat?</option><option value="package">What tour packages are available?</option><option value="photography">Tell me about the Photography Special Package.</option><option value="night">What is Night River Stay?</option><option value="customise">Can I customise my Sundarban trip?</option><option value="permission">What are the forest permission and guide charges?</option><option value="shop">What can I buy from Sundarban Shop?</option><option value="contact">How can I contact the booking team?</option>
+</select>
+<label for="receptionTypedQuestion">Or type your question</label><input id="receptionTypedQuestion" type="text" placeholder="Type a question about Sundarban trips…">
+<button id="askReception" type="button">ASK RECEPTIONIST</button>
+<div class="reception-answer" id="receptionAnswer" role="status" aria-live="polite">Our receptionist is ready to help. Select a question or type your own.</div></div>
+<div class="reception-faq">
+<details><summary>How do I make a booking?</summary><p>Open the relevant service page, review its details, complete the enquiry form and send it. Our team will contact you to confirm availability and final details.</p></details>
+<details><summary>Can I choose my own trip plan?</summary><p>Yes. Open “CUSTOMISE YOUR SUNDARBAN TRIP” to discuss your preferred duration, route, stay and boat arrangement with our team.</p></details>
+<details><summary>Are wildlife sightings guaranteed?</summary><p>No. Wildlife sightings depend on nature, weather and forest conditions and cannot be guaranteed.</p></details>
+<details><summary>How do I speak to the team?</summary><p>Call or WhatsApp the booking team at +91 91230 25329.</p></details>
+</div>
+<p style="margin-top:22px"><a class="btn primary" href="https://wa.me/919123025329">WHATSAPP BOOKING TEAM · +91 91230 25329</a></p>
+</div></section><section class="section journey-section" id="booking" data-scene="booking"><div class="section-head"><div class="eyebrow">Start your booking enquiry</div><h2>BOOK NOW</h2><p>Select what you want to book. The team will follow up to confirm the details.</p></div><article class="detail-card"><form class="booking-form" data-kind="General Booking Request"><div class="form-grid"><label class="form-field">Name<input name="name" required></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel"></label><label class="form-field">Booking Category<select name="category"><option>STR Tour Package</option><option>SBR Tour Package</option><option>Photography Special</option><option>River Stay — Burirdabri</option><option>Boat Trip</option><option>Hotel / Resort</option><option>Custom Tour</option><option>Sundarban Shop</option></select></label><label class="form-field">Travel / Order Date<input name="date" type="date"></label><label class="form-field full">Message<textarea name="message" placeholder="Tell us what you want to book"></textarea></label></div><button class="btn primary primary-submit" type="submit">SEND BOOKING REQUEST →</button></form></article></section></main><footer><div><strong>SUNDARBAN TRAVEL</strong><br>Jharkhali, Sundarbans, West Bengal</div><div>Booking Enquiries<br>WhatsApp: +91 91230 25329</div><div>© Sundarban Travel</div></footer><script>
 // One reversible scroll timeline drives the river, boat, progress and scene transitions.
 (()=>{
- const root=document.documentElement, scenes=[...document.querySelectorAll('.journey-section')];
+ const root=document.documentElement, scenes=[...document.querySelectorAll('.journey-stop')];
  const layers=[...document.querySelectorAll('.river-scene')], label=document.getElementById('journey-scene-name');
- const names={river:'Into the mangrove river',tiger:'The wild forest awakens',boat:'A boat journey through winding creeks',deer:'Quiet life along the riverbank',croc:'The hidden world beneath the water',mangrove:'Deep inside the mangroves',booking:'Your Sundarban journey begins here'};
+ const animalSections=[];
+ const animalVideos=[];
+ const names={resort:'BOOK YOUR RESORT',boat:'BOOK YOUR BOAT TRIP',package:'BOOK YOUR PACKAGE TOUR',shop:'SUNDARBAN SHOP',contact:'CONTACT & BOOKING'};
  let active='river', ticking=false;
- const update=()=>{const max=Math.max(1,document.documentElement.scrollHeight-innerHeight);const p=Math.min(1,Math.max(0,scrollY/max));root.style.setProperty('--journey-progress',p.toFixed(4));ticking=false};
+ const update=()=>{
+  const max=Math.max(1,document.documentElement.scrollHeight-innerHeight);
+  const p=Math.min(1,Math.max(0,scrollY/max));
+  root.style.setProperty('--journey-progress',p.toFixed(4));
+  // Select the animal section crossing the middle of the viewport, then scrub its real footage.
+  const marker=innerHeight*.52;
+  let current=null;
+  for(const section of animalSections){const r=section.getBoundingClientRect();if(r.top<=marker&&r.bottom>=marker){current=section;break}}
+  animalVideos.forEach(v=>v.classList.remove('is-active'));
+  if(current){
+   const video=document.getElementById('animal-'+current.dataset.animal);
+   if(video){
+    video.classList.add('is-active');
+    if(video.readyState>=1&&Number.isFinite(video.duration)&&video.duration>0){
+     const r=current.getBoundingClientRect();
+     const progress=Math.min(1,Math.max(0,(marker-r.top)/Math.max(1,r.height)));
+     const target=progress*Math.max(0,video.duration-.04);
+     if(Math.abs(video.currentTime-target)>.075){try{video.currentTime=target}catch(e){}}
+    }
+   }
+  }
+  ticking=false;
+ };
  const setScene=(key)=>{if(!key||key===active)return;active=key;layers.forEach(el=>el.classList.toggle('is-active',el.classList.contains('scene-'+key)));if(label)label.textContent=names[key]||'Sundarban River Journey'};
  const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){setScene(e.target.dataset.scene)}})},{rootMargin:'-42% 0px -42% 0px',threshold:0});
  scenes.forEach(s=>io.observe(s));
+ animalVideos.forEach(v=>v.addEventListener('loadedmetadata',()=>{if(!ticking){requestAnimationFrame(update);ticking=true}}));
  addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(update);ticking=true}},{passive:true});
  addEventListener('resize',update);update();
  const menuButton=document.querySelector('.menu-toggle'),nav=document.querySelector('#main-nav');
  if(menuButton&&nav){menuButton.addEventListener('click',()=>{const open=nav.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(open))});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menuButton.setAttribute('aria-expanded','false')}));}
 })();
+</script><script>
+(()=>{
+ document.body.classList.add('has-reveal');
+ const reveal=document.querySelectorAll('.section-head,.card,.detail-card,.contact-panel');
+ const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+   if(e.isIntersecting)e.target.classList.add('is-revealed');
+   else e.target.classList.remove('is-revealed');
+  });
+ },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+ reveal.forEach(el=>io.observe(el));
+})();
+</script><script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script><script type="module">
+import * as THREE from 'three';
+
+const canvas = document.getElementById('river3d');
+if (canvas) {
+  const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+  const lerp=(a,b,t)=>a+(b-a)*t;
+  const scene = new THREE.Scene();
+  const daySky = new THREE.Color(0x9bb9ae), nightSky = new THREE.Color(0x071522);
+  const dayFog = new THREE.Color(0x9bb9ae), nightFog = new THREE.Color(0x102333);
+  scene.background = daySky.clone();
+  scene.fog = new THREE.FogExp2(dayFog.clone(), .0095);
+  const camera = new THREE.PerspectiveCamera(48, innerWidth/innerHeight, .1, 650);
+  const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:false, powerPreference:'high-performance'});
+  renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.2));
+  renderer.setSize(innerWidth,innerHeight);
+  renderer.shadowMap.enabled=true;
+  renderer.shadowMap.type=THREE.PCFShadowMap;
+  renderer.toneMapping=THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure=1.12;
+  renderer.outputColorSpace=THREE.SRGBColorSpace;
+
+  const hemi = new THREE.HemisphereLight(0xe8f2e6,0x273c2e,2.0); scene.add(hemi);
+  const sun = new THREE.DirectionalLight(0xffe4b8,2.25);
+  sun.position.set(-35,55,25); sun.castShadow=true;
+  sun.shadow.mapSize.set(1024,1024);
+  sun.shadow.camera.left=-55;sun.shadow.camera.right=55;sun.shadow.camera.top=65;sun.shadow.camera.bottom=-65;
+  sun.shadow.bias=-.00025;scene.add(sun);
+  const moon = new THREE.DirectionalLight(0x9ab8e8,0.0); moon.position.set(25,35,-45); scene.add(moon);
+
+  const riverPoints=[
+    new THREE.Vector3(0,0,112),new THREE.Vector3(-5,0,88),new THREE.Vector3(-11,0,64),
+    new THREE.Vector3(-8,0,40),new THREE.Vector3(1,0,17),new THREE.Vector3(9,0,-8),
+    new THREE.Vector3(7,0,-31),new THREE.Vector3(-3,0,-53),new THREE.Vector3(-10,0,-76),
+    new THREE.Vector3(-3,0,-99),new THREE.Vector3(8,0,-122),new THREE.Vector3(10,0,-148)
+  ];
+  const path=new THREE.CatmullRomCurve3(riverPoints,false,'catmullrom',.42);
+  const sideAt=t=>{const tan=path.getTangentAt(clamp(t,.001,.999));return new THREE.Vector3(-tan.z,0,tan.x).normalize()};
+  const waterMat=new THREE.MeshPhysicalMaterial({color:0x347d79,roughness:.19,metalness:.16,clearcoat:1,clearcoatRoughness:.13});
+  const riverGeo=new THREE.BufferGeometry(),riverVerts=[],riverIndices=[],riverUv=[];
+  const riverSegments=620,riverWidth=7.2;
+  for(let i=0;i<=riverSegments;i++){
+    const t=i/riverSegments,p=path.getPointAt(t),side=sideAt(t);
+    for(let j=0;j<3;j++){
+      const across=(j-1)*riverWidth;
+      const q=p.clone().addScaledVector(side,across);
+      riverVerts.push(q.x,.08,q.z);riverUv.push(j/2,t*42);
+    }
+  }
+  for(let i=0;i<riverSegments;i++)for(let j=0;j<2;j++){const a=i*3+j;riverIndices.push(a,a+1,a+3,a+1,a+4,a+3)}
+  riverGeo.setAttribute('position',new THREE.Float32BufferAttribute(riverVerts,3));
+  riverGeo.setAttribute('uv',new THREE.Float32BufferAttribute(riverUv,2));riverGeo.setIndex(riverIndices);riverGeo.computeVertexNormals();
+  const water=new THREE.Mesh(riverGeo,waterMat);water.receiveShadow=true;scene.add(water);
+
+  const foliageGroups=[];
+  const wildlife=[];
+  const mats={
+    mud:new THREE.MeshStandardMaterial({color:0x4d4a32,roughness:1}),
+    darkMud:new THREE.MeshStandardMaterial({color:0x303c2b,roughness:1}),
+    trunk:new THREE.MeshStandardMaterial({color:0x58452f,roughness:1}),
+    root:new THREE.MeshStandardMaterial({color:0x66513a,roughness:1}),
+    leaves:[0x244d35,0x315e3d,0x3d7048,0x1e432f,0x4a7547].map(c=>new THREE.MeshStandardMaterial({color:c,roughness:.96})),
+    wood:new THREE.MeshStandardMaterial({color:0x795333,roughness:.82}),
+    woodDark:new THREE.MeshStandardMaterial({color:0x4a3020,roughness:.94}),
+    woodLight:new THREE.MeshStandardMaterial({color:0xb18450,roughness:.8}),
+    cream:new THREE.MeshStandardMaterial({color:0xd9c59d,roughness:.88}),
+    roof:new THREE.MeshStandardMaterial({color:0x69452d,roughness:.92}),
+    glass:new THREE.MeshPhysicalMaterial({color:0x739c9a,roughness:.18,metalness:.18,transparent:true,opacity:.82}),
+    gold:new THREE.MeshStandardMaterial({color:0xcba967,metalness:.35,roughness:.42}),
+    black:new THREE.MeshStandardMaterial({color:0x1c241c,roughness:.8}),
+    boatHull:new THREE.MeshStandardMaterial({color:0x70452c,roughness:.58}),
+    boatTrim:new THREE.MeshStandardMaterial({color:0xb58b55,roughness:.5})
+  };
+  let seed=20261125;const rand=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296};
+  const shadow=(m)=>{m.castShadow=true;m.receiveShadow=true;return m};
+  function addBank(t,sign){
+    const p=path.getPointAt(t),s=sideAt(t),offset=9.1+rand()*3.5;
+    const x=p.x+s.x*offset*sign,z=p.z+s.z*offset*sign;
+    const island=new THREE.Mesh(new THREE.SphereGeometry(1,18,12),mats.mud);
+    island.position.set(x,-.38,z);island.scale.set(7.8,.72,8.5);island.receiveShadow=true;scene.add(island);
+    // Muddy edge and scattered pneumatophores.
+    for(let r=0;r<14;r++){
+      const rx=x+(rand()-.5)*10,rz=z+(rand()-.5)*11;
+      const spike=new THREE.Mesh(new THREE.ConeGeometry(.075,.65+rand()*.55,5),mats.root);
+      spike.position.set(rx,.22,rz);spike.rotation.z=(rand()-.5)*.35;scene.add(spike);
+    }
+    const treeCount=3+Math.floor(rand()*3);
+    for(let k=0;k<treeCount;k++)addMangrove(x+(rand()-.5)*8,-.05,z+(rand()-.5)*9,.78+rand()*.62);
+  }
+  function addMangrove(x,y,z,scale=1){
+    const g=new THREE.Group();g.position.set(x,y,z);g.scale.setScalar(scale);scene.add(g);foliageGroups.push(g);
+    const h=4.2+rand()*3.8;
+    const trunk=shadow(new THREE.Mesh(new THREE.CylinderGeometry(.18,.38,h,8),mats.trunk));trunk.position.y=h/2;g.add(trunk);
+    // Mangrove prop roots flare into the tidal mud.
+    for(let a=0;a<5;a++){
+      const ang=a*Math.PI*2/5+rand()*.3;
+      const root=shadow(new THREE.Mesh(new THREE.CylinderGeometry(.045,.18,2.1,6),mats.root));
+      root.position.set(Math.cos(ang)*.68,1.0,Math.sin(ang)*.68);root.rotation.z=Math.cos(ang)*.52;root.rotation.x=Math.sin(ang)*.52;g.add(root);
+    }
+    for(let b=0;b<3;b++){
+      const branch=shadow(new THREE.Mesh(new THREE.CylinderGeometry(.07,.13,2.6,6),mats.trunk));
+      branch.position.set((rand()-.5)*1.1,h*.72+b*.25,(rand()-.5)*.9);branch.rotation.z=(rand()-.5)*.8;branch.rotation.x=(rand()-.5)*.65;g.add(branch);
+    }
+    const crownY=h+.45;
+    for(let c=0;c<10;c++){
+      const leaf=new THREE.Mesh(new THREE.SphereGeometry(1,10,8),mats.leaves[Math.floor(rand()*mats.leaves.length)]);
+      leaf.position.set((rand()-.5)*3.6,crownY+(rand()-.5)*2.0,(rand()-.5)*3.2);
+      leaf.scale.set(.9+rand()*1.25,.65+rand()*.8,.9+rand()*1.25);leaf.castShadow=true;g.add(leaf);
+    }
+  }
+  // Dense, varied mangrove banks on both sides of the winding tidal channel.
+  for(let i=0;i<104;i++){const t=.025+i*.0091;addBank(t,-1);addBank(t,1)}
+  // Wildlife actors: tiger and deer on the mangrove banks, crocodile in the tidal water.
+  const animalMats={
+    tiger:new THREE.MeshStandardMaterial({color:0xc77b32,roughness:.96}),
+    tigerCream:new THREE.MeshStandardMaterial({color:0xe8d4ad,roughness:1}),
+    stripe:new THREE.MeshStandardMaterial({color:0x201c16,roughness:1}),
+    deer:new THREE.MeshStandardMaterial({color:0xb9824c,roughness:.95}),
+    deerLight:new THREE.MeshStandardMaterial({color:0xe5c28e,roughness:1}),
+    dark:new THREE.MeshStandardMaterial({color:0x38291e,roughness:1}),
+    croc:new THREE.MeshStandardMaterial({color:0x465d42,roughness:1}),
+    crocLight:new THREE.MeshStandardMaterial({color:0x82906a,roughness:1})
+  };
+  function animalSphere(parent,mat,pos,scale){const m=new THREE.Mesh(new THREE.SphereGeometry(1,14,10),mat);m.position.set(...pos);m.scale.set(...scale);m.castShadow=true;parent.add(m);return m}
+  function animalLimb(parent,mat,x,y,z,len,r=.085){const pivot=new THREE.Group();pivot.position.set(x,y,z);const mesh=new THREE.Mesh(new THREE.CylinderGeometry(r*.72,r,len,8),mat);mesh.position.y=-len/2;mesh.castShadow=true;pivot.add(mesh);parent.add(pivot);return pivot}
+  function addTiger(t,sideSign){
+    const p=path.getPointAt(t),tan=path.getTangentAt(t),side=sideAt(t);
+    const g=new THREE.Group();g.position.set(p.x+side.x*sideSign*12.0,.02,p.z+side.z*sideSign*12.0);g.rotation.y=Math.atan2(tan.x,tan.z)+Math.PI;scene.add(g);
+    animalSphere(g,animalMats.tiger,[0,1.05,0],[.68,.62,1.18]);
+    animalSphere(g,animalMats.tigerCream,[0,.77,.15],[.55,.18,.86]);
+    const head=new THREE.Group();head.position.set(0,1.22,.88);g.add(head);
+    animalSphere(head,animalMats.tiger,[0,.12,.12],[.48,.43,.48]);
+    animalSphere(head,animalMats.tigerCream,[0,-.13,.48],[.31,.2,.25]);
+    for(const x of [-.18,.18]){animalSphere(head,animalMats.dark,[x,.18,.52],[.055,.055,.045]);const ear=animalSphere(head,animalMats.tiger,[x*1.7,.48,.02],[.14,.16,.12]);}
+    const legs=[];for(const x of [-.43,.43])for(const z of [-.73,.72])legs.push(animalLimb(g,animalMats.tiger,x,.78,z,.72,.14));
+    // Dark ring stripes wrap the torso and remain legible from the boat camera.
+    for(let i=0;i<7;i++){const stripe=new THREE.Mesh(new THREE.TorusGeometry(.57,.045,5,24),animalMats.stripe);stripe.rotation.x=Math.PI/2;stripe.scale.y=.88;stripe.position.set(0,1.06,-.86+i*.29);g.add(stripe)}
+    const tailCurve=new THREE.CatmullRomCurve3([new THREE.Vector3(0,1.12,-1.0),new THREE.Vector3(.12,.88,-1.55),new THREE.Vector3(.28,.72,-2.05),new THREE.Vector3(.45,.92,-2.35)]);
+    const tail=new THREE.Mesh(new THREE.TubeGeometry(tailCurve,20,.075,8,false),animalMats.tiger);g.add(tail);
+    wildlife.push({kind:'tiger',group:g,head,legs,tail,phase:t*18});
+  }
+  function addDeer(t,sideSign){
+    const p=path.getPointAt(t),tan=path.getTangentAt(t),side=sideAt(t);
+    const g=new THREE.Group();g.position.set(p.x+side.x*sideSign*11.4,.02,p.z+side.z*sideSign*11.4);g.rotation.y=Math.atan2(tan.x,tan.z)+Math.PI;scene.add(g);
+    animalSphere(g,animalMats.deer,[0,1.05,0],[.48,.55,.9]);
+    const neck=new THREE.Group();neck.position.set(0,1.32,.58);neck.rotation.x=-.3;g.add(neck);
+    animalSphere(neck,animalMats.deer,[0,.32,.05],[.22,.55,.24]);
+    const head=new THREE.Group();head.position.set(0,.68,.12);neck.add(head);
+    animalSphere(head,animalMats.deer,[0,.05,.12],[.24,.25,.3]);animalSphere(head,animalMats.deerLight,[0,-.04,.36],[.15,.1,.18]);
+    for(const x of [-.13,.13]){animalSphere(head,animalMats.dark,[x,.01,.48],[.035,.035,.04]);const ear=animalSphere(head,animalMats.deer,[x*1.7,.19,-.03],[.08,.19,.06]);
+      const antler=new THREE.Group();antler.position.set(x*.7,.22,-.02);head.add(antler);const stem=new THREE.Mesh(new THREE.CylinderGeometry(.02,.04,.38,6),animalMats.dark);stem.position.y=.18;stem.rotation.z=x<0?-.2:.2;antler.add(stem);
+      for(let j=0;j<2;j++){const tine=new THREE.Mesh(new THREE.CylinderGeometry(.014,.022,.18,5),animalMats.dark);tine.position.set(x<0?-.06:.06,.28+j*.06,0);tine.rotation.z=x<0?-.65:.65;antler.add(tine)}
+    }
+    const legs=[];for(const x of [-.26,.26])for(const z of [-.52,.52])legs.push(animalLimb(g,animalMats.deer,x,.78,z,.82,.065));
+    const tail=animalSphere(g,animalMats.deerLight,[0,1.12,-.9],[.1,.12,.2]);
+    wildlife.push({kind:'deer',group:g,head,legs,tail,phase:t*21});
+  }
+  function addCroc(t,sideSign){
+    const p=path.getPointAt(t),side=sideAt(t);const g=new THREE.Group();
+    g.position.set(p.x+side.x*sideSign*5.9,.12,p.z+side.z*sideSign*5.9);g.rotation.y=Math.atan2(path.getTangentAt(t).x,path.getTangentAt(t).z)+Math.PI;scene.add(g);
+    animalSphere(g,animalMats.croc,[0,.2,0],[.52,.25,1.38]);
+    const head=animalSphere(g,animalMats.crocLight,[0,.2,1.22],[.42,.2,.64]);animalSphere(g,animalMats.croc,[0,.08,1.62],[.35,.1,.4]);
+    for(const x of [-.19,.19]){animalSphere(g,animalMats.crocLight,[x,.38,1.35],[.11,.09,.12]);animalSphere(g,animalMats.dark,[x,.45,1.38],[.04,.035,.04]);for(const z of [-.5,.5]){const leg=new THREE.Mesh(new THREE.ConeGeometry(.12,.38,6),animalMats.croc);leg.position.set(x*2,.02,z);leg.rotation.z=x<0?-.6:.6;g.add(leg)}}
+    const tail=new THREE.Group();tail.position.set(0,.18,-1.05);g.add(tail);for(let i=0;i<5;i++){const seg=new THREE.Mesh(new THREE.ConeGeometry(.25-i*.035,.45,7),animalMats.croc);seg.rotation.x=-Math.PI/2;seg.position.z=-.18-i*.32;tail.add(seg)}
+    wildlife.push({kind:'croc',group:g,head,tail,phase:t*13});
+  }
+  addDeer(.235,1);addTiger(.355,-1);addCroc(.505,1);addDeer(.785,-1);
+
+  // Distant green tree line and layered forest silhouettes.
+  for(let i=0;i<110;i++){
+    const x=(rand()-.5)*150,z=-155+rand()*275;if(Math.abs(x)<14)continue;
+    const h=6+rand()*12;const tree=new THREE.Mesh(new THREE.ConeGeometry(2.4+rand()*2.5,h,7),mats.leaves[Math.floor(rand()*mats.leaves.length)]);
+    tree.position.set(x,h/2-1,z);tree.castShadow=true;scene.add(tree);
+  }
+
+  function makeBoat(scale=1,withCabin=true){
+    const b=new THREE.Group();b.scale.setScalar(scale);
+    // Hand-shaped tapered hull using a custom cross-section mesh.
+    const hullShape=new THREE.Shape();hullShape.moveTo(-1.15,-2.7);hullShape.quadraticCurveTo(-1.42,-1.3,-1.22,1.95);hullShape.quadraticCurveTo(0,3.25,1.22,1.95);hullShape.quadraticCurveTo(1.42,-1.3,1.15,-2.7);hullShape.quadraticCurveTo(0,-3.15,-1.15,-2.7);
+    const hullGeo=new THREE.ExtrudeGeometry(hullShape,{depth:.55,bevelEnabled:true,bevelSegments:3,steps:1,bevelSize:.12,bevelThickness:.12});
+    const hull=shadow(new THREE.Mesh(hullGeo,mats.boatHull));hull.rotation.x=Math.PI/2;hull.position.y=.35;b.add(hull);
+    const deck=shadow(new THREE.Mesh(new THREE.BoxGeometry(2.05,.13,4.8),mats.wood));deck.position.set(0,.82,0);b.add(deck);
+    // Visible side rails and plank lines.
+    for(const side of [-1,1]){
+      const rail=new THREE.Mesh(new THREE.BoxGeometry(.1,.18,4.6),mats.boatTrim);rail.position.set(side*1.0,1.0,0);b.add(rail);
+      for(let j=0;j<7;j++){const plank=new THREE.Mesh(new THREE.BoxGeometry(1.82,.025,.035),mats.woodLight);plank.position.set(0,.91,-2.0+j*.62);b.add(plank)}
+    }
+    if(withCabin){
+      const cabin=shadow(new THREE.Mesh(new THREE.BoxGeometry(1.55,1.45,1.8),mats.cream));cabin.position.set(0,1.62,-.45);b.add(cabin);
+      const roof=shadow(new THREE.Mesh(new THREE.BoxGeometry(2.0,.18,2.35),mats.roof));roof.position.set(0,2.42,-.45);b.add(roof);
+      for(const x of [-.53,.53]){const win=new THREE.Mesh(new THREE.BoxGeometry(.46,.62,.05),mats.glass);win.position.set(x,1.78,.47);b.add(win)}
+      const front=new THREE.Mesh(new THREE.BoxGeometry(.65,.65,.05),mats.glass);front.position.set(0,1.78,.48);b.add(front);
+    }
+    const bowPole=new THREE.Mesh(new THREE.CylinderGeometry(.035,.045,2.1,6),mats.woodDark);bowPole.position.set(0,1.5,2.15);b.add(bowPole);
+    const flag=new THREE.Mesh(new THREE.PlaneGeometry(.9,.42),new THREE.MeshStandardMaterial({color:0xd7b56e,side:THREE.DoubleSide,roughness:.8}));flag.position.set(.42,2.25,2.15);b.add(flag);
+    return b;
+  }
+  const boat=makeBoat(1.0,true);scene.add(boat);
+  const wakeMat=new THREE.MeshBasicMaterial({color:0xc7e6df,transparent:true,opacity:.22,side:THREE.DoubleSide});
+  const wakes=[];for(let i=0;i<4;i++){const w=new THREE.Mesh(new THREE.TorusGeometry(1.4+i*.55,.035,5,56),wakeMat);w.rotation.x=Math.PI/2;w.position.set(0,.14,-3.1-i*.7);w.scale.set(1.4,.55,1);boat.add(w);wakes.push(w)}
+
+  const ghats=[
+    {kind:'resort',title:'BOOK YOUR RESORT',sub:'RIVERSIDE STAYS',href:'#hotel-details',t:.14,side:-1},
+    {kind:'boat',title:'BOOK YOUR BOAT TRIP',sub:'CHOOSE YOUR BOAT',href:'#boat-trips',t:.255,side:1},
+    {kind:'package',title:'BOOK YOUR PACKAGE TOUR',sub:'STAY + BOAT JOURNEY',href:'#str-packages',t:.37,side:-1},
+    {kind:'photography',title:'PHOTOGRAPHY SPECIAL PACKAGE',sub:'WILDLIFE & RIVER PHOTOGRAPHY',href:'#photography',t:.485,side:1},
+    {kind:'night',title:'NIGHT RIVER STAY',sub:'SLEEP BESIDE THE RIVER',href:'#river-stays',t:.60,side:-1},
+    {kind:'shop',title:'SUNDARBAN SHOP',sub:'LOCAL PRODUCTS & SOUVENIRS',href:'#shop',t:.715,side:1},
+    {kind:'customise',title:'CUSTOMISE YOUR SUNDARBAN TRIP',sub:'BUILD YOUR OWN JOURNEY',href:'#customise',t:.83,side:-1},
+    {kind:'contact',title:'CONTACT & BOOKING',sub:'LET US PLAN YOUR TRIP',href:'#contact',t:.945,side:1}
+  ];
+  const nightLights=[];
+  function boardTexture(title,sub){
+    const c=document.createElement('canvas');c.width=1200;c.height=520;const x=c.getContext('2d');
+    const g=x.createLinearGradient(0,0,1200,520);g.addColorStop(0,'#765438');g.addColorStop(.52,'#4c3424');g.addColorStop(1,'#302319');x.fillStyle=g;x.fillRect(0,0,1200,520);
+    for(let i=0;i<42;i++){const y=12+i*12;x.strokeStyle=i%4===0?'rgba(227,190,132,.17)':'rgba(18,10,5,.15)';x.lineWidth=2;x.beginPath();x.moveTo(0,y);x.bezierCurveTo(260,y-12,720,y+12,1200,y-6);x.stroke()}
+    x.strokeStyle='#d8b66b';x.lineWidth=15;x.strokeRect(24,24,1152,472);x.strokeStyle='rgba(255,235,190,.55)';x.lineWidth=3;x.strokeRect(45,45,1110,430);
+    x.textAlign='center';x.fillStyle='#e7c982';x.font='bold 38px Georgia';x.fillText('SUNDARBAN TRAVEL',600,116);
+    x.fillStyle='#fff3d6';let fs=title.length>26?54:title.length>19?64:76;x.font=`bold ${fs}px Georgia`;
+    const words=title.split(' '),lines=[''];for(const w of words){let i=lines.length-1;const candidate=lines[i]?lines[i]+' '+w:w;if(x.measureText(candidate).width>1080)lines.push(w);else lines[i]=candidate}
+    lines.slice(0,2).forEach((line,i)=>x.fillText(line,600,245+i*72));
+    x.fillStyle='#e4c78e';x.font='bold 30px Arial';x.fillText(sub,600,418);
+    const tex=new THREE.CanvasTexture(c);tex.colorSpace=THREE.SRGBColorSpace;tex.anisotropy=renderer.capabilities.getMaxAnisotropy();return tex;
+  }
+  const boardFaces=[];const boardRecords=[];
+  function makeSign(item,index){
+    const p=path.getPointAt(item.t),s=sideAt(item.t),bank=s.clone().multiplyScalar(item.side);
+    const g=new THREE.Group();g.position.copy(p).addScaledVector(bank,10.6);g.position.y=.15;
+    const inward=bank.clone().negate();g.rotation.y=Math.atan2(inward.x,inward.z);
+    for(const x of [-2.0,2.0]){
+      const post=shadow(new THREE.Mesh(new THREE.BoxGeometry(.32,4.8,.38),mats.woodDark));post.position.set(x,2.35,0);g.add(post);
+      const cap=new THREE.Mesh(new THREE.BoxGeometry(.48,.18,.5),mats.woodLight);cap.position.set(x,4.78,0);g.add(cap);
+    }
+    const plank=shadow(new THREE.Mesh(new THREE.BoxGeometry(5.25,2.45,.42),mats.wood));plank.position.set(0,3.35,0);g.add(plank);
+    const face=new THREE.Mesh(new THREE.PlaneGeometry(5.0,2.2),new THREE.MeshStandardMaterial({map:boardTexture(item.title,item.sub),roughness:.72,metalness:.03}));face.position.set(0,3.35,.225);face.userData.href=item.href;face.userData.ghat=index;g.add(face);boardFaces.push(face);
+    const cap=new THREE.Mesh(new THREE.BoxGeometry(5.5,.18,.55),mats.gold);cap.position.set(0,4.65,0);g.add(cap);
+    // Timber jetty leading from the board toward the river.
+    const dock=new THREE.Group();dock.position.copy(p).addScaledVector(bank,7.3);dock.rotation.y=Math.atan2(inward.x,inward.z);
+    for(let j=0;j<7;j++){const plank2=shadow(new THREE.Mesh(new THREE.BoxGeometry(3.3,.16,.78),mats.wood));plank2.position.set(0,.12,-j*.78);dock.add(plank2)}
+    for(const x of [-1.35,1.35])for(let j=0;j<4;j++){const pile=shadow(new THREE.Mesh(new THREE.CylinderGeometry(.12,.17,1.8,7),mats.woodDark));pile.position.set(x,-.65,-j*1.55);dock.add(pile)}
+    scene.add(dock);scene.add(g);
+    const focus=g.position.clone().add(new THREE.Vector3(0,3.25,0));
+    const record={...item,group:g,face,focus,bank,dock,index};boardRecords.push(record);
+    return record;
+  }
+  function addResort(site){
+    const b=new THREE.Group();b.position.set(-1.5,0,-2);site.add(b);
+    const stilts=[[-3,-1.5],[3,-1.5],[-3,2],[3,2]];for(const [x,z] of stilts){const st=shadow(new THREE.Mesh(new THREE.CylinderGeometry(.16,.2,2.5,7),mats.woodDark));st.position.set(x,1.25,z);b.add(st)}
+    const body=shadow(new THREE.Mesh(new THREE.BoxGeometry(7.5,3.5,5.2),mats.cream));body.position.y=3.2;b.add(body);
+    const roof=shadow(new THREE.Mesh(new THREE.ConeGeometry(5.8,2.2,4),mats.roof));roof.rotation.y=Math.PI/4;roof.position.y=6.05;roof.scale.z=.72;b.add(roof);
+    for(const x of [-2.35,0,2.35]){const win=new THREE.Mesh(new THREE.BoxGeometry(1.05,1.3,.08),mats.glass);win.position.set(x,3.25,2.65);b.add(win)}
+    const deck=shadow(new THREE.Mesh(new THREE.BoxGeometry(9,.22,2.6),mats.wood));deck.position.set(0,2.1,3.5);b.add(deck);
+    for(const x of [-4,4]){const rail=new THREE.Mesh(new THREE.BoxGeometry(.12,.8,2.4),mats.woodLight);rail.position.set(x,2.55,3.5);b.add(rail)}
+    for(const x of [-3.8,3.8]){const lamp=new THREE.PointLight(0xffbd68,0,9);lamp.position.set(x,4,3);b.add(lamp);nightLights.push(lamp)}
+  }
+  function addMooredBoat(site,x,z,scale=1){const b=makeBoat(scale,true);b.position.set(x,.18,z);b.rotation.y=.18;site.add(b);return b}
+  function addPhotography(site){
+    const deck=new THREE.Mesh(new THREE.BoxGeometry(9,.3,6),mats.wood);deck.position.set(0,1.2,0);shadow(deck);site.add(deck);
+    for(const x of [-4,4])for(const z of [-2,2]){const st=new THREE.Mesh(new THREE.CylinderGeometry(.15,.2,1.4,7),mats.woodDark);st.position.set(x,.45,z);site.add(st)}
+    const tripod=new THREE.Group();tripod.position.set(1.8,1.4,-.6);site.add(tripod);
+    for(let i=0;i<3;i++){const leg=new THREE.Mesh(new THREE.CylinderGeometry(.045,.06,2.0,6),mats.black);leg.position.set(Math.cos(i*2.094)*.48,-.4,Math.sin(i*2.094)*.48);leg.rotation.z=Math.cos(i*2.094)*.25;leg.rotation.x=Math.sin(i*2.094)*.25;tripod.add(leg)}
+    const cam=new THREE.Mesh(new THREE.BoxGeometry(.85,.58,.42),mats.black);cam.position.y=.72;tripod.add(cam);
+    const lens=new THREE.Mesh(new THREE.CylinderGeometry(.19,.19,.42,12),mats.gold);lens.rotation.x=Math.PI/2;lens.position.set(0,.72,.38);tripod.add(lens);
+    addMooredBoat(site,-2.6,4.5,.78);
+  }
+  function addNightStay(site){
+    const houseboat=addMooredBoat(site,-.8,3.8,1.35);
+    const cabin=shadow(new THREE.Mesh(new THREE.BoxGeometry(2.7,1.75,2.3),mats.cream));cabin.position.set(-.8,2.0,3.2);site.add(cabin);
+    const roof=shadow(new THREE.Mesh(new THREE.BoxGeometry(3.2,.18,2.8),mats.roof));roof.position.set(-.8,2.95,3.2);site.add(roof);
+    for(const x of [-1.6,0]){const win=new THREE.Mesh(new THREE.BoxGeometry(.65,.85,.06),new THREE.MeshBasicMaterial({color:0xffc16b}));win.position.set(x,2.1,4.37);site.add(win)}
+    const dock=new THREE.Mesh(new THREE.BoxGeometry(7,.22,2.2),mats.wood);dock.position.set(1.8,.55,1.6);site.add(dock);
+    for(let i=0;i<5;i++){const bulb=new THREE.PointLight(0xffb85f,0,8);bulb.position.set(-2+i,4.5,1.6);site.add(bulb);nightLights.push(bulb)}
+    const string=new THREE.Mesh(new THREE.CylinderGeometry(.025,.025,5,6),mats.gold);string.rotation.z=Math.PI/2;string.position.set(-.1,4.4,1.6);site.add(string);
+  }
+  function addShop(site){
+    const hut=new THREE.Mesh(new THREE.BoxGeometry(7,3.5,5),mats.cream);hut.position.set(-1,2,-1);shadow(hut);site.add(hut);
+    const roof=new THREE.Mesh(new THREE.ConeGeometry(5.4,2.0,4),mats.roof);roof.rotation.y=Math.PI/4;roof.position.set(-1,4.8,-1);roof.scale.z=.75;site.add(roof);
+    const counter=new THREE.Mesh(new THREE.BoxGeometry(7.5,1.05,1.2),mats.wood);counter.position.set(-1,1.1,2.1);site.add(counter);
+    for(let i=0;i<7;i++){const jar=new THREE.Mesh(new THREE.CylinderGeometry(.22,.22,.55,12),new THREE.MeshPhysicalMaterial({color:i%2?0xb18b4b:0x87945c,roughness:.2,transmission:.25}));jar.position.set(-3.7+i*.9,1.9,2.2);site.add(jar)}
+  }
+  function addPlanning(site){
+    const deck=new THREE.Mesh(new THREE.BoxGeometry(9,.25,6),mats.wood);deck.position.set(0,.65,0);site.add(deck);
+    const shelter=new THREE.Mesh(new THREE.BoxGeometry(7,.18,4),mats.roof);shelter.position.set(0,4.3,-1);site.add(shelter);
+    for(const x of [-3,3])for(const z of [-2.5,.5]){const post=new THREE.Mesh(new THREE.CylinderGeometry(.12,.15,4,7),mats.woodDark);post.position.set(x,2.2,z);site.add(post)}
+    const mapBoard=new THREE.Mesh(new THREE.BoxGeometry(3.4,2.2,.14),mats.cream);mapBoard.position.set(0,2.35,1.9);site.add(mapBoard);
+    const route=new THREE.Mesh(new THREE.TorusGeometry(.55,.035,5,32),mats.gold);route.position.set(0,2.35,2.0);site.add(route);
+    addMooredBoat(site,-2.4,4.7,.82);addMooredBoat(site,2.4,4.8,.78);
+  }
+  let receptionistGreetingArm=null,receptionistLeftArm=null;
+  function addContact(site){
+    // Open-front digital reception pavilion, facing the arriving river boat.
+    const floor=shadow(new THREE.Mesh(new THREE.BoxGeometry(10,.28,7),mats.wood));floor.position.set(0,.45,0);site.add(floor);
+    const roof=shadow(new THREE.Mesh(new THREE.BoxGeometry(10,.22,7),mats.roof));roof.position.set(0,6.25,-.35);site.add(roof);
+    for(const x of [-4.55,4.55])for(const z of [-3.35,2.65]){
+      const post=shadow(new THREE.Mesh(new THREE.CylinderGeometry(.16,.2,5.7,8),mats.woodDark));post.position.set(x,3.35,z);site.add(post);
+    }
+    const backWall=shadow(new THREE.Mesh(new THREE.BoxGeometry(9,.12,.22),mats.woodDark));backWall.position.set(0,3.25,-3.2);site.add(backWall);
+    // Reception desk with a warm illuminated front panel.
+    const desk=shadow(new THREE.Mesh(new THREE.BoxGeometry(4.8,1.05,1.15),mats.wood));desk.position.set(0,1.25,1.65);site.add(desk);
+    const deskFront=new THREE.Mesh(new THREE.BoxGeometry(4.3,.58,.06),new THREE.MeshStandardMaterial({color:0x173e30,roughness:.35,metalness:.12}));deskFront.position.set(0,1.22,2.24);site.add(deskFront);
+    // Receptionist: stylised human figure, positioned behind the desk and facing the boat.
+    const person=new THREE.Group();person.position.set(0,0,.45);site.add(person);
+    const skin=new THREE.MeshStandardMaterial({color:0xb97952,roughness:.82});
+    const uniform=new THREE.MeshStandardMaterial({color:0x174b3a,roughness:.7});
+    const gold=new THREE.MeshStandardMaterial({color:0xd9b66b,metalness:.35,roughness:.4});
+    const torso=shadow(new THREE.Mesh(new THREE.CylinderGeometry(.48,.62,1.45,12),uniform));torso.position.y=2.35;person.add(torso);
+    const neck=new THREE.Mesh(new THREE.CylinderGeometry(.14,.16,.28,10),skin);neck.position.y=3.17;person.add(neck);
+    const head=shadow(new THREE.Mesh(new THREE.SphereGeometry(.48,18,14),skin));head.position.y=3.72;head.scale.set(.82,1.08,.84);person.add(head);
+    const hair=new THREE.Mesh(new THREE.SphereGeometry(.49,16,10,0,Math.PI*2,0,Math.PI*.55),new THREE.MeshStandardMaterial({color:0x211812,roughness:.9}));hair.position.set(0,3.88,-.04);person.add(hair);
+    for(const x of [-.17,.17]){const eye=new THREE.Mesh(new THREE.SphereGeometry(.045,8,8),new THREE.MeshBasicMaterial({color:0x201710}));eye.position.set(x,3.78,.39);person.add(eye)}
+    const leftArm=new THREE.Group();leftArm.position.set(-.48,2.88,0);person.add(leftArm);receptionistLeftArm=leftArm;
+    const leftUpper=new THREE.Mesh(new THREE.CylinderGeometry(.13,.16,.78,9),uniform);leftUpper.position.set(0,-.38,0);leftArm.add(leftUpper);
+    const leftForearm=new THREE.Mesh(new THREE.CylinderGeometry(.105,.12,.68,9),uniform);leftForearm.position.set(0,-.88,.05);leftForearm.rotation.x=-.25;leftArm.add(leftForearm);
+    const leftHand=new THREE.Mesh(new THREE.SphereGeometry(.16,10,8),skin);leftHand.position.set(0,-1.24,.13);leftArm.add(leftHand);
+    const rightArm=new THREE.Group();rightArm.position.set(.48,2.88,0);person.add(rightArm);receptionistGreetingArm=rightArm;
+    const upper=new THREE.Mesh(new THREE.CylinderGeometry(.13,.16,.78,9),uniform);upper.position.set(0,-.38,0);rightArm.add(upper);
+    const forearm=new THREE.Mesh(new THREE.CylinderGeometry(.105,.12,.68,9),uniform);forearm.position.set(0,-.88,.05);forearm.rotation.x=-.25;rightArm.add(forearm);
+    const hand=new THREE.Mesh(new THREE.SphereGeometry(.16,10,8),skin);hand.position.set(0,-1.24,.13);rightArm.add(hand);
+    // Small gold name badge.
+    const badgeMesh=new THREE.Mesh(new THREE.BoxGeometry(.42,.18,.05),gold);badgeMesh.position.set(.22,2.58,.46);person.add(badgeMesh);
+    addMooredBoat(site,5.4,3.6,.72);
+    for(const x of [-3.5,3.5]){const lamp=new THREE.PointLight(0xffc06a,0,12);lamp.position.set(x,4.8,1.2);site.add(lamp);nightLights.push(lamp)}
+  }
+  ghats.forEach((item,index)=>{
+    const signItem=item.kind==='contact'?{...item,title:'SUNDARBAN TRAVEL',sub:'DIGITAL RECEPTION · CONTACT & BOOKING'}:item;
+    const rec=makeSign(signItem,index);
+    const site=new THREE.Group();
+    const p=path.getPointAt(item.t),bank=sideAt(item.t).multiplyScalar(item.side);
+    site.position.copy(p).addScaledVector(bank,15.5);site.rotation.y=Math.atan2(-bank.x,-bank.z);
+    if(item.kind==='resort')addResort(site);
+    if(item.kind==='boat')addMooredBoat(site,0,1.2,1.0);
+    if(item.kind==='package'){addResort(site);addMooredBoat(site,-3.0,5.1,.86);addMooredBoat(site,0,5.8,.82);addMooredBoat(site,3.0,5.0,.78)}
+    if(item.kind==='photography')addPhotography(site);
+    if(item.kind==='night')addNightStay(site);
+    if(item.kind==='shop')addShop(site);
+    if(item.kind==='customise')addPlanning(site);
+    if(item.kind==='contact')addContact(site);
+    scene.add(site);rec.site=site;
+  });
+
+  // Small distant moon and stars fade in after the Night River Stay ghat.
+  const moonMesh=new THREE.Mesh(new THREE.SphereGeometry(3.2,24,18),new THREE.MeshBasicMaterial({color:0xdde8f5}));moonMesh.position.set(36,42,-78);scene.add(moonMesh);
+  const starPositions=[];for(let i=0;i<420;i++){starPositions.push((rand()-.5)*180,25+rand()*70,-170+rand()*300)}
+  const starGeo=new THREE.BufferGeometry();starGeo.setAttribute('position',new THREE.Float32BufferAttribute(starPositions,3));
+  const stars=new THREE.Points(starGeo,new THREE.PointsMaterial({color:0xeaf2ff,size:.32,transparent:true,opacity:0,sizeAttenuation:true}));scene.add(stars);
+
+  // Water shimmer particles and surface animation.
+  const glints=new THREE.Group();const glintMat=new THREE.MeshBasicMaterial({color:0xc5e4dd,transparent:true,opacity:.2});
+  for(let i=0;i<260;i++){const m=new THREE.Mesh(new THREE.BoxGeometry(.08,.018,.35+rand()*1.6),glintMat);m.position.set((rand()-.5)*13,.18,-150+rand()*260);m.rotation.y=(rand()-.5)*.35;glints.add(m)}scene.add(glints);
+
+  const journeyStops=[...document.querySelectorAll('.journey-stop')];
+  const titleEl=document.getElementById('journey-scene-name');
+  const caption=document.querySelector('.journey-caption');
+  const progressEl=document.querySelector('.journey-progress span');
+  const scrollSpace=()=>Math.max(1,document.documentElement.scrollHeight-innerHeight);
+  let targetT=.025,currentT=.025,nightMix=0,activeIndex=-1,waterFrame=0;
+  const tmpLook=new THREE.Vector3(),tmpPos=new THREE.Vector3();
+  function getScrollState(){
+    const hero=document.querySelector('main#home>.hero');
+    const heroH=hero?hero.offsetHeight:innerHeight;
+    const journeyTop=heroH;
+    const rel=clamp((scrollY-journeyTop)/Math.max(1,(journeyStops.length-1)*innerHeight));
+    const idx=scrollY<journeyTop-innerHeight*.25?-1:Math.min(7,Math.max(0,Math.round((scrollY-journeyTop)/innerHeight)));
+    return {rel,idx,progress:clamp(scrollY/scrollSpace())};
+  }
+  function readScroll(){
+    const st=getScrollState();
+    targetT=st.idx<0?.025:.14+st.rel*.805;
+    if(st.idx!==activeIndex){activeIndex=st.idx;}
+    if(progressEl)progressEl.style.width=(st.progress*100)+'%';
+    if(titleEl)titleEl.textContent=st.idx<0?'Into the mangrove river':`GHAT 0${st.idx+1} — ${ghats[st.idx].title}`;
+    if(caption){const k=caption.querySelector('.caption-kicker');if(k)k.textContent=st.idx<0?'SUNDARBAN RIVER JOURNEY':`RIVER JOURNEY · ${String(st.idx+1).padStart(2,'0')} / 08`;}
+  }
+  addEventListener('scroll',readScroll,{passive:true});
+  addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);readScroll()});
+  readScroll();
+
+  const raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2();
+  canvas.style.pointerEvents='auto';canvas.style.cursor='default';
+  function pick(e){const r=canvas.getBoundingClientRect();pointer.set(((e.clientX-r.left)/r.width)*2-1,-((e.clientY-r.top)/r.height)*2+1);raycaster.setFromCamera(pointer,camera);return raycaster.intersectObjects(boardFaces,false)[0]}
+  canvas.addEventListener('pointermove',e=>{const hit=pick(e);canvas.style.cursor=hit?'pointer':'default'});
+  canvas.addEventListener('click',e=>{
+    const hit=pick(e);if(!hit)return;const href=hit.object.userData.href;
+    sessionStorage.setItem('sundarbanJourneyReturnY',String(scrollY));
+    sessionStorage.setItem('sundarbanJourneyReturnHash',location.hash||'');
+    location.hash=href;
+  });
+
+  function animate(){
+    requestAnimationFrame(animate);
+    // The boat position is controlled only by page scroll; no autonomous forward drift.
+    currentT=targetT;
+    const t=clamp(currentT,.025,.965),p=path.getPointAt(t),tan=path.getTangentAt(t);
+    // Keep the boat still when scrolling stops: no independent bobbing or rocking.
+    boat.position.set(p.x,.13,p.z);boat.rotation.y=Math.atan2(tan.x,tan.z);boat.rotation.z=0;
+    wakes.forEach((w,i)=>{w.scale.x=1.3+i*.18;w.material.opacity=.16});
+    const nightTarget=clamp((t-.50)/.10);
+    nightMix=THREE.MathUtils.damp(nightMix,nightTarget,1.35,1/60);
+    scene.background.copy(daySky).lerp(nightSky,nightMix);
+    scene.fog.color.copy(dayFog).lerp(nightFog,nightMix);scene.fog.density=lerp(.0095,.013,nightMix);
+    sun.intensity=lerp(2.25,.12,nightMix);hemi.intensity=lerp(2.0,.38,nightMix);moon.intensity=nightMix*.85;stars.material.opacity=nightMix;moonMesh.material.opacity=nightMix;moonMesh.material.transparent=true;
+    nightLights.forEach((l,i)=>{l.intensity=nightMix*(i%3===0?2.5:1.7)});
+    // Moving tidal ripples: subtle vertex motion keeps the water alive.
+    const now=performance.now()*.001;
+    // Update water vertices less often to prevent frame drops on ordinary laptops.
+    if((waterFrame++%4)===0){const pos=riverGeo.attributes.position;for(let i=0;i<pos.count;i++){const x=pos.getX(i),z=pos.getZ(i);pos.setY(i,.07+Math.sin(z*.32+now*1.2+x*.12)*.035+Math.sin(x*.8-now*.8)*.018)}pos.needsUpdate=true;riverGeo.computeVertexNormals();}
+    glints.position.z=Math.sin(now*.22)*.8;
+    foliageGroups.forEach((g,i)=>{g.rotation.z=Math.sin(now*.42+i*.17)*.012;g.rotation.x=Math.cos(now*.31+i*.13)*.009});
+    wildlife.forEach(a=>{
+      const w=Math.sin(now*1.65+a.phase);
+      if(a.kind==='deer'){a.head.rotation.x=.05+Math.max(0,Math.sin(now*.62+a.phase))*.48;a.legs.forEach((leg,i)=>{leg.rotation.x=Math.sin(now*1.55+a.phase+i*Math.PI/2)*.11});a.tail.rotation.z=Math.sin(now*2+a.phase)*.18;a.group.position.y=.02+Math.max(0,w)*.018}
+      else if(a.kind==='tiger'){a.head.rotation.x=.02+Math.max(0,Math.sin(now*.7+a.phase))*.12;a.legs.forEach((leg,i)=>{leg.rotation.x=Math.sin(now*1.45+a.phase+i*Math.PI/2)*.12});a.tail.rotation.y=Math.sin(now*1.15+a.phase)*.24;a.group.position.y=.02+Math.abs(w)*.012}
+      else if(a.kind==='croc'){a.tail.rotation.y=Math.sin(now*1.05+a.phase)*.22;a.head.rotation.y=Math.sin(now*.8+a.phase)*.04;a.group.position.y=.12+Math.sin(now*1.2+a.phase)*.02}
+    });
+    const stop=activeIndex>=0?boardRecords[activeIndex]:null;
+    if(receptionistGreetingArm){
+      const greetingMix=activeIndex===7?1:0;
+      receptionistGreetingArm.rotation.z=THREE.MathUtils.damp(receptionistGreetingArm.rotation.z,greetingMix?-.36:0,3.2,1/60);
+      receptionistGreetingArm.rotation.x=THREE.MathUtils.damp(receptionistGreetingArm.rotation.x,greetingMix?-.12:0,3.2,1/60);
+      if(receptionistLeftArm)receptionistLeftArm.rotation.z=THREE.MathUtils.damp(receptionistLeftArm.rotation.z,greetingMix?.36:0,3.2,1/60);
+    }
+    const back=new THREE.Vector3(-tan.x,0,-tan.z);
+    const normalSide=sideAt(t);
+    const followPos=p.clone().addScaledVector(back,13).add(new THREE.Vector3(0,8.0,0));
+    const forwardLook=path.getPointAt(Math.min(.998,t+.035)).add(new THREE.Vector3(0,1.6,0));
+    if(stop){
+      // At each ghat the camera swings toward the actual signboard and the service scene.
+      const ghatLook=stop.focus.clone().lerp(stop.site.position.clone().add(new THREE.Vector3(0,2.5,0)),.22);
+      // Keep the camera over the river, not inside the raised bank or mangrove trees.
+      const shoreCamera=p.clone().addScaledVector(stop.bank,3.2).addScaledVector(back,10.5).add(new THREE.Vector3(0,6.2,0));
+      camera.position.lerp(shoreCamera,.12);tmpLook.copy(forwardLook).lerp(ghatLook,.78);camera.lookAt(tmpLook);
+    }else{
+      camera.position.lerp(followPos,.12);camera.lookAt(forwardLook);
+    }
+    camera.fov=lerp(48,44,nightMix);camera.updateProjectionMatrix();
+    renderer.render(scene,camera);
+  }
+  animate();
+}
+</script><script>
+(()=>{
+ const phone='919123025329';
+ document.querySelectorAll('.booking-form').forEach(form=>form.addEventListener('submit',e=>{
+  e.preventDefault(); const data=new FormData(form); const lines=[`SUNDARBAN TRAVEL — ${form.dataset.kind||'Booking Enquiry'}`];
+  for(const [key,value] of data.entries()){if(String(value).trim())lines.push(`${key.replace(/[_-]/g,' ')}: ${value}`)}
+  lines.push('Please contact me to confirm availability, final rate and booking details.');
+  const url=`https://wa.me/${phone}?text=${encodeURIComponent(lines.join('\n'))}`;
+  window.open(url,'_blank','noopener');
+ }));
+})();
 </script>
-</body>
-</html>
+
+<script id="digital-reception-assistant">
+(()=>{
+ const answers={
+  resort:"To book a resort, open BOOK YOUR RESORT, review the available stay details and send the hotel booking enquiry. Our team will confirm the property, room availability and final rate.",
+  boat:"Open BOOK YOUR BOAT TRIP to compare boat sizes and hire options. You can send an hourly or full-day boat enquiry from the Boat Trips page.",
+  package:"Open BOOK YOUR PACKAGE TOUR to explore the STR and SBR tour options and their durations. Each package has its own details page and booking enquiry.",
+  photography:"The Photography Special Package is for visitors who want a dedicated river and wildlife photography experience. Open its details page to send your enquiry.",
+  night:"NIGHT RIVER STAY is a riverside overnight experience. Open its details page to review the stay information and contact the team.",
+  customise:"Yes. Open CUSTOMISE YOUR SUNDARBAN TRIP and tell us your preferred dates, duration, route, stay and boat requirements. The team can discuss a trip plan with you.",
+  permission:"The current website information lists forest permission at ₹1,000 and one government-required guide at ₹1,000. Please confirm the applicable requirements and final amount with the team before travel.",
+  shop:"Open SUNDARBAN SHOP to enquire about Sundarban honey and local handmade products. Product availability and prices are confirmed by the team.",
+  contact:"You can contact the booking team on WhatsApp at +91 91230 25329. You can also send an enquiry using the forms on the relevant service pages."
+ };
+ const select=document.getElementById('receptionQuestion'),typed=document.getElementById('receptionTypedQuestion'),answer=document.getElementById('receptionAnswer'),ask=document.getElementById('askReception');
+ function reply(){
+  const key=select?.value;const q=(typed?.value||'').trim().toLowerCase();
+  let result=key?answers[key]:'';
+  if(!result&&q){
+   if(/resort|hotel|room|stay/.test(q))result=answers.resort;
+   else if(/boat|launch|vessel/.test(q))result=answers.boat;
+   else if(/package|tour|str|sbr|route/.test(q))result=answers.package;
+   else if(/photo|camera|photography/.test(q))result=answers.photography;
+   else if(/night|overnight/.test(q))result=answers.night;
+   else if(/custom|plan|itinerary/.test(q))result=answers.customise;
+   else if(/permission|guide|forest/.test(q))result=answers.permission;
+   else if(/shop|honey|souvenir|product/.test(q))result=answers.shop;
+   else if(/contact|phone|whatsapp|call|booking/.test(q))result=answers.contact;
+   else result="Thank you for your question. I can help with resorts, boats, tour packages, photography trips, night stays, custom trips, forest permissions and shop enquiries. For anything else, please WhatsApp our team at +91 91230 25329.";
+  }
+  if(answer)answer.textContent=result||"Please choose a question or type what you would like to know.";
+ }
+ ask?.addEventListener('click',reply);
+ select?.addEventListener('change',()=>{if(select.value){typed.value='';reply()}});
+ typed?.addEventListener('keydown',e=>{if(e.key==='Enter')reply()});
+ let greeted=false;
+ function speakGreeting(){
+  if(greeted)return;greeted=true;
+  const text="How can I help you today?";
+  const greeting=document.getElementById('receptionGreeting');if(greeting)greeting.textContent=text;
+  if('speechSynthesis' in window){
+   try{speechSynthesis.cancel();const utterance=new SpeechSynthesisUtterance(text);utterance.lang='en-IN';utterance.rate=.92;utterance.pitch=1.02;speechSynthesis.speak(utterance)}catch(e){}
+  }
+ }
+ window.addEventListener('scroll',()=>{
+  const section=document.getElementById('journey-stops');
+  const contactStop=document.querySelector('.journey-stop[data-stop="contact"]');
+  if(!section||!contactStop)return;
+  const rect=contactStop.getBoundingClientRect();
+  if(rect.top<innerHeight*.72&&rect.bottom>innerHeight*.18)speakGreeting();
+ },{passive:true});
+})();
+</script>
+<script id="journey-detail-router">
+(()=>{
+ const detailIds=['str-packages','sbr-packages','photography','river-stays','customise','route-directory','boat-trips','hotel-details','shop','contact','booking'];
+ const all=[...document.querySelectorAll('main#home>section')];
+ function route(){const id=(location.hash||'').slice(1);const isDetail=detailIds.includes(id)||detailIds.some(x=>id.startsWith(x+'-'));
+  document.body.classList.toggle('show-detail',isDetail);
+  all.forEach(s=>s.classList.toggle('detail-active',s.id===id||([...detailIds].some(x=>id.startsWith(x+'-'))&&s.id===id.split('-').slice(0,2).join('-'))));
+  if(isDetail){let active=all.find(s=>s.classList.contains('detail-active'));if(active){active.scrollIntoView({block:'start'});if(!active.querySelector('.journey-back')){const b=document.createElement('a');b.className='journey-back';b.href='#journey-stops';b.textContent='← BACK TO JOURNEY';active.prepend(b)}}}
+ }
+ addEventListener('hashchange',route);route();
+ document.addEventListener('click',e=>{
+  const a=e.target.closest('a[href^="#"]');if(!a)return;
+  if(a.classList.contains('stop-board-link')||a.closest('.journey-stops'))sessionStorage.setItem('sundarbanJourneyReturnY',String(scrollY));
+  if(a.classList.contains('journey-back')){e.preventDefault();history.replaceState(null,'',location.pathname+location.search);document.body.classList.remove('show-detail');all.forEach(s=>s.classList.remove('detail-active'));const saved=sessionStorage.getItem('sundarbanJourneyReturnY');requestAnimationFrame(()=>scrollTo(0,saved===null?0:Number(saved)));sessionStorage.removeItem('sundarbanJourneyReturnY')}
+ });
+})();
+</script>
+</body></html>
