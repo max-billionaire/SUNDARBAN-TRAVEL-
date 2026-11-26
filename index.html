@@ -299,7 +299,7 @@ main{z-index:3!important}
 #river-journey{z-index:0;pointer-events:none}#river3d{pointer-events:auto}
 main#home{position:relative;z-index:2}.topbar{z-index:20}
 .journey-stops{position:relative;z-index:2}
-.journey-stop{min-height:100vh;display:flex;align-items:flex-end;padding:clamp(24px,6vw,90px);position:relative;scroll-snap-align:start;pointer-events:none}
+.journey-stop{min-height:100vh;display:flex;align-items:flex-end;padding:clamp(24px,6vw,90px);position:relative;pointer-events:none}
 .journey-stop:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,20,15,.74),rgba(5,20,15,.18) 70%,transparent);pointer-events:none}
 .stop-copy{position:relative;max-width:560px;color:#fff;background:rgba(8,28,21,.58);border:1px solid rgba(217,182,107,.55);backdrop-filter:blur(8px);padding:clamp(20px,3vw,36px);border-radius:18px;pointer-events:auto}
 .stop-copy>span{font-size:12px;letter-spacing:.2em;color:#e4c47f}.stop-copy h2{font-size:clamp(30px,5vw,58px);line-height:1.02;margin:12px 0;color:#fff}.stop-copy p{color:#eee8d9;line-height:1.65}.stop-board-link{display:inline-flex;margin-top:12px;padding:13px 18px;border:1px solid #d9b66b;border-radius:4px;color:#f7e7c4;text-decoration:none;font-weight:700;letter-spacing:.06em}
@@ -312,7 +312,7 @@ body.show-detail .journey-stops,body.show-detail .hero{display:none}
 body.show-detail main#home>section{display:none!important}
 body.show-detail main#home>section.detail-active{display:block!important}
 @media(max-width:700px){.journey-stop{padding:20px 16px 34px;align-items:flex-end}.stop-copy{width:100%}.stop-copy h2{font-size:32px}}
-html{scroll-behavior:smooth;scroll-snap-type:y proximity}
+html{scroll-behavior:smooth}
 </style>
 
 <style id="real-eight-ghat-scene">
@@ -327,13 +327,13 @@ html{scroll-behavior:smooth;scroll-snap-type:y proximity}
 main#home{position:relative;z-index:2;pointer-events:none}
 main#home>.hero{pointer-events:auto}
 main#home>.hero{min-height:100vh;height:100vh;max-height:none;background:transparent}
-main#home>.hero:before{background:linear-gradient(90deg,rgba(4,20,15,.68),rgba(4,20,15,.2) 58%,transparent);z-index:0}
+main#home>.hero:before{background:none!important;z-index:0}
 main#home>.hero:after{display:none}
 .journey-stops{position:relative;z-index:2;display:block}
-.journey-stop{height:100vh;min-height:100vh;max-height:none;padding:0;display:block;position:relative;scroll-snap-align:start;scroll-snap-stop:always;pointer-events:none;background:transparent}
+.journey-stop{height:100vh;min-height:100vh;max-height:none;padding:0;display:block;position:relative;pointer-events:none;background:transparent}
 .journey-stop:before{display:none}
 .journey-stop .stop-copy{display:none!important}.journey-stop{pointer-events:none!important}
-html{scroll-behavior:smooth;scroll-snap-type:y mandatory;scroll-padding-top:0}
+html{scroll-behavior:smooth;scroll-padding-top:0}
 body{scrollbar-color:#b99558 #102b20}
 body:not(.show-detail) footer{display:none!important}
 .topbar{z-index:25}
@@ -394,7 +394,7 @@ body.show-detail main#home>.detail-active{min-height:100vh;pointer-events:auto}
  <section class="journey-stop" data-stop="night" aria-label="Ghat 5: NIGHT RIVER STAY"><div class="stop-copy"><span>05 · GHAT 05</span><h2>NIGHT RIVER STAY</h2><p>A moonlit ghat, illuminated houseboat and warm riverside lanterns.</p><a class="stop-board-link" href="#river-stays">OPEN DETAILS ↗</a></div></section>
  <section class="journey-stop" data-stop="shop" aria-label="Ghat 6: SUNDARBAN SHOP"><div class="stop-copy"><span>06 · GHAT 06</span><h2>SUNDARBAN SHOP</h2><p>A riverside local shop with products and souvenirs.</p><a class="stop-board-link" href="#shop">OPEN DETAILS ↗</a></div></section>
  <section class="journey-stop" data-stop="customise" aria-label="Ghat 7: CUSTOMISE YOUR SUNDARBAN TRIP"><div class="stop-copy"><span>07 · GHAT 07</span><h2>CUSTOMISE YOUR SUNDARBAN TRIP</h2><p>A trip-planning pavilion with boats and a route map.</p><a class="stop-board-link" href="#customise">OPEN DETAILS ↗</a></div></section>
- <section class="journey-stop" data-stop="contact" aria-label="Ghat 8: CONTACT & BOOKING"><div class="stop-copy"><span>08 · GHAT 08</span><h2>CONTACT & BOOKING</h2><p>A welcoming riverside booking pavilion and reception jetty.</p><a class="stop-board-link" href="#contact">OPEN DETAILS ↗</a></div></section>
+ <section class="journey-stop" data-stop="contact" aria-label="Ghat 8: SUNDARBAN TRAVEL RECEPTION"><div class="stop-copy"><span>08 · GHAT 08</span><h2>SUNDARBAN TRAVEL RECEPTION</h2><p>A welcoming riverside booking pavilion and reception jetty.</p><a class="stop-board-link" href="#contact">OPEN DETAILS ↗</a></div></section>
 </div>
 <section class="section detail-section journey-section" id="str-packages" data-scene="deer" data-animal="deer"><div class="section-head"><div class="eyebrow">Separate STR itinerary</div><h2>সুন্দরবন টাইগার রিজার্ভ · Sundarban Tiger Reserve</h2><p>Choose the duration. Each duration has its own details and booking form.</p><nav class="detail-tabs"><a href="#str-1-day">1 Day</a><a href="#str-1-day-1-night">1 Day + 1 Night</a><a href="#str-2-day-1-night">2 Days + 1 Night</a><a href="#str-3-day-2-night">3 Days + 2 Nights</a></nav></div><div class="detail-grid"><article class="detail-card" id="str-1-day"><div class="eyebrow">STR · Tour Package</div><h3>সুন্দরবন টাইগার রিজার্ভ · Sundarban Tiger Reserve — 1 Day</h3><div class="package-duration"><span>1 Day</span><span>Boat Journey</span><span>Route-specific itinerary</span></div><p>This package has its own STR route details. The exact spots and Khari included in this duration will be displayed here after the final itinerary is provided.</p><div class="route-placeholder"><strong>SPOTS & KHARI FOR THIS PACKAGE</strong><br>Itinerary will be added after you provide which spots and Khari are covered in this tour.</div><p class="small-muted">Pickup point and final schedule will be confirmed with the customer before booking. Wildlife sightings are not guaranteed; all forest access is subject to applicable rules and permissions.</p><form class="booking-form" data-kind="STR 1 Day Tour"><div class="form-grid"><label class="form-field">Full Name<input name="name" required placeholder="Your name"></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel" placeholder="Mobile number"></label><label class="form-field">Travel Date<input name="date" type="date" required></label><label class="form-field">Number of Guests<input name="guests" type="number" min="1" value="2" required></label><label class="form-field full">Message / Special Request<textarea name="message" placeholder="Any request"></textarea></label></div><p class="form-note">This sends a booking enquiry to our team. Booking is confirmed only after availability and details are checked.</p><button class="btn primary primary-submit" type="submit">BOOK THIS PACKAGE →</button></form></article><article class="detail-card" id="str-1-day-1-night"><div class="eyebrow">STR · Tour Package</div><h3>সুন্দরবন টাইগার রিজার্ভ · Sundarban Tiger Reserve — 1 Day + 1 Night</h3><div class="package-duration"><span>1 Day + 1 Night</span><span>Boat Journey</span><span>Route-specific itinerary</span></div><p>This package has its own STR route details. The exact spots and Khari included in this duration will be displayed here after the final itinerary is provided.</p><div class="route-placeholder"><strong>SPOTS & KHARI FOR THIS PACKAGE</strong><br>Itinerary will be added after you provide which spots and Khari are covered in this tour.</div><p class="small-muted">Pickup point and final schedule will be confirmed with the customer before booking. Wildlife sightings are not guaranteed; all forest access is subject to applicable rules and permissions.</p><form class="booking-form" data-kind="STR 1 Day + 1 Night Tour"><div class="form-grid"><label class="form-field">Full Name<input name="name" required placeholder="Your name"></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel" placeholder="Mobile number"></label><label class="form-field">Travel Date<input name="date" type="date" required></label><label class="form-field">Number of Guests<input name="guests" type="number" min="1" value="2" required></label><label class="form-field full">Message / Special Request<textarea name="message" placeholder="Any request"></textarea></label></div><p class="form-note">This sends a booking enquiry to our team. Booking is confirmed only after availability and details are checked.</p><button class="btn primary primary-submit" type="submit">BOOK THIS PACKAGE →</button></form></article><article class="detail-card" id="str-2-day-1-night"><div class="eyebrow">STR · Tour Package</div><h3>সুন্দরবন টাইগার রিজার্ভ · Sundarban Tiger Reserve — 2 Days + 1 Night</h3><div class="package-duration"><span>2 Days + 1 Night</span><span>Boat Journey</span><span>Route-specific itinerary</span></div><p>This package has its own STR route details. The exact spots and Khari included in this duration will be displayed here after the final itinerary is provided.</p><div class="route-placeholder"><strong>SPOTS & KHARI FOR THIS PACKAGE</strong><br>Itinerary will be added after you provide which spots and Khari are covered in this tour.</div><p class="small-muted">Pickup point and final schedule will be confirmed with the customer before booking. Wildlife sightings are not guaranteed; all forest access is subject to applicable rules and permissions.</p><form class="booking-form" data-kind="STR 2 Days + 1 Night Tour"><div class="form-grid"><label class="form-field">Full Name<input name="name" required placeholder="Your name"></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel" placeholder="Mobile number"></label><label class="form-field">Travel Date<input name="date" type="date" required></label><label class="form-field">Number of Guests<input name="guests" type="number" min="1" value="2" required></label><label class="form-field full">Message / Special Request<textarea name="message" placeholder="Any request"></textarea></label></div><p class="form-note">This sends a booking enquiry to our team. Booking is confirmed only after availability and details are checked.</p><button class="btn primary primary-submit" type="submit">BOOK THIS PACKAGE →</button></form></article><article class="detail-card" id="str-3-day-2-night"><div class="eyebrow">STR · Tour Package</div><h3>সুন্দরবন টাইগার রিজার্ভ · Sundarban Tiger Reserve — 3 Days + 2 Nights</h3><div class="package-duration"><span>3 Days + 2 Nights</span><span>Boat Journey</span><span>Route-specific itinerary</span></div><p>This package has its own STR route details. The exact spots and Khari included in this duration will be displayed here after the final itinerary is provided.</p><div class="route-placeholder"><strong>SPOTS & KHARI FOR THIS PACKAGE</strong><br>Itinerary will be added after you provide which spots and Khari are covered in this tour.</div><p class="small-muted">Pickup point and final schedule will be confirmed with the customer before booking. Wildlife sightings are not guaranteed; all forest access is subject to applicable rules and permissions.</p><form class="booking-form" data-kind="STR 3 Days + 2 Nights Tour"><div class="form-grid"><label class="form-field">Full Name<input name="name" required placeholder="Your name"></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel" placeholder="Mobile number"></label><label class="form-field">Travel Date<input name="date" type="date" required></label><label class="form-field">Number of Guests<input name="guests" type="number" min="1" value="2" required></label><label class="form-field full">Message / Special Request<textarea name="message" placeholder="Any request"></textarea></label></div><p class="form-note">This sends a booking enquiry to our team. Booking is confirmed only after availability and details are checked.</p><button class="btn primary primary-submit" type="submit">BOOK THIS PACKAGE →</button></form></article></div></section><section class="section detail-section journey-section" id="sbr-packages" data-scene="deer" data-animal="deer"><div class="section-head"><div class="eyebrow">Separate SBR itinerary</div><h2>সুন্দরবন বেঙ্গল রিজার্ভ · Sundarban Bengal Reserve</h2><p>Choose the duration. Each duration has its own details and booking form.</p><nav class="detail-tabs"><a href="#sbr-1-day">1 Day</a><a href="#sbr-1-day-1-night">1 Day + 1 Night</a><a href="#sbr-2-day-1-night">2 Days + 1 Night</a><a href="#sbr-3-day-2-night">3 Days + 2 Nights</a></nav></div><div class="detail-grid"><article class="detail-card" id="sbr-1-day"><div class="eyebrow">SBR · Tour Package</div><h3>সুন্দরবন বেঙ্গল রিজার্ভ · Sundarban Bengal Reserve — 1 Day</h3><div class="package-duration"><span>1 Day</span><span>Boat Journey</span><span>Route-specific itinerary</span></div><p>This package has its own SBR route details. The exact spots and Khari included in this duration will be displayed here after the final itinerary is provided.</p><div class="route-placeholder"><strong>SPOTS & KHARI FOR THIS PACKAGE</strong><br>Itinerary will be added after you provide which spots and Khari are covered in this tour.</div><p class="small-muted">Pickup point and final schedule will be confirmed with the customer before booking. Wildlife sightings are not guaranteed; all forest access is subject to applicable rules and permissions.</p><form class="booking-form" data-kind="SBR 1 Day Tour"><div class="form-grid"><label class="form-field">Full Name<input name="name" required placeholder="Your name"></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel" placeholder="Mobile number"></label><label class="form-field">Travel Date<input name="date" type="date" required></label><label class="form-field">Number of Guests<input name="guests" type="number" min="1" value="2" required></label><label class="form-field full">Message / Special Request<textarea name="message" placeholder="Any request"></textarea></label></div><p class="form-note">This sends a booking enquiry to our team. Booking is confirmed only after availability and details are checked.</p><button class="btn primary primary-submit" type="submit">BOOK THIS PACKAGE →</button></form></article><article class="detail-card" id="sbr-1-day-1-night"><div class="eyebrow">SBR · Tour Package</div><h3>সুন্দরবন বেঙ্গল রিজার্ভ · Sundarban Bengal Reserve — 1 Day + 1 Night</h3><div class="package-duration"><span>1 Day + 1 Night</span><span>Boat Journey</span><span>Route-specific itinerary</span></div><p>This package has its own SBR route details. The exact spots and Khari included in this duration will be displayed here after the final itinerary is provided.</p><div class="route-placeholder"><strong>SPOTS & KHARI FOR THIS PACKAGE</strong><br>Itinerary will be added after you provide which spots and Khari are covered in this tour.</div><p class="small-muted">Pickup point and final schedule will be confirmed with the customer before booking. Wildlife sightings are not guaranteed; all forest access is subject to applicable rules and permissions.</p><form class="booking-form" data-kind="SBR 1 Day + 1 Night Tour"><div class="form-grid"><label class="form-field">Full Name<input name="name" required placeholder="Your name"></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel" placeholder="Mobile number"></label><label class="form-field">Travel Date<input name="date" type="date" required></label><label class="form-field">Number of Guests<input name="guests" type="number" min="1" value="2" required></label><label class="form-field full">Message / Special Request<textarea name="message" placeholder="Any request"></textarea></label></div><p class="form-note">This sends a booking enquiry to our team. Booking is confirmed only after availability and details are checked.</p><button class="btn primary primary-submit" type="submit">BOOK THIS PACKAGE →</button></form></article><article class="detail-card" id="sbr-2-day-1-night"><div class="eyebrow">SBR · Tour Package</div><h3>সুন্দরবন বেঙ্গল রিজার্ভ · Sundarban Bengal Reserve — 2 Days + 1 Night</h3><div class="package-duration"><span>2 Days + 1 Night</span><span>Boat Journey</span><span>Route-specific itinerary</span></div><p>This package has its own SBR route details. The exact spots and Khari included in this duration will be displayed here after the final itinerary is provided.</p><div class="route-placeholder"><strong>SPOTS & KHARI FOR THIS PACKAGE</strong><br>Itinerary will be added after you provide which spots and Khari are covered in this tour.</div><p class="small-muted">Pickup point and final schedule will be confirmed with the customer before booking. Wildlife sightings are not guaranteed; all forest access is subject to applicable rules and permissions.</p><form class="booking-form" data-kind="SBR 2 Days + 1 Night Tour"><div class="form-grid"><label class="form-field">Full Name<input name="name" required placeholder="Your name"></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel" placeholder="Mobile number"></label><label class="form-field">Travel Date<input name="date" type="date" required></label><label class="form-field">Number of Guests<input name="guests" type="number" min="1" value="2" required></label><label class="form-field full">Message / Special Request<textarea name="message" placeholder="Any request"></textarea></label></div><p class="form-note">This sends a booking enquiry to our team. Booking is confirmed only after availability and details are checked.</p><button class="btn primary primary-submit" type="submit">BOOK THIS PACKAGE →</button></form></article><article class="detail-card" id="sbr-3-day-2-night"><div class="eyebrow">SBR · Tour Package</div><h3>সুন্দরবন বেঙ্গল রিজার্ভ · Sundarban Bengal Reserve — 3 Days + 2 Nights</h3><div class="package-duration"><span>3 Days + 2 Nights</span><span>Boat Journey</span><span>Route-specific itinerary</span></div><p>This package has its own SBR route details. The exact spots and Khari included in this duration will be displayed here after the final itinerary is provided.</p><div class="route-placeholder"><strong>SPOTS & KHARI FOR THIS PACKAGE</strong><br>Itinerary will be added after you provide which spots and Khari are covered in this tour.</div><p class="small-muted">Pickup point and final schedule will be confirmed with the customer before booking. Wildlife sightings are not guaranteed; all forest access is subject to applicable rules and permissions.</p><form class="booking-form" data-kind="SBR 3 Days + 2 Nights Tour"><div class="form-grid"><label class="form-field">Full Name<input name="name" required placeholder="Your name"></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel" placeholder="Mobile number"></label><label class="form-field">Travel Date<input name="date" type="date" required></label><label class="form-field">Number of Guests<input name="guests" type="number" min="1" value="2" required></label><label class="form-field full">Message / Special Request<textarea name="message" placeholder="Any request"></textarea></label></div><p class="form-note">This sends a booking enquiry to our team. Booking is confirmed only after availability and details are checked.</p><button class="btn primary primary-submit" type="submit">BOOK THIS PACKAGE →</button></form></article></div></section><section class="section detail-section journey-section" id="photography" data-scene="mangrove"><div class="section-head"><div class="eyebrow">Special experience</div><h2>PHOTOGRAPHY SPECIAL</h2><p>Choose STR or SBR, then select your preferred boat arrangement. Route spots and Khari will appear after the final route list is provided.</p></div><div class="detail-grid"><article class="detail-card"><h3>Photography Special · STR</h3><p>Nature, landscape and wildlife photography focused boat experience on the Sundarban Tiger Reserve route.</p><div class="route-placeholder">STR spots and Khari: final list will be added after your confirmation.</div><form class="booking-form" data-kind="Photography Special STR"><div class="form-grid"><label class="form-field">Name<input name="name" required></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel"></label><label class="form-field">Route<select name="route"><option>STR</option></select></label><label class="form-field">Boat Ride Type<select name="boat"><option>Hourly</option><option>Package</option></select></label><label class="form-field">Package Duration<select name="duration"><option>Not applicable / Hourly</option><option>1 Day</option><option>1 Day + 1 Night</option><option>2 Days + 1 Night</option><option>3 Days + 2 Nights</option></select></label><label class="form-field">Travel Date<input name="date" type="date"></label></div><button class="btn primary primary-submit" type="submit">BOOK PHOTOGRAPHY TOUR →</button></form></article><article class="detail-card"><h3>Photography Special · SBR</h3><p>Nature, landscape and wildlife photography focused boat experience on the Sundarban Bengal Reserve route.</p><div class="route-placeholder">SBR spots and Khari: final list will be added after your confirmation.</div><form class="booking-form" data-kind="Photography Special SBR"><div class="form-grid"><label class="form-field">Name<input name="name" required></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel"></label><label class="form-field">Route<select name="route"><option>SBR</option></select></label><label class="form-field">Boat Ride Type<select name="boat"><option>Hourly</option><option>Package</option></select></label><label class="form-field">Package Duration<select name="duration"><option>Not applicable / Hourly</option><option>1 Day</option><option>1 Day + 1 Night</option><option>2 Days + 1 Night</option><option>3 Days + 2 Nights</option></select></label><label class="form-field">Travel Date<input name="date" type="date"></label></div><button class="btn primary primary-submit" type="submit">BOOK PHOTOGRAPHY TOUR →</button></form></article></div></section><section class="section detail-section journey-section" id="river-stays" data-scene="boat"><div class="section-head"><div class="eyebrow">One exclusive river stay tour</div><h2>BURIRDABRI — 3 DAYS / 2 NIGHTS</h2><p>River Stays has one tour only: Burirdabri, near the Bangladesh border. The exact stay arrangement, inclusions and rate will be confirmed before booking.</p></div><div class="detail-grid"><article class="detail-card"><img style="width:100%;height:210px;object-fit:cover;border-radius:13px;margin-bottom:16px" src="https://commons.wikimedia.org/wiki/Special:FilePath/Sundarban%20Riverside.jpg" alt="Sundarban river stay landscape"><h3>Burirdabri River Stay</h3><div class="package-duration"><span>3 Days</span><span>2 Nights</span><span>Burirdabri</span></div><ul><li>Destination: Burirdabri, near Bangladesh border</li><li>Tour duration: 3 Days / 2 Nights</li><li>Stay, meals, boat and exact itinerary: details to be confirmed</li></ul><p class="notice">Only one River Stay tour is listed. Do not treat the Custom Tour form options as separate River Stay tours.</p><form class="booking-form" data-kind="Burirdabri River Stay 3 Days 2 Nights"><div class="form-grid"><label class="form-field">Full Name<input name="name" required></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel"></label><label class="form-field">Arrival Date<input name="arrival" type="date" required></label><label class="form-field">Number of Guests<input name="guests" type="number" min="1" value="2" required></label><label class="form-field">Number of Rooms<input name="rooms" type="number" min="1" value="1"></label><label class="form-field">Special Request<textarea name="message"></textarea></label></div><button class="btn primary primary-submit" type="submit">BOOK BURIRDABRI TOUR →</button></form></article></div></section><section class="section detail-section journey-section" id="customise" data-scene="mangrove" data-animal="wild-boar"><div class="section-head"><div class="eyebrow">Build your own itinerary</div><h2>CUSTOMISE YOUR SUNDARBAN TRIP</h2><p>These 13 options belong to the Custom Tour booking form. They are not 13 separate tours or River Stay tabs.</p></div><article class="detail-card"><form class="booking-form" data-kind="Custom Sundarban Tour"><div class="form-grid"><label class="form-field">1. Riverside / River Stay<select name="riverstay"><option>Interested</option><option>Not required</option></select></label><label class="form-field">2. Exact Property Location<input name="property" placeholder="Preferred location"></label><label class="form-field">3. Room / Accommodation Type<input name="roomtype" placeholder="Room / accommodation preference"></label><label class="form-field">4. Meals & Facilities<input name="meals" placeholder="Meal and facility requirements"></label><label class="form-field">5. River Stay Rate<input name="rate" placeholder="Ask for current rate / budget"></label><label class="form-field">6. Arrival Date<input name="arrival" type="date"></label><label class="form-field">Departure Date<input name="departure" type="date"></label><label class="form-field">7. Number of Guests<input name="guests" type="number" min="1" value="2"></label><label class="form-field">8. Number of Rooms<input name="rooms" type="number" min="0" value="0"></label><label class="form-field">9. Preferred Riverside Location<input name="riverside" placeholder="Preferred river-side area"></label><label class="form-field">10. Stay Style<select name="staystyle"><option>Any suitable option</option><option>River Stay</option><option>Hotel / Resort</option><option>Homestay</option><option>Boat Stay (if available)</option></select></label><label class="form-field">11. Budget Range<input name="budget" placeholder="Your approximate budget"></label><label class="form-field">Preferred Route<select name="route"><option>STR</option><option>SBR</option><option>Both / Need advice</option></select></label><label class="form-field">Travel Date<input name="date" type="date"></label><label class="form-field full">Spot / Khari preferences<textarea name="spots" placeholder="You can share preferred spots. Confirmed spot list will be shown here later."></textarea></label><label class="form-field full">Special Request<textarea name="message"></textarea></label></div><p class="form-note">12. CHECK AVAILABILITY — our team will check dates and options after receiving your enquiry. 13. ENQUIRE & BOOK — submit this form to send your custom-tour request.</p><button class="btn primary primary-submit" type="submit">CHECK AVAILABILITY & ENQUIRE →</button></form></article></section><section class="section detail-section journey-section" id="route-directory" data-scene="deer"><div class="section-head"><div class="eyebrow">Route reference</div><h2>STR + SBR ROUTE & SPOT DIRECTORY</h2><p>One directory for both reserve routes. The confirmed Spot and Khari names will also be used in relevant package and photography booking forms.</p></div><div class="detail-grid"><article class="detail-card"><h3>STR — Sundarban Tiger Reserve</h3><div class="route-placeholder">STR Route Spots & Khari names will be inserted here after you provide the confirmed list.</div></article><article class="detail-card"><h3>SBR — Sundarban Bengal Reserve</h3><div class="route-placeholder">SBR Route Spots & Khari names will be inserted here after you provide the confirmed list.</div></article></div></section><section class="section detail-section journey-section" id="boat-trips" data-scene="croc" data-animal="crocodile"><div class="section-head"><div class="eyebrow">Explore by river</div><h2>BOAT TRIPS</h2><p>Hourly boat ride, full-day boat hire and package boat arrangements. Customer may choose any boat size, subject to availability.</p></div><div class="detail-grid"><article class="detail-card"><h3>Hourly Boat Hire</h3><table class="price-table"><tr><td>SMALL · 2 Cylinder · 10 passengers</td><td>₹900 / hour</td></tr><tr><td>MEDIUM · 4 Cylinder · 20 passengers</td><td>₹1,100 / hour</td></tr><tr><td>BIG · 6 Cylinder · 40 passengers</td><td>₹1,300 / hour</td></tr></table><p>Minimum 2 hours. Duration choices: 2, 3, 4 or custom hours. A group of 10 may still choose Medium or Big boat.</p></article><article class="detail-card"><h3>Full-day Boat Hire</h3><p class="rate-highlight">Full-day timing: 8:00 AM – 4:00 PM</p><table class="price-table"><tr><td>SMALL · 2 Cylinder · 10 passengers</td><td>₹4,500 / day</td></tr><tr><td>MEDIUM · 4 Cylinder · 20 passengers</td><td>₹7,000 / day</td></tr><tr><td>BIG · 6 Cylinder · 40 passengers</td><td>₹12,000 / day</td></tr></table></article><article class="detail-card"><h3>Permission & Guide Charges</h3><table class="price-table"><tr><td>One Boat Forest Permission</td><td>₹1,000</td></tr><tr><td>Per Passenger Forest Permission</td><td>₹200 / person</td></tr><tr><td>One Government-required Guide</td><td>₹1,000</td></tr></table><p class="notice">Boat hire is separate. For package tours, if boat hire is already included in the package, it will not be charged a second time.</p></article><article class="detail-card"><h3>Boat Booking Enquiry</h3><form class="booking-form" data-kind="Boat Trip"><div class="form-grid"><label class="form-field">Name<input name="name" required></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel"></label><label class="form-field">Number of Passengers<input name="guests" type="number" min="1" value="10" required></label><label class="form-field">Boat Type<select name="boat"><option>SMALL · 2 Cylinder · 10 capacity</option><option>MEDIUM · 4 Cylinder · 20 capacity</option><option>BIG · 6 Cylinder · 40 capacity</option></select></label><label class="form-field">Booking Type<select name="bookingtype"><option>Hourly</option><option>Full-day · 8 AM–4 PM</option><option>Tour Package</option></select></label><label class="form-field">Duration / Hours<input name="duration" placeholder="e.g. 2 hours / full day"></label><label class="form-field">Pickup Point<select name="pickup"><option>Jharkhali Tiger Rescue Center</option><option>Jharkhali Bazar</option><option>Discuss with team</option></select></label><label class="form-field">Travel Date<input name="date" type="date"></label></div><button class="btn primary primary-submit" type="submit">SEND BOAT BOOKING ENQUIRY →</button></form></article></div></section><section class="section detail-section journey-section" id="hotel-details" data-scene="mangrove"><div class="section-head"><div class="eyebrow">Stay near the forest</div><h2>HOTELS & RESORTS</h2><p>Property names, room categories, facilities and current rates will be added after the actual options are confirmed.</p></div><div class="detail-grid"><article class="detail-card"><h3>Stay Details</h3><ul><li>Property Name & Location</li><li>Room Category & Occupancy</li><li>Meals & Facilities</li><li>Check-in / Check-out</li><li>Room Rate</li></ul><p class="notice">No property, price or facility is invented. The selected property's actual information will be shown once supplied.</p></article><article class="detail-card"><h3>Hotel Booking Form</h3><form class="booking-form" data-kind="Hotel / Resort Stay"><div class="form-grid"><label class="form-field">Name<input name="name" required></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel"></label><label class="form-field">Check-in<input name="checkin" type="date"></label><label class="form-field">Check-out<input name="checkout" type="date"></label><label class="form-field">Adults<input name="adults" type="number" min="1" value="2"></label><label class="form-field">Children<input name="children" type="number" min="0" value="0"></label><label class="form-field">Number of Rooms<input name="rooms" type="number" min="1" value="1"></label><label class="form-field">Preferred Room Type<input name="roomtype"></label><label class="form-field full">Meal Requirement / Special Request<textarea name="message"></textarea></label></div><button class="btn primary primary-submit" type="submit">CHECK HOTEL AVAILABILITY →</button></form></article></div></section><section class="section detail-section journey-section" id="shop" data-scene="booking"><div class="section-head"><div class="eyebrow">Take a piece of the Sundarbans home</div><h2>SUNDARBAN SHOP</h2><p>Explore Sundarban honey and handmade products. Customers can order online without visiting, or enquire about buying while visiting Sundarbans.</p></div><div class="shop-products"><article class="shop-product"><img src="https://images.unsplash.com/photo-1587049352851-8d4e89133924?auto=format&fit=crop&w=900&q=80" alt="Honey jar"><div><h3>Sundarban Honey</h3><p class="small-muted">Product size, price, availability and delivery details will be added after you provide them.</p></div></article><article class="shop-product"><img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?auto=format&fit=crop&w=900&q=80" alt="Handmade craft"><div><h3>Handmade Products</h3><p class="small-muted">Local handmade items. Product photos, names and prices will be added later.</p></div></article></div><article class="detail-card" style="margin-top:18px"><h3>Shop Order / Enquiry</h3><form class="booking-form" data-kind="Sundarban Shop Order"><div class="form-grid"><label class="form-field">Name<input name="name" required></label><label class="form-field">Phone Number<input name="phone" required inputmode="tel"></label><label class="form-field">Product<select name="product"><option>Sundarban Honey</option><option>Handmade Product</option><option>Both / Need details</option></select></label><label class="form-field">Quantity<input name="quantity" placeholder="Quantity / pack size"></label><label class="form-field">Order Method<select name="method"><option>Online order — I will not visit</option><option>Buy while visiting Sundarbans</option></select></label><label class="form-field">Delivery Location<input name="location" placeholder="Required for online order"></label></div><button class="btn primary primary-submit" type="submit">SEND SHOP ENQUIRY →</button></form></article></section><section class="section contact journey-section" id="contact" data-scene="booking"><div class="digital-reception">
 <div class="eyebrow">WELCOME TO SUNDARBAN TRAVEL</div><h2>DIGITAL RECEPTION &amp; HELP DESK</h2>
@@ -538,23 +538,95 @@ if (canvas) {
     gold:new THREE.MeshStandardMaterial({color:0xcba967,metalness:.35,roughness:.42}),
     black:new THREE.MeshStandardMaterial({color:0x1c241c,roughness:.8}),
     boatHull:new THREE.MeshStandardMaterial({color:0x70452c,roughness:.58}),
-    boatTrim:new THREE.MeshStandardMaterial({color:0xb58b55,roughness:.5})
+    boatTrim:new THREE.MeshStandardMaterial({color:0xb58b55,roughness:.5}),
+    concrete:new THREE.MeshStandardMaterial({color:0x9b9b8d,roughness:.94}),
+    concreteEdge:new THREE.MeshStandardMaterial({color:0x77796f,roughness:.98})
   };
   let seed=20261125;const rand=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296};
   const shadow=(m)=>{m.castShadow=true;m.receiveShadow=true;return m};
+  // RAISED RIVERBANK: the earth rises from the water line to about 1.8 units above it.
+  // Each bank records a height plan; one continuous bank surface per side is built from
+  // these plans, and trees, animals and ghat signs stand on the raised ground.
+  const BANK_TOP=1.8,BANK_BASE=-.45;
+  const bankPlans=[];
+  // Reserved clearings around all eight ghats: keep the sign, jetty and service scene
+  // visible from the river while leaving the surrounding mangrove forest intact.
+  const ghatClearance=[
+    [.14,-1],[.255,1],[.37,-1],[.485,1],
+    [.60,-1],[.715,1],[.83,-1],[.945,1]
+  ];
+  function insideGhatClearing(x,z){
+    for(const [t,sideSign] of ghatClearance){
+      const p=path.getPointAt(t),side=sideAt(t).multiplyScalar(sideSign);
+      const tan=path.getTangentAt(t);
+      const dx=x-p.x,dz=z-p.z;
+      const along=dx*tan.x+dz*tan.z;
+      const outward=dx*side.x+dz*side.z;
+      if(Math.abs(along)<10.5 && outward>5.2 && outward<24.5) return true;
+    }
+    return false;
+  }
+  function bankHeight(pl,x,z){
+    const rx=x-pl.x,rz=z-pl.z;
+    const ou=rx*pl.ox+rz*pl.oz,ov=rx*pl.tx+rz*pl.tz;
+    const ax=ou>0?pl.ro:pl.ri;
+    const r=Math.hypot(ou/ax,ov/pl.len);
+    if(r>=1)return BANK_BASE;
+    const f=clamp(1-(r-.4)/.6);
+    const s=f*f*(3-2*f);
+    return BANK_BASE+(BANK_TOP-BANK_BASE)*s+(Math.sin(x*1.7+z*.9)*.05+Math.sin(x*3.1-z*2.3)*.035)*s;
+  }
+  function groundY(x,z){
+    let y=BANK_BASE;
+    for(const pl of bankPlans){
+      if(Math.abs(x-pl.x)>pl.reach||Math.abs(z-pl.z)>pl.reach)continue;
+      y=Math.max(y,bankHeight(pl,x,z));
+    }
+    return y;
+  }
   function addBank(t,sign){
     const p=path.getPointAt(t),s=sideAt(t),offset=9.1+rand()*3.5;
     const x=p.x+s.x*offset*sign,z=p.z+s.z*offset*sign;
-    const island=new THREE.Mesh(new THREE.SphereGeometry(1,18,12),mats.mud);
-    island.position.set(x,-.38,z);island.scale.set(7.8,.72,8.5);island.receiveShadow=true;scene.add(island);
-    // Muddy edge and scattered pneumatophores.
+    const tan=path.getTangentAt(clamp(t,.001,.999));
+    bankPlans.push({x,z,ox:s.x*sign,oz:s.z*sign,tx:tan.x,tz:tan.z,ro:7.8,ri:1.8,len:8.5,reach:9.5});
+    // Muddy edge and scattered pneumatophores, standing on the raised ground.
     for(let r=0;r<14;r++){
       const rx=x+(rand()-.5)*10,rz=z+(rand()-.5)*11;
-      const spike=new THREE.Mesh(new THREE.ConeGeometry(.075,.65+rand()*.55,5),mats.root);
-      spike.position.set(rx,.22,rz);spike.rotation.z=(rand()-.5)*.35;scene.add(spike);
+      const spikeHeight=.65+rand()*.55,spikeTilt=(rand()-.5)*.35;
+      if(!insideGhatClearing(rx,rz)){
+        const spike=new THREE.Mesh(new THREE.ConeGeometry(.075,spikeHeight,5),mats.root);
+        spike.position.set(rx,Math.max(groundY(rx,rz),0)+.22,rz);spike.rotation.z=spikeTilt;scene.add(spike);
+      }
     }
     const treeCount=3+Math.floor(rand()*3);
-    for(let k=0;k<treeCount;k++)addMangrove(x+(rand()-.5)*8,-.05,z+(rand()-.5)*9,.78+rand()*.62);
+    for(let k=0;k<treeCount;k++){
+      const tx=x+(rand()-.5)*8,tz=z+(rand()-.5)*9,treeScale=.78+rand()*.62;
+      if(!insideGhatClearing(tx,tz)) addMangrove(tx,Math.max(groundY(tx,tz),-.05),tz,treeScale);
+    }
+  }
+  function buildBankStrips(){
+    const tStart=.02,tEnd=.985,tSteps=420,oSteps=12,oNear=6.9,oFar=21;
+    const row=oSteps+1;
+    for(const sign of [-1,1]){
+      const pos=[],idx=[];
+      for(let i=0;i<=tSteps;i++){
+        const t=tStart+(tEnd-tStart)*i/tSteps;
+        const p=path.getPointAt(t),s=sideAt(t);
+        for(let j=0;j<=oSteps;j++){
+          const o=oNear+(oFar-oNear)*j/oSteps;
+          const x=p.x+s.x*o*sign,z=p.z+s.z*o*sign;
+          pos.push(x,groundY(x,z),z);
+        }
+      }
+      for(let i=0;i<tSteps;i++)for(let j=0;j<oSteps;j++){
+        const a=i*row+j,b=a+1,c=a+row,d=c+1;
+        if(sign>0)idx.push(a,b,c,b,d,c);else idx.push(a,c,b,b,c,d);
+      }
+      const geo=new THREE.BufferGeometry();
+      geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));
+      geo.setIndex(idx);geo.computeVertexNormals();
+      const bank=new THREE.Mesh(geo,mats.mud);bank.receiveShadow=true;scene.add(bank);
+    }
   }
   function addMangrove(x,y,z,scale=1){
     const g=new THREE.Group();g.position.set(x,y,z);g.scale.setScalar(scale);scene.add(g);foliageGroups.push(g);
@@ -579,6 +651,7 @@ if (canvas) {
   }
   // Dense, varied mangrove banks on both sides of the winding tidal channel.
   for(let i=0;i<104;i++){const t=.025+i*.0091;addBank(t,-1);addBank(t,1)}
+  buildBankStrips();
   // Wildlife actors: tiger and deer on the mangrove banks, crocodile in the tidal water.
   const animalMats={
     tiger:new THREE.MeshStandardMaterial({color:0xc77b32,roughness:.96}),
@@ -594,7 +667,7 @@ if (canvas) {
   function animalLimb(parent,mat,x,y,z,len,r=.085){const pivot=new THREE.Group();pivot.position.set(x,y,z);const mesh=new THREE.Mesh(new THREE.CylinderGeometry(r*.72,r,len,8),mat);mesh.position.y=-len/2;mesh.castShadow=true;pivot.add(mesh);parent.add(pivot);return pivot}
   function addTiger(t,sideSign){
     const p=path.getPointAt(t),tan=path.getTangentAt(t),side=sideAt(t);
-    const g=new THREE.Group();g.position.set(p.x+side.x*sideSign*12.0,.02,p.z+side.z*sideSign*12.0);g.rotation.y=Math.atan2(tan.x,tan.z)+Math.PI;scene.add(g);
+    const gx=p.x+side.x*sideSign*12.0,gz=p.z+side.z*sideSign*12.0;const g=new THREE.Group();g.position.set(gx,Math.max(groundY(gx,gz),0)+.02,gz);g.rotation.y=Math.atan2(tan.x,tan.z)+Math.PI;scene.add(g);
     animalSphere(g,animalMats.tiger,[0,1.05,0],[.68,.62,1.18]);
     animalSphere(g,animalMats.tigerCream,[0,.77,.15],[.55,.18,.86]);
     const head=new THREE.Group();head.position.set(0,1.22,.88);g.add(head);
@@ -610,7 +683,7 @@ if (canvas) {
   }
   function addDeer(t,sideSign){
     const p=path.getPointAt(t),tan=path.getTangentAt(t),side=sideAt(t);
-    const g=new THREE.Group();g.position.set(p.x+side.x*sideSign*11.4,.02,p.z+side.z*sideSign*11.4);g.rotation.y=Math.atan2(tan.x,tan.z)+Math.PI;scene.add(g);
+    const gx=p.x+side.x*sideSign*11.4,gz=p.z+side.z*sideSign*11.4;const g=new THREE.Group();g.position.set(gx,Math.max(groundY(gx,gz),0)+.02,gz);g.rotation.y=Math.atan2(tan.x,tan.z)+Math.PI;scene.add(g);
     animalSphere(g,animalMats.deer,[0,1.05,0],[.48,.55,.9]);
     const neck=new THREE.Group();neck.position.set(0,1.32,.58);neck.rotation.x=-.3;g.add(neck);
     animalSphere(neck,animalMats.deer,[0,.32,.05],[.22,.55,.24]);
@@ -676,7 +749,7 @@ if (canvas) {
     {kind:'night',title:'NIGHT RIVER STAY',sub:'SLEEP BESIDE THE RIVER',href:'#river-stays',t:.60,side:-1},
     {kind:'shop',title:'SUNDARBAN SHOP',sub:'LOCAL PRODUCTS & SOUVENIRS',href:'#shop',t:.715,side:1},
     {kind:'customise',title:'CUSTOMISE YOUR SUNDARBAN TRIP',sub:'BUILD YOUR OWN JOURNEY',href:'#customise',t:.83,side:-1},
-    {kind:'contact',title:'CONTACT & BOOKING',sub:'LET US PLAN YOUR TRIP',href:'#contact',t:.945,side:1}
+    {kind:'contact',title:'SUNDARBAN TRAVEL RECEPTION',sub:'DIGITAL RECEPTION · CONTACT & BOOKING',href:'#contact',t:.945,side:1}
   ];
   const nightLights=[];
   function boardTexture(title,sub){
@@ -694,22 +767,62 @@ if (canvas) {
   const boardFaces=[];const boardRecords=[];
   function makeSign(item,index){
     const p=path.getPointAt(item.t),s=sideAt(item.t),bank=s.clone().multiplyScalar(item.side);
-    const g=new THREE.Group();g.position.copy(p).addScaledVector(bank,10.6);g.position.y=.15;
+    const g=new THREE.Group();g.position.copy(p).addScaledVector(bank,10.6);
+    g.position.y=Math.max(groundY(g.position.x,g.position.z),0)+.15;
     const inward=bank.clone().negate();g.rotation.y=Math.atan2(inward.x,inward.z);
+
+    // A broad concrete sign apron makes the board base readable above the sloping bank.
+    const apron=new THREE.Mesh(new THREE.BoxGeometry(7.4,.34,3.8),mats.concrete);
+    apron.position.set(0,-.02,-.35);shadow(apron);g.add(apron);
+    const apronEdge=new THREE.Mesh(new THREE.BoxGeometry(7.55,.16,3.95),mats.concreteEdge);
+    apronEdge.position.set(0,-.22,-.35);g.add(apronEdge);
+
     for(const x of [-2.0,2.0]){
-      const post=shadow(new THREE.Mesh(new THREE.BoxGeometry(.32,4.8,.38),mats.woodDark));post.position.set(x,2.35,0);g.add(post);
-      const cap=new THREE.Mesh(new THREE.BoxGeometry(.48,.18,.5),mats.woodLight);cap.position.set(x,4.78,0);g.add(cap);
+      const footing=new THREE.Mesh(new THREE.BoxGeometry(.62,.5,.72),mats.concreteEdge);
+      footing.position.set(x,.28,0);g.add(footing);
+      const post=shadow(new THREE.Mesh(new THREE.BoxGeometry(.32,4.8,.38),mats.woodDark));
+      post.position.set(x,2.75,0);g.add(post);
+      const cap=new THREE.Mesh(new THREE.BoxGeometry(.48,.18,.5),mats.woodLight);
+      cap.position.set(x,5.18,0);g.add(cap);
     }
-    const plank=shadow(new THREE.Mesh(new THREE.BoxGeometry(5.25,2.45,.42),mats.wood));plank.position.set(0,3.35,0);g.add(plank);
-    const face=new THREE.Mesh(new THREE.PlaneGeometry(5.0,2.2),new THREE.MeshStandardMaterial({map:boardTexture(item.title,item.sub),roughness:.72,metalness:.03}));face.position.set(0,3.35,.225);face.userData.href=item.href;face.userData.ghat=index;g.add(face);boardFaces.push(face);
-    const cap=new THREE.Mesh(new THREE.BoxGeometry(5.5,.18,.55),mats.gold);cap.position.set(0,4.65,0);g.add(cap);
-    // Timber jetty leading from the board toward the river.
-    const dock=new THREE.Group();dock.position.copy(p).addScaledVector(bank,7.3);dock.rotation.y=Math.atan2(inward.x,inward.z);
-    for(let j=0;j<7;j++){const plank2=shadow(new THREE.Mesh(new THREE.BoxGeometry(3.3,.16,.78),mats.wood));plank2.position.set(0,.12,-j*.78);dock.add(plank2)}
-    for(const x of [-1.35,1.35])for(let j=0;j<4;j++){const pile=shadow(new THREE.Mesh(new THREE.CylinderGeometry(.12,.17,1.8,7),mats.woodDark));pile.position.set(x,-.65,-j*1.55);dock.add(pile)}
+    const plank=shadow(new THREE.Mesh(new THREE.BoxGeometry(5.25,2.45,.42),mats.wood));
+    plank.position.set(0,3.35,0);g.add(plank);
+    const face=new THREE.Mesh(new THREE.PlaneGeometry(5.0,2.2),
+      new THREE.MeshStandardMaterial({map:boardTexture(item.title,item.sub),roughness:.72,metalness:.03}));
+    face.position.set(0,3.35,.225);face.userData.href=item.href;face.userData.ghat=index;
+    g.add(face);boardFaces.push(face);
+    const cap=new THREE.Mesh(new THREE.BoxGeometry(5.5,.18,.55),mats.gold);
+    cap.position.set(0,4.65,0);g.add(cap);
+
+    // Concrete jetty: upper landing, six descending steps, and a water-level landing.
+    const dock=new THREE.Group();
+    dock.position.copy(p).addScaledVector(bank,10.0);
+    dock.rotation.y=Math.atan2(inward.x,inward.z);
+    const upper=new THREE.Mesh(new THREE.BoxGeometry(5.2,.42,2.0),mats.concrete);
+    upper.position.set(0,1.58,-1.25);shadow(upper);dock.add(upper);
+    const upperEdge=new THREE.Mesh(new THREE.BoxGeometry(5.35,.18,2.12),mats.concreteEdge);
+    upperEdge.position.set(0,1.28,-1.25);dock.add(upperEdge);
+    for(let j=0;j<6;j++){
+      const step=new THREE.Mesh(new THREE.BoxGeometry(4.65,.34,.92),mats.concrete);
+      step.position.set(0,1.43-j*.245,.15+j*.82);shadow(step);dock.add(step);
+      const nosing=new THREE.Mesh(new THREE.BoxGeometry(4.72,.10,.12),mats.concreteEdge);
+      nosing.position.set(0,1.25-j*.245,.15+j*.82-.39);dock.add(nosing);
+    }
+    const lower=new THREE.Mesh(new THREE.BoxGeometry(5.0,.3,2.0),mats.concrete);
+    lower.position.set(0,.12,5.55);shadow(lower);dock.add(lower);
+    // Side retaining walls and piles support the elevated landing over the tidal edge.
+    for(const x of [-2.45,2.45]){
+      const cheek=new THREE.Mesh(new THREE.BoxGeometry(.28,1.75,5.9),mats.concreteEdge);
+      cheek.position.set(x,.85,2.1);dock.add(cheek);
+      for(const z of [1.2,3.6,5.3]){
+        const pile=new THREE.Mesh(new THREE.BoxGeometry(.34,1.5,.34),mats.concreteEdge);
+        pile.position.set(x,.0,z);dock.add(pile);
+      }
+    }
     scene.add(dock);scene.add(g);
-    const focus=g.position.clone().add(new THREE.Vector3(0,3.25,0));
-    const record={...item,group:g,face,focus,bank,dock,index};boardRecords.push(record);
+    const focus=g.position.clone().add(new THREE.Vector3(0,3.35,0));
+    const record={...item,group:g,face,focus,bank,dock,index};
+    boardRecords[index]=record;
     return record;
   }
   function addResort(site){
@@ -722,7 +835,7 @@ if (canvas) {
     for(const x of [-4,4]){const rail=new THREE.Mesh(new THREE.BoxGeometry(.12,.8,2.4),mats.woodLight);rail.position.set(x,2.55,3.5);b.add(rail)}
     for(const x of [-3.8,3.8]){const lamp=new THREE.PointLight(0xffbd68,0,9);lamp.position.set(x,4,3);b.add(lamp);nightLights.push(lamp)}
   }
-  function addMooredBoat(site,x,z,scale=1){const b=makeBoat(scale,true);b.position.set(x,.18,z);b.rotation.y=.18;site.add(b);return b}
+  function addMooredBoat(site,x,z,scale=1){const b=makeBoat(scale,true);b.position.set(x,.18-(site.userData.lift||0),z);b.rotation.y=.18;site.add(b);return b}
   function addPhotography(site){
     const deck=new THREE.Mesh(new THREE.BoxGeometry(9,.3,6),mats.wood);deck.position.set(0,1.2,0);shadow(deck);site.add(deck);
     for(const x of [-4,4])for(const z of [-2,2]){const st=new THREE.Mesh(new THREE.CylinderGeometry(.15,.2,1.4,7),mats.woodDark);st.position.set(x,.45,z);site.add(st)}
@@ -730,11 +843,11 @@ if (canvas) {
     for(let i=0;i<3;i++){const leg=new THREE.Mesh(new THREE.CylinderGeometry(.045,.06,2.0,6),mats.black);leg.position.set(Math.cos(i*2.094)*.48,-.4,Math.sin(i*2.094)*.48);leg.rotation.z=Math.cos(i*2.094)*.25;leg.rotation.x=Math.sin(i*2.094)*.25;tripod.add(leg)}
     const cam=new THREE.Mesh(new THREE.BoxGeometry(.85,.58,.42),mats.black);cam.position.y=.72;tripod.add(cam);
     const lens=new THREE.Mesh(new THREE.CylinderGeometry(.19,.19,.42,12),mats.gold);lens.rotation.x=Math.PI/2;lens.position.set(0,.72,.38);tripod.add(lens);
-    addMooredBoat(site,-2.6,4.5,.78);
+    addMooredBoat(site,-2.6,9.4,.78);
   }
   function addNightStay(site){
-    const houseboat=addMooredBoat(site,-.8,3.8,1.35);
-    const cabin=shadow(new THREE.Mesh(new THREE.BoxGeometry(2.7,1.75,2.3),mats.cream));cabin.position.set(-.8,2.0,3.2);site.add(cabin);
+    const houseboat=addMooredBoat(site,-.8,9.5,1.35);
+    const cabin=shadow(new THREE.Mesh(new THREE.BoxGeometry(2.7,1.75,2.3),mats.cream));cabin.position.set(-.8,2.0-(site.userData.lift||0),8.9);site.add(cabin);
     const roof=shadow(new THREE.Mesh(new THREE.BoxGeometry(3.2,.18,2.8),mats.roof));roof.position.set(-.8,2.95,3.2);site.add(roof);
     for(const x of [-1.6,0]){const win=new THREE.Mesh(new THREE.BoxGeometry(.65,.85,.06),new THREE.MeshBasicMaterial({color:0xffc16b}));win.position.set(x,2.1,4.37);site.add(win)}
     const dock=new THREE.Mesh(new THREE.BoxGeometry(7,.22,2.2),mats.wood);dock.position.set(1.8,.55,1.6);site.add(dock);
@@ -743,6 +856,7 @@ if (canvas) {
   }
   function addShop(site){
     const hut=new THREE.Mesh(new THREE.BoxGeometry(7,3.5,5),mats.cream);hut.position.set(-1,2,-1);shadow(hut);site.add(hut);
+    const shopAwning=new THREE.Mesh(new THREE.BoxGeometry(7.8,.22,1.35),mats.woodDark);shopAwning.position.set(-1,3.45,2.15);site.add(shopAwning);
     const roof=new THREE.Mesh(new THREE.ConeGeometry(5.4,2.0,4),mats.roof);roof.rotation.y=Math.PI/4;roof.position.set(-1,4.8,-1);roof.scale.z=.75;site.add(roof);
     const counter=new THREE.Mesh(new THREE.BoxGeometry(7.5,1.05,1.2),mats.wood);counter.position.set(-1,1.1,2.1);site.add(counter);
     for(let i=0;i<7;i++){const jar=new THREE.Mesh(new THREE.CylinderGeometry(.22,.22,.55,12),new THREE.MeshPhysicalMaterial({color:i%2?0xb18b4b:0x87945c,roughness:.2,transmission:.25}));jar.position.set(-3.7+i*.9,1.9,2.2);site.add(jar)}
@@ -753,7 +867,7 @@ if (canvas) {
     for(const x of [-3,3])for(const z of [-2.5,.5]){const post=new THREE.Mesh(new THREE.CylinderGeometry(.12,.15,4,7),mats.woodDark);post.position.set(x,2.2,z);site.add(post)}
     const mapBoard=new THREE.Mesh(new THREE.BoxGeometry(3.4,2.2,.14),mats.cream);mapBoard.position.set(0,2.35,1.9);site.add(mapBoard);
     const route=new THREE.Mesh(new THREE.TorusGeometry(.55,.035,5,32),mats.gold);route.position.set(0,2.35,2.0);site.add(route);
-    addMooredBoat(site,-2.4,4.7,.82);addMooredBoat(site,2.4,4.8,.78);
+    addMooredBoat(site,-2.4,9.4,.82);addMooredBoat(site,2.4,9.5,.78);
   }
   let receptionistGreetingArm=null,receptionistLeftArm=null;
   function addContact(site){
@@ -787,24 +901,33 @@ if (canvas) {
     const hand=new THREE.Mesh(new THREE.SphereGeometry(.16,10,8),skin);hand.position.set(0,-1.24,.13);rightArm.add(hand);
     // Small gold name badge.
     const badgeMesh=new THREE.Mesh(new THREE.BoxGeometry(.42,.18,.05),gold);badgeMesh.position.set(.22,2.58,.46);person.add(badgeMesh);
-    addMooredBoat(site,5.4,3.6,.72);
+    addMooredBoat(site,5.4,9.3,.72);
     for(const x of [-3.5,3.5]){const lamp=new THREE.PointLight(0xffc06a,0,12);lamp.position.set(x,4.8,1.2);site.add(lamp);nightLights.push(lamp)}
   }
   ghats.forEach((item,index)=>{
     const signItem=item.kind==='contact'?{...item,title:'SUNDARBAN TRAVEL',sub:'DIGITAL RECEPTION · CONTACT & BOOKING'}:item;
-    const rec=makeSign(signItem,index);
+    const rec=index===0?null:makeSign(signItem,index);
     const site=new THREE.Group();
     const p=path.getPointAt(item.t),bank=sideAt(item.t).multiplyScalar(item.side);
     site.position.copy(p).addScaledVector(bank,15.5);site.rotation.y=Math.atan2(-bank.x,-bank.z);
+    // Each ghat scene stands on the raised riverbank; boats are placed back on the water.
+    const siteLift=Math.max(groundY(site.position.x,site.position.z),0);site.position.y=siteLift;site.userData.lift=siteLift;
+    // Distinct raised concrete forecourt so each service scene reads as a real ghat-side place.
+    const forecourt=new THREE.Mesh(new THREE.BoxGeometry(17,.38,16),mats.concrete);
+    forecourt.position.set(0,-.18,-1.0);shadow(forecourt);site.add(forecourt);
+    const forecourtEdge=new THREE.Mesh(new THREE.BoxGeometry(17.15,.16,16.15),mats.concreteEdge);
+    forecourtEdge.position.set(0,-.40,-1.0);site.add(forecourtEdge);
     if(item.kind==='resort')addResort(site);
-    if(item.kind==='boat')addMooredBoat(site,0,1.2,1.0);
-    if(item.kind==='package'){addResort(site);addMooredBoat(site,-3.0,5.1,.86);addMooredBoat(site,0,5.8,.82);addMooredBoat(site,3.0,5.0,.78)}
+    if(item.kind==='boat'){
+      addMooredBoat(site,-3.1,9.4,.86);addMooredBoat(site,0,9.7,1.0);addMooredBoat(site,3.1,9.5,.84);
+    }
+    if(item.kind==='package'){addResort(site);addMooredBoat(site,-3.0,9.4,.86);addMooredBoat(site,0,9.6,.82);addMooredBoat(site,3.0,9.3,.78)}
     if(item.kind==='photography')addPhotography(site);
     if(item.kind==='night')addNightStay(site);
     if(item.kind==='shop')addShop(site);
     if(item.kind==='customise')addPlanning(site);
     if(item.kind==='contact')addContact(site);
-    scene.add(site);rec.site=site;
+    scene.add(site);if(rec)rec.site=site;
   });
 
   // Small distant moon and stars fade in after the Night River Stay ghat.
