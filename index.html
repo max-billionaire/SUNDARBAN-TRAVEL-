@@ -330,7 +330,7 @@ main#home>.hero{min-height:100vh;height:100vh;max-height:none;background:transpa
 main#home>.hero:before{background:none!important;z-index:0}
 main#home>.hero:after{display:none}
 .journey-stops{position:relative;z-index:2;display:block}
-.journey-stop{height:100vh;min-height:100vh;max-height:none;padding:0;display:block;position:relative;pointer-events:none;background:transparent}
+.journey-stop{height:112vh;min-height:112vh;max-height:none;padding:0;display:block;position:relative;pointer-events:none;background:transparent}
 .journey-stop:before{display:none}
 .journey-stop .stop-copy{display:none!important}.journey-stop{pointer-events:none!important}
 html{scroll-behavior:smooth;scroll-padding-top:0}
@@ -343,7 +343,7 @@ body.show-detail main#home>section{display:none!important}
 body.show-detail main#home>section.detail-active{display:block!important}
 body.show-detail main#home>.detail-active{min-height:100vh;pointer-events:auto}
 .journey-back{display:inline-flex;margin:18px 0 26px;padding:12px 17px;border:1px solid #c9a96b;color:#76572b;background:#fffaf0;font-weight:700;letter-spacing:.08em;font-size:11px;text-decoration:none}
-@media(max-width:700px){#river-journey .journey-caption{max-width:88vw;bottom:66px}.journey-stop{height:100svh;min-height:100svh}}
+@media(max-width:700px){#river-journey .journey-caption{max-width:88vw;bottom:66px}.journey-stop{height:112svh;min-height:112svh}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 
@@ -501,13 +501,16 @@ if (canvas) {
     new THREE.Vector3(0,0,112),new THREE.Vector3(-5,0,88),new THREE.Vector3(-11,0,64),
     new THREE.Vector3(-8,0,40),new THREE.Vector3(1,0,17),new THREE.Vector3(9,0,-8),
     new THREE.Vector3(7,0,-31),new THREE.Vector3(-3,0,-53),new THREE.Vector3(-10,0,-76),
-    new THREE.Vector3(-3,0,-99),new THREE.Vector3(8,0,-122),new THREE.Vector3(10,0,-148)
+    new THREE.Vector3(-3,0,-99),new THREE.Vector3(8,0,-122),new THREE.Vector3(10,0,-148),
+    new THREE.Vector3(8,0,-174),new THREE.Vector3(2,0,-198),new THREE.Vector3(-5,0,-220)
   ];
+  // Stretch the whole river route so each ghat has more breathing room.
+  riverPoints.forEach(v=>{v.x*=1.12;v.z*=1.16});
   const path=new THREE.CatmullRomCurve3(riverPoints,false,'catmullrom',.42);
   const sideAt=t=>{const tan=path.getTangentAt(clamp(t,.001,.999));return new THREE.Vector3(-tan.z,0,tan.x).normalize()};
   const waterMat=new THREE.MeshPhysicalMaterial({color:0x347d79,roughness:.19,metalness:.16,clearcoat:1,clearcoatRoughness:.13});
   const riverGeo=new THREE.BufferGeometry(),riverVerts=[],riverIndices=[],riverUv=[];
-  const riverSegments=620,riverWidth=7.2;
+  const riverSegments=620,riverWidth=9.0;
   for(let i=0;i<=riverSegments;i++){
     const t=i/riverSegments,p=path.getPointAt(t),side=sideAt(t);
     for(let j=0;j<3;j++){
@@ -562,7 +565,7 @@ if (canvas) {
       const dx=x-p.x,dz=z-p.z;
       const along=dx*tan.x+dz*tan.z;
       const outward=dx*side.x+dz*side.z;
-      if(Math.abs(along)<10.5 && outward>5.2 && outward<24.5) return true;
+      if(Math.abs(along)<17.5 && outward>4.8 && outward<29.0) return true;
     }
     return false;
   }
@@ -586,7 +589,7 @@ if (canvas) {
   }
   function addBank(t,sign){
     const p=path.getPointAt(t),s=sideAt(t),offset=9.1+rand()*3.5;
-    const x=p.x+s.x*offset*sign,z=p.z+s.z*offset*sign;
+    const x=p.x+s.x*(offset+1.8)*sign,z=p.z+s.z*(offset+1.8)*sign;
     const tan=path.getTangentAt(clamp(t,.001,.999));
     bankPlans.push({x,z,ox:s.x*sign,oz:s.z*sign,tx:tan.x,tz:tan.z,ro:7.8,ri:1.8,len:8.5,reach:9.5});
     // Muddy edge and scattered pneumatophores, standing on the raised ground.
@@ -605,7 +608,7 @@ if (canvas) {
     }
   }
   function buildBankStrips(){
-    const tStart=.02,tEnd=.985,tSteps=420,oSteps=12,oNear=6.9,oFar=21;
+    const tStart=.02,tEnd=.985,tSteps=420,oSteps=14,oNear=8.8,oFar=25;
     const row=oSteps+1;
     for(const sign of [-1,1]){
       const pos=[],idx=[];
@@ -649,7 +652,7 @@ if (canvas) {
       leaf.scale.set(.9+rand()*1.25,.65+rand()*.8,.9+rand()*1.25);leaf.castShadow=true;g.add(leaf);
     }
   }
-  // Dense, varied mangrove banks on both sides of the winding tidal channel.
+  // Dense, varied mangrove banks on both sides of the wider winding tidal channel.
   for(let i=0;i<104;i++){const t=.025+i*.0091;addBank(t,-1);addBank(t,1)}
   buildBankStrips();
   // Wildlife actors: tiger and deer on the mangrove banks, crocodile in the tidal water.
@@ -707,6 +710,8 @@ if (canvas) {
     wildlife.push({kind:'croc',group:g,head,tail,phase:t*13});
   }
   addDeer(.235,1);addTiger(.355,-1);addCroc(.505,1);addDeer(.785,-1);
+  // Wildlife viewing around the Photography Special ghat.
+  addTiger(.475,-1);addDeer(.49,1);
 
   // Distant green tree line and layered forest silhouettes.
   for(let i=0;i<110;i++){
@@ -728,13 +733,33 @@ if (canvas) {
       for(let j=0;j<7;j++){const plank=new THREE.Mesh(new THREE.BoxGeometry(1.82,.025,.035),mats.woodLight);plank.position.set(0,.91,-2.0+j*.62);b.add(plank)}
     }
     if(withCabin){
-      const cabin=shadow(new THREE.Mesh(new THREE.BoxGeometry(1.55,1.45,1.8),mats.cream));cabin.position.set(0,1.62,-.45);b.add(cabin);
-      const roof=shadow(new THREE.Mesh(new THREE.BoxGeometry(2.0,.18,2.35),mats.roof));roof.position.set(0,2.42,-.45);b.add(roof);
-      for(const x of [-.53,.53]){const win=new THREE.Mesh(new THREE.BoxGeometry(.46,.62,.05),mats.glass);win.position.set(x,1.78,.47);b.add(win)}
-      const front=new THREE.Mesh(new THREE.BoxGeometry(.65,.65,.05),mats.glass);front.position.set(0,1.78,.48);b.add(front);
+      // Low, elongated passenger cabin inspired by the wooden motor launches
+      // commonly seen on the Sundarbans waterways (not a square floating box).
+      const cabin=shadow(new THREE.Mesh(new THREE.BoxGeometry(1.58,1.18,2.35),mats.cream));cabin.position.set(0,1.55,-.42);b.add(cabin);
+      const cabinFront=new THREE.Mesh(new THREE.BoxGeometry(1.42,.72,.06),mats.glass);cabinFront.position.set(0,1.68,.77);b.add(cabinFront);
+      for(const x of [-.81,.81]){
+        const sideWindow=new THREE.Mesh(new THREE.BoxGeometry(.045,.58,1.42),mats.glass);sideWindow.position.set(x,1.68,-.42);b.add(sideWindow);
+        const windowFrame=new THREE.Mesh(new THREE.BoxGeometry(.06,.08,1.5),mats.boatTrim);windowFrame.position.set(x*1.01,2.0,-.42);b.add(windowFrame);
+      }
+      // Slightly pitched canopy roof with overhanging eaves.
+      const roof=shadow(new THREE.Mesh(new THREE.BoxGeometry(2.05,.18,2.78),mats.roof));roof.position.set(0,2.22,-.42);roof.rotation.x=-.035;b.add(roof);
+      const roofRidge=new THREE.Mesh(new THREE.BoxGeometry(1.95,.10,.12),mats.woodLight);roofRidge.position.set(0,2.34,-.42);b.add(roofRidge);
+      for(const x of [-.91,.91])for(const z of [-1.25,.72]){const post=new THREE.Mesh(new THREE.CylinderGeometry(.045,.055,.95,7),mats.woodDark);post.position.set(x,1.53,z);b.add(post)}
+    } else {
+      // Open passenger/fishing boat: visible benches and a small steering console.
+      for(const z of [-1.35,-.15,1.05]){const bench=new THREE.Mesh(new THREE.BoxGeometry(1.55,.12,.28),mats.woodLight);bench.position.set(0,1.12,z);b.add(bench)}
+      const console=new THREE.Mesh(new THREE.BoxGeometry(.52,.62,.48),mats.wood);console.position.set(0,1.25,-1.85);b.add(console);
     }
-    const bowPole=new THREE.Mesh(new THREE.CylinderGeometry(.035,.045,2.1,6),mats.woodDark);bowPole.position.set(0,1.5,2.15);b.add(bowPole);
-    const flag=new THREE.Mesh(new THREE.PlaneGeometry(.9,.42),new THREE.MeshStandardMaterial({color:0xd7b56e,side:THREE.DoubleSide,roughness:.8}));flag.position.set(.42,2.25,2.15);b.add(flag);
+    // Bow rail, stern motor and practical launch details.
+    for(const side of [-1,1]){
+      const bowRail=new THREE.Mesh(new THREE.CylinderGeometry(.035,.035,1.15,7),mats.woodDark);bowRail.position.set(side*.72,1.12,2.15);bowRail.rotation.z=side*.16;b.add(bowRail);
+      const sternPost=new THREE.Mesh(new THREE.CylinderGeometry(.055,.07,.62,7),mats.woodDark);sternPost.position.set(side*.55,.98,-2.42);b.add(sternPost);
+    }
+    const motor=new THREE.Group();motor.position.set(0,.78,-2.75);b.add(motor);
+    const motorBody=new THREE.Mesh(new THREE.BoxGeometry(.34,.72,.42),mats.woodDark);motorBody.position.y=.24;b.add(motorBody);motor.add(motorBody);
+    const motorLeg=new THREE.Mesh(new THREE.BoxGeometry(.12,.78,.14),mats.woodDark);motorLeg.position.set(0,-.45,0);motor.add(motorLeg);
+    const prop=new THREE.Mesh(new THREE.TorusGeometry(.18,.035,6,16),mats.gold);prop.position.set(0,-.82,0);motor.add(prop);
+    const bowPole=new THREE.Mesh(new THREE.CylinderGeometry(.035,.045,1.45,6),mats.woodDark);bowPole.position.set(0,1.38,2.35);b.add(bowPole);
     return b;
   }
   const boat=makeBoat(1.0,true);scene.add(boat);
@@ -742,14 +767,14 @@ if (canvas) {
   const wakes=[];for(let i=0;i<4;i++){const w=new THREE.Mesh(new THREE.TorusGeometry(1.4+i*.55,.035,5,56),wakeMat);w.rotation.x=Math.PI/2;w.position.set(0,.14,-3.1-i*.7);w.scale.set(1.4,.55,1);boat.add(w);wakes.push(w)}
 
   const ghats=[
-    {kind:'resort',title:'BOOK YOUR RESORT',sub:'RIVERSIDE STAYS',href:'#hotel-details',t:.14,side:-1},
-    {kind:'boat',title:'BOOK YOUR BOAT TRIP',sub:'CHOOSE YOUR BOAT',href:'#boat-trips',t:.255,side:1},
+    {kind:'resort',title:'BOOK YOUR RESORT',sub:'RIVERSIDE STAYS',href:'#hotel-details',t:.13,side:-1},
+    {kind:'boat',title:'BOOK YOUR BOAT TRIP',sub:'CHOOSE YOUR BOAT',href:'#boat-trips',t:.25,side:1},
     {kind:'package',title:'BOOK YOUR PACKAGE TOUR',sub:'STAY + BOAT JOURNEY',href:'#str-packages',t:.37,side:-1},
-    {kind:'photography',title:'PHOTOGRAPHY SPECIAL PACKAGE',sub:'WILDLIFE & RIVER PHOTOGRAPHY',href:'#photography',t:.485,side:1},
-    {kind:'night',title:'NIGHT RIVER STAY',sub:'SLEEP BESIDE THE RIVER',href:'#river-stays',t:.60,side:-1},
-    {kind:'shop',title:'SUNDARBAN SHOP',sub:'LOCAL PRODUCTS & SOUVENIRS',href:'#shop',t:.715,side:1},
-    {kind:'customise',title:'CUSTOMISE YOUR SUNDARBAN TRIP',sub:'BUILD YOUR OWN JOURNEY',href:'#customise',t:.83,side:-1},
-    {kind:'contact',title:'SUNDARBAN TRAVEL RECEPTION',sub:'DIGITAL RECEPTION · CONTACT & BOOKING',href:'#contact',t:.945,side:1}
+    {kind:'photography',title:'PHOTOGRAPHY SPECIAL PACKAGE',sub:'WILDLIFE & RIVER PHOTOGRAPHY',href:'#photography',t:.49,side:1},
+    {kind:'night',title:'NIGHT RIVER STAY',sub:'SLEEP BESIDE THE RIVER',href:'#river-stays',t:.61,side:-1},
+    {kind:'shop',title:'SUNDARBAN SHOP',sub:'LOCAL PRODUCTS & SOUVENIRS',href:'#shop',t:.73,side:1},
+    {kind:'customise',title:'CUSTOMISE YOUR SUNDARBAN TRIP',sub:'BUILD YOUR OWN JOURNEY',href:'#customise',t:.85,side:-1},
+    {kind:'contact',title:'SUNDARBAN TRAVEL RECEPTION',sub:'DIGITAL RECEPTION · CONTACT & BOOKING',href:'#contact',t:.97,side:1}
   ];
   const nightLights=[];
   function boardTexture(title,sub){
@@ -767,7 +792,11 @@ if (canvas) {
   const boardFaces=[];const boardRecords=[];
   function makeSign(item,index){
     const p=path.getPointAt(item.t),s=sideAt(item.t),bank=s.clone().multiplyScalar(item.side);
-    const g=new THREE.Group();g.position.copy(p).addScaledVector(bank,10.6);
+    const g=new THREE.Group();
+    const alongBank=path.getTangentAt(clamp(item.t,.001,.999));
+    // Keep the signboard on the opposite end of THIS SAME GHAT platform,
+    // not across the river; leave the hotel/reception scenery visible behind it.
+    g.position.copy(p).addScaledVector(bank,10.6).addScaledVector(alongBank,-5.8);
     g.position.y=Math.max(groundY(g.position.x,g.position.z),0)+.15;
     const inward=bank.clone().negate();g.rotation.y=Math.atan2(inward.x,inward.z);
 
@@ -835,7 +864,7 @@ if (canvas) {
     for(const x of [-4,4]){const rail=new THREE.Mesh(new THREE.BoxGeometry(.12,.8,2.4),mats.woodLight);rail.position.set(x,2.55,3.5);b.add(rail)}
     for(const x of [-3.8,3.8]){const lamp=new THREE.PointLight(0xffbd68,0,9);lamp.position.set(x,4,3);b.add(lamp);nightLights.push(lamp)}
   }
-  function addMooredBoat(site,x,z,scale=1){const b=makeBoat(scale,true);b.position.set(x,.18-(site.userData.lift||0),z);b.rotation.y=.18;site.add(b);return b}
+  function addMooredBoat(site,x,z,scale=1){const b=makeBoat(scale,true);b.position.set(x,.18-(site.userData.lift||0),Math.max(z,19.2));b.rotation.y=.18;site.add(b);return b}
   function addPhotography(site){
     const deck=new THREE.Mesh(new THREE.BoxGeometry(9,.3,6),mats.wood);deck.position.set(0,1.2,0);shadow(deck);site.add(deck);
     for(const x of [-4,4])for(const z of [-2,2]){const st=new THREE.Mesh(new THREE.CylinderGeometry(.15,.2,1.4,7),mats.woodDark);st.position.set(x,.45,z);site.add(st)}
@@ -847,10 +876,10 @@ if (canvas) {
   }
   function addNightStay(site){
     const houseboat=addMooredBoat(site,-.8,9.5,1.35);
-    const cabin=shadow(new THREE.Mesh(new THREE.BoxGeometry(2.7,1.75,2.3),mats.cream));cabin.position.set(-.8,2.0-(site.userData.lift||0),8.9);site.add(cabin);
-    const roof=shadow(new THREE.Mesh(new THREE.BoxGeometry(3.2,.18,2.8),mats.roof));roof.position.set(-.8,2.95,3.2);site.add(roof);
-    for(const x of [-1.6,0]){const win=new THREE.Mesh(new THREE.BoxGeometry(.65,.85,.06),new THREE.MeshBasicMaterial({color:0xffc16b}));win.position.set(x,2.1,4.37);site.add(win)}
-    const dock=new THREE.Mesh(new THREE.BoxGeometry(7,.22,2.2),mats.wood);dock.position.set(1.8,.55,1.6);site.add(dock);
+    const cabin=shadow(new THREE.Mesh(new THREE.BoxGeometry(2.7,1.75,2.3),mats.cream));cabin.position.set(-.8,2.0-(site.userData.lift||0),19.0);site.add(cabin);
+    const roof=shadow(new THREE.Mesh(new THREE.BoxGeometry(3.2,.18,2.8),mats.roof));roof.position.set(-.8,2.95,19.0);site.add(roof);
+    for(const x of [-1.6,0]){const win=new THREE.Mesh(new THREE.BoxGeometry(.65,.85,.06),new THREE.MeshBasicMaterial({color:0xffc16b}));win.position.set(x,2.1,20.16);site.add(win)}
+    const dock=new THREE.Mesh(new THREE.BoxGeometry(7,.22,2.2),mats.wood);dock.position.set(1.8,.55,16.8);site.add(dock);
     for(let i=0;i<5;i++){const bulb=new THREE.PointLight(0xffb85f,0,8);bulb.position.set(-2+i,4.5,1.6);site.add(bulb);nightLights.push(bulb)}
     const string=new THREE.Mesh(new THREE.CylinderGeometry(.025,.025,5,6),mats.gold);string.rotation.z=Math.PI/2;string.position.set(-.1,4.4,1.6);site.add(string);
   }
@@ -906,7 +935,7 @@ if (canvas) {
   }
   ghats.forEach((item,index)=>{
     const signItem=item.kind==='contact'?{...item,title:'SUNDARBAN TRAVEL',sub:'DIGITAL RECEPTION · CONTACT & BOOKING'}:item;
-    const rec=index===0?null:makeSign(signItem,index);
+    const rec=makeSign(signItem,index);
     const site=new THREE.Group();
     const p=path.getPointAt(item.t),bank=sideAt(item.t).multiplyScalar(item.side);
     site.position.copy(p).addScaledVector(bank,15.5);site.rotation.y=Math.atan2(-bank.x,-bank.z);
@@ -917,7 +946,7 @@ if (canvas) {
     forecourt.position.set(0,-.18,-1.0);shadow(forecourt);site.add(forecourt);
     const forecourtEdge=new THREE.Mesh(new THREE.BoxGeometry(17.15,.16,16.15),mats.concreteEdge);
     forecourtEdge.position.set(0,-.40,-1.0);site.add(forecourtEdge);
-    if(item.kind==='resort')addResort(site);
+    if(item.kind==='resort'){addResort(site);addMooredBoat(site,3.2,9.6,.9)}
     if(item.kind==='boat'){
       addMooredBoat(site,-3.1,9.4,.86);addMooredBoat(site,0,9.7,1.0);addMooredBoat(site,3.1,9.5,.84);
     }
@@ -927,6 +956,15 @@ if (canvas) {
     if(item.kind==='shop')addShop(site);
     if(item.kind==='customise')addPlanning(site);
     if(item.kind==='contact')addContact(site);
+    // Fill the formerly bare upper bank with a layered Sundarbans backdrop.
+    // Trees sit behind and to the sides of the service scene, not in front of the sign or jetty.
+    const scenicTrees=[[-10.5,-7.5,.95],[-7.8,-10.5,1.05],[8.5,-9.0,1.0],[11.5,-5.5,.9],[-13.0,-1.0,.78],[13.0,1.5,.82]];
+    for(const [tx,tz,sc] of scenicTrees){
+      const world=new THREE.Vector3(tx,0,tz);world.applyAxisAngle(new THREE.Vector3(0,1,0),site.rotation.y);world.add(site.position);
+      if(!insideGhatClearing(world.x,world.z) || Math.abs(tx)>7.5){
+        addMangrove(world.x,Math.max(groundY(world.x,world.z),site.position.y),world.z,sc);
+      }
+    }
     scene.add(site);if(rec)rec.site=site;
   });
 
@@ -946,7 +984,7 @@ if (canvas) {
   const progressEl=document.querySelector('.journey-progress span');
   const scrollSpace=()=>Math.max(1,document.documentElement.scrollHeight-innerHeight);
   let targetT=.025,currentT=.025,nightMix=0,activeIndex=-1,waterFrame=0;
-  const tmpLook=new THREE.Vector3(),tmpPos=new THREE.Vector3();
+  const tmpLook=new THREE.Vector3(),tmpPos=new THREE.Vector3(),cameraLook=new THREE.Vector3();
   function getScrollState(){
     const hero=document.querySelector('main#home>.hero');
     const heroH=hero?Math.max(1,hero.offsetHeight):innerHeight;
@@ -954,9 +992,16 @@ if (canvas) {
     // The HOME PAGE is its own opening stretch: the boat starts at the river entrance
     // and approaches Ghat 1 gradually while the visitor scrolls through the hero.
     const homeProgress=clamp(scrollY/heroH);
-    const ghatsProgress=clamp((scrollY-journeyTop)/Math.max(1,(journeyStops.length-1)*innerHeight));
-    const t=scrollY<journeyTop ? .005+homeProgress*(.14-.005) : .14+ghatsProgress*(.945-.14);
-    const idx=scrollY<journeyTop ? -1 : Math.min(7,Math.max(0,Math.round((scrollY-journeyTop)/innerHeight)));
+    // Match the actual 112vh height of every .journey-stop section.
+    // The previous 1.28vh stride was longer than each section, so the scroll
+    // timeline lagged behind the page and Ghat 8 was pushed beyond its proper stop.
+    const stopStride=innerHeight*1.12;
+    const ghatsProgress=clamp((scrollY-journeyTop)/Math.max(1,(journeyStops.length-1)*stopStride));
+    const t=scrollY<journeyTop ? .005+homeProgress*(.13-.005) : .13+ghatsProgress*(.97-.13);
+    // One real section equals one ghat stop; the eighth section now activates
+    // at Ghat 8 rather than being reached only after the Ghat 7 scene.
+    const journeyStep=Math.max(1,innerHeight*1.12);
+    const idx=scrollY<journeyTop ? -1 : Math.min(7,Math.max(0,Math.floor((scrollY-journeyTop)/journeyStep)));
     return {t,idx,progress:clamp(scrollY/scrollSpace())};
   }
   function readScroll(){
@@ -986,11 +1031,21 @@ if (canvas) {
     requestAnimationFrame(animate);
     // The boat position is controlled only by page scroll; no autonomous forward drift.
     currentT=targetT;
-    const t=clamp(currentT,.025,.965),p=path.getPointAt(t),tan=path.getTangentAt(t);
-    // Keep the boat still when scrolling stops: no independent bobbing or rocking.
-    boat.position.set(p.x,.13,p.z);boat.rotation.y=Math.atan2(tan.x,tan.z);boat.rotation.z=0;
+    const t=clamp(currentT,.025,.995),p=path.getPointAt(t),tan=path.getTangentAt(t);
+    const smoothstep=(a,b,x)=>{const q=clamp((x-a)/(b-a));return q*q*(3-2*q)};
+    // Only at the final reception ghat: leave the river centre, approach the bank
+    // and turn the bow toward the reception jetty without entering the moored boats.
+    const finalApproach=smoothstep(.91,.97,t);
+    const finalRecord=boardRecords[7];
+    const finalBank=finalRecord?finalRecord.bank.clone():sideAt(.97);
+    const berthPoint=path.getPointAt(.97).addScaledVector(finalBank,5.35);
+    const movingPoint=p.clone().lerp(berthPoint,finalApproach);
+    boat.position.set(movingPoint.x,.13,movingPoint.z);
+    const riverHeading=Math.atan2(tan.x,tan.z),berthHeading=Math.atan2(finalBank.x,finalBank.z);
+    const headingDelta=Math.atan2(Math.sin(berthHeading-riverHeading),Math.cos(berthHeading-riverHeading));
+    boat.rotation.y=riverHeading+headingDelta*finalApproach;boat.rotation.z=0;
     wakes.forEach((w,i)=>{w.scale.x=1.3+i*.18;w.material.opacity=.16});
-    const nightTarget=clamp((t-.50)/.10);
+    const nightTarget=smoothstep(.515,.585,t)*(1-smoothstep(.635,.705,t));
     nightMix=THREE.MathUtils.damp(nightMix,nightTarget,1.35,1/60);
     scene.background.copy(daySky).lerp(nightSky,nightMix);
     scene.fog.color.copy(dayFog).lerp(nightFog,nightMix);scene.fog.density=lerp(.0095,.013,nightMix);
@@ -1008,7 +1063,17 @@ if (canvas) {
       else if(a.kind==='tiger'){a.head.rotation.x=.02+Math.max(0,Math.sin(now*.7+a.phase))*.12;a.legs.forEach((leg,i)=>{leg.rotation.x=Math.sin(now*1.45+a.phase+i*Math.PI/2)*.12});a.tail.rotation.y=Math.sin(now*1.15+a.phase)*.24;a.group.position.y=.02+Math.abs(w)*.012}
       else if(a.kind==='croc'){a.tail.rotation.y=Math.sin(now*1.05+a.phase)*.22;a.head.rotation.y=Math.sin(now*.8+a.phase)*.04;a.group.position.y=.12+Math.sin(now*1.2+a.phase)*.02}
     });
-    const stop=activeIndex>=0?boardRecords[activeIndex]:null;
+    let stop=null,focusWeight=0;
+    let nearestGap=Infinity;
+    for(const record of boardRecords){
+      if(!record) continue;
+      const gap=Math.abs(t-record.t);
+      if(gap<nearestGap){nearestGap=gap;stop=record;}
+    }
+    // Keep the signboard glance confined to the actual stop. As soon as the
+    // visitor scrolls away, release the side-look quickly back to the forward
+    // river/boat direction instead of showing a long in-between angle.
+    focusWeight=stop?1-smoothstep(.008,.024,nearestGap):0;
     if(receptionistGreetingArm){
       const greetingMix=activeIndex===7?1:0;
       receptionistGreetingArm.rotation.z=THREE.MathUtils.damp(receptionistGreetingArm.rotation.z,greetingMix?-.36:0,3.2,1/60);
@@ -1025,11 +1090,25 @@ if (canvas) {
     // allowed; the camera body remains on the open-water centreline.
     const lookAhead=path.getPointAt(clamp(t+.025,.001,.999));
     tmpLook.copy(lookAhead).add(new THREE.Vector3(0,2.0,0));
-    if(stop){
-      const sideGlance=stop.bank.clone().multiplyScalar(2.0);
-      tmpLook.add(sideGlance);
+    if(stop && stop.focus){
+      // Ordinary ghats get a gentle signboard glance while the camera stays on the river rail.
+      const boardAim=stop.focus.clone();
+      boardAim.y+=1.25;
+      tmpLook.lerp(boardAim,focusWeight*.94);
     }
-    camera.lookAt(tmpLook);
+    if(finalApproach>0.001 && finalRecord){
+      // The special turning camera move belongs only to the last ghat.
+      const finalCamera=berthPoint.clone().addScaledVector(tan,-8.5).addScaledVector(finalBank,-1.8);
+      finalCamera.y=6.1;
+      const receptionAim=finalRecord.focus.clone();receptionAim.y+=1.15;
+      camera.position.lerp(finalCamera,finalApproach*.92);
+      tmpLook.lerp(receptionAim,finalApproach);
+    }
+    if(cameraLook.lengthSq()===0) cameraLook.copy(tmpLook);
+    // Faster camera-target recovery after the signboard view: no lingering
+    // boat-to-board intermediate composition on the next scroll movement.
+    cameraLook.lerp(tmpLook,focusWeight>0.05?0.2:0.42);
+    camera.lookAt(cameraLook);
     camera.fov=lerp(48,44,nightMix);camera.updateProjectionMatrix();
     renderer.render(scene,camera);
   }
